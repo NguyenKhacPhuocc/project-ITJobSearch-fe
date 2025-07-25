@@ -17,7 +17,8 @@ export default function CompanyLoginPage() {
             <form action="" className="grid grid-cols-1 gap-y-[15px]">
               <div className="">
                 <label htmlFor="email" className="block font-[500] text-[14px] text-black mb-[5px]">
-                  Email *
+                  Email 
+                  <span className="text-red-500 ml-[5px]">*</span>
                 </label>
                 <input 
                   type="email" 
@@ -28,7 +29,8 @@ export default function CompanyLoginPage() {
               </div>
               <div className="">
                 <label htmlFor="password" className="block font-[500] text-[14px] text-black mb-[5px]">
-                  Mật khẩu *
+                  Mật khẩu 
+                  <span className="text-red-500 ml-[5px]">*</span>
                 </label>
                 <input 
                   type="password" 
