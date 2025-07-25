@@ -12,7 +12,7 @@ export default function Home() {
             887 Việc làm IT cho Developer &quot;Chất&quot;
           </h1>
           <form action="" className="flex flex-wrap gap-x-[15px] gap-y-[12px] mb-[30px]">
-            <select name="" className="bg-white md:w-[240px] w-[100%] h-[56px] rounded-[4px] px-[20px] font-[500] text-[16px] text-[#121212]">
+            <select name="" className="bg-white md:w-[200px] w-[100%] h-[56px] rounded-[4px] px-[20px] font-[500] text-[16px] text-[#121212]">
               <option value="">Tất cả thành phố</option>
               <option value="">Hà Nội</option>
               <option value="">Đà Nẵng</option>
