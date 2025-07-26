@@ -1,33 +1,26 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import JustValidate from "just-validate";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef } from "react";
 
-
 export const FormRegister = () => {
   const router = useRouter();
   const validatorRef = useRef<InstanceType<typeof JustValidate> | null>(null);
-
   useEffect(() => {
     if (validatorRef.current) return; // Ngăn không cho gắn nhiều lần
     const validator = new JustValidate("#registerForm");
 
     validator
-      .addField('#fullName', [
+      .addField('#companyName', [
         {
           rule: 'required',
-          errorMessage: 'Vui lòng nhập họ tên!'
-        },
-        {
-          rule: 'minLength',
-          value: 5,
-          errorMessage: 'Họ tên phải có ít nhất 5 ký tự!',
+          errorMessage: 'Vui lòng nhập tên công ty!'
         },
         {
           rule: 'maxLength',
-          value: 50,
-          errorMessage: 'Họ tên không được vượt quá 50 ký tự!',
+          value: 200,
+          errorMessage: 'Tên công ty không được vượt quá 200 ký tự!',
         },
       ])
       .addField('#email', [
@@ -67,17 +60,17 @@ export const FormRegister = () => {
         },
       ])
       .onSuccess((event: any) => {
-        const fullName = event.target.fullName.value;
+        const companyName = event.target.companyName.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
 
         const dataFinal = {
-          fullName: fullName,
+          companyName: companyName,
           email: email,
           password: password
         };
 
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/register`, {
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/company/register`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -91,26 +84,25 @@ export const FormRegister = () => {
             }
 
             if (data.code == "success") {
-              router.push("/user/login");
+              router.push("/company/login");
             }
           })
       });
     validatorRef.current = validator; // Lưu lại để không bị tạo lại
   }, [router]);
 
-
   return (
     <>
       <form id="registerForm" action="" className="grid grid-cols-1 gap-y-[15px]">
         <div className="">
-          <label htmlFor="fullName" className="block font-[500] text-[14px] text-black mb-[5px]">
-            Họ tên
+          <label htmlFor="companyName" className="block font-[500] text-[14px] text-black mb-[5px]">
+            Tên công ty
             <span className="text-red-500 ml-[5px]">*</span>
           </label>
           <input
             type="text"
-            name="fullName"
-            id="fullName"
+            name="companyName"
+            id="companyName"
             className="w-[100%] h-[46px] border border-[#DEDEDE] rounded-[4px] py-[14px] px-[20px] font-[500] text-[14px] text-black"
           />
         </div>
@@ -135,7 +127,6 @@ export const FormRegister = () => {
             type="password"
             name="password"
             id="password"
-            // autoComplete="new-password"
             className="w-[100%] h-[46px] border border-[#DEDEDE] rounded-[4px] py-[14px] px-[20px] font-[500] text-[14px] text-black"
           />
         </div>

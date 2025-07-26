@@ -38,7 +38,7 @@ export const Header = () => {
   return (
     <>
       <header
-        className={`bg-[linear-gradient(to_right,_#000000cc_0%,_#0D1B2Acc_60%,_#005E9280_120%)] backdrop-blur-md py-[10px] px-[15px] border-b border-[#656565] fixed w-full top-0 z-[999] transition-transform duration-700 ${hideHeader ? "-translate-y-full" : "translate-y-0"}`}
+        className={`bg-[linear-gradient(to_right,_#000000_0%,_#0D1B2A_60%,_#005E92_120%)] py-[10px] px-[15px] border-b border-[#656565] fixed w-full top-0 z-[999] transition-transform duration-700 ${hideHeader ? "-translate-y-full" : "translate-y-0"}`}
       >
         <div className="container mx-auto">
           {/* Wrap */}

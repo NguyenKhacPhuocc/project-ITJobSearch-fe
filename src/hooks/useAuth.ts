@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 export const useAuth = () => {
   const [isLogin, setIsLogin] = useState(false);
-  const [infoUser, setInfoUser] = useState<any>("");
+  const [info, setInfo] = useState<any>(null); // có thể là user hoặc company
   const pathname = usePathname(); // lấy đường dẫn hiện tại
 
   useEffect(() => {
@@ -16,15 +16,19 @@ export const useAuth = () => {
       .then(data => {
         if (data.code === "success") {
           setIsLogin(true);
-          setInfoUser(data.infoUser);
+          setInfo(data.info); // info chứa cả role
+          console.log("success")
         } else {
           setIsLogin(false);
+          setInfo(null);
+          console.log("error")
         }
       });
   }, [pathname]);
 
   return {
     isLogin,
-    infoUser,
+    infoUser: info?.role === "user" ? info : null,
+    infoCompany: info?.role === "company" ? info : null,
   };
 }

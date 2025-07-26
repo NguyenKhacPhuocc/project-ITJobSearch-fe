@@ -5,10 +5,10 @@ import { useRouter } from "next/navigation";
 
 export const HeaderAccount = () => {
 
-  const { isLogin, infoUser } = useAuth();
+  const { isLogin, infoUser, infoCompany } = useAuth();
   const router = useRouter();
 
-  const handleLogout = () => {
+  const handleLogout = (linkRedirect: string) => {
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`, {
       method: "GET",
       credentials: "include"
@@ -16,7 +16,7 @@ export const HeaderAccount = () => {
       .then(res => res.json())
       .then(data => {
         if (data.code === "success") {
-          router.push("/user/login");
+          router.push(linkRedirect);
         } else {
           alert(data.message);
         }
@@ -29,53 +29,48 @@ export const HeaderAccount = () => {
 
       <div className="inline-flex items-center gap-x-[5px] text-white  sm:text-[15px] text-[12px] relative group/sub-1">
         {isLogin ? (
-          <>
-            {/* Đã đăng nhập dành cho ứng viên*/}
-            <Link href="#" className="text-[15px]">{infoUser.fullName}</Link>
-            <ul className="absolute top-[100%] right-[0px] w-[200px] bg-[#0D1B2A] hidden group-hover/sub-1:block z-[999]">
-              <li className="py-[10px] px-[15px] flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 transition-colors duration-200 ease-in-out">
-                <Link href="" className="text-white text-[15px]">
-                  Thông tin cá nhân
-                </Link>
-              </li>
-              <li className="py-[10px] px-[15px] flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 transition-colors duration-200 ease-in-out">
-                <Link href="" className="text-white text-[15px]">
-                  CV đã gửi
-                </Link>
-              </li>
-              <li
-                className="py-[10px] px-[15px] flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 cursor-pointer transition-colors duration-200 ease-in-out"
-                onClick={handleLogout}
-              >
-                Đăng xuất
-              </li>
-            </ul>
-
-            {/* Đã đăng nhập dành cho công ty*/}
-            {/* <Link href="#" className="">{infoUser.fullName}</Link>
-            <ul className="absolute top-[100%] right-[0px] w-[200px] bg-[#000065] hidden group-hover/sub-1:block z-[999]">
-              <li className="py-[10px] px-[16px] rounded-[4px] flex items-center justify-between hover:bg-[#000096] relative group/sub-2">
-                <Link href="" className="text-white font-[600] text-[16px]">
-                  Thông tin công ty
-                </Link>
-              </li>
-              <li className="py-[10px] px-[16px] rounded-[4px] flex items-center justify-between hover:bg-[#000096] relative group/sub-2">
-                <Link href="" className="text-white font-[600] text-[16px]">
-                  Quản lý công việc
-                </Link>
-              </li>
-              <li className="py-[10px] px-[16px] rounded-[4px] flex items-center justify-between hover:bg-[#000096] relative group/sub-2">
-                <Link href="" className="text-white font-[600] text-[16px]">
-                  Quản lý CV
-                </Link>
-              </li>
-              <li className="py-[10px] px-[16px] rounded-[4px] flex items-center justify-between hover:bg-[#000096] relative group/sub-2">
-                <Link href="" className="text-white font-[600] text-[16px]">
+          infoUser ? (
+            <>
+              {/* Đã đăng nhập dành cho ứng viên */}
+              <Link href="#" className="text-[15px]">{infoUser.fullName}</Link>
+              <ul className="absolute top-[100%] right-[0px] w-[200px] bg-[#0D1B2A] hidden group-hover/sub-1:block z-[999]">
+                <li className="py-[10px] px-[15px] flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 transition-colors duration-200 ease-in-out">
+                  <Link href="" className="text-white text-[15px]">Thông tin cá nhân</Link>
+                </li>
+                <li className="py-[10px] px-[15px] flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 transition-colors duration-200 ease-in-out">
+                  <Link href="" className="text-white text-[15px]">CV đã gửi</Link>
+                </li>
+                <li
+                  className="py-[10px] px-[15px] flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 cursor-pointer transition-colors duration-200 ease-in-out"
+                  onClick={() => handleLogout("/user/login")}
+                >
                   Đăng xuất
-                </Link>
-              </li>
-            </ul> */}
-          </>
+                </li>
+              </ul>
+            </>
+          ) : infoCompany ? (
+            <>
+              {/* Đã đăng nhập dành cho công ty */}
+              <Link href="#" className="text-[15px]">{infoCompany.companyName}</Link>
+              <ul className="absolute top-[100%] right-[0px] w-[200px] bg-[#0D1B2A] hidden group-hover/sub-1:block z-[999]">
+                <li className="py-[10px] px-[15px] flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 transition-colors duration-200 ease-in-out">
+                  <Link href="" className="text-white text-[15px]">Thông tin công ty</Link>
+                </li>
+                <li className="py-[10px] px-[15px] flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 transition-colors duration-200 ease-in-out">
+                  <Link href="" className="text-white text-[15px]">Quản lý công việc</Link>
+                </li>
+                <li className="py-[10px] px-[15px] flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 transition-colors duration-200 ease-in-out">
+                  <Link href="" className="text-white text-[15px]">Quản lý CV</Link>
+                </li>
+                <li
+                  className="py-[10px] px-[15px] flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 cursor-pointer transition-colors duration-200 ease-in-out"
+                  onClick={() => handleLogout("/company/login")}
+                >
+                  Đăng xuất
+                </li>
+              </ul>
+            </>
+          ) : null
         ) : (
           <>
             {/* Chưa đăng nhập */}

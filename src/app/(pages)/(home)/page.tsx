@@ -21,19 +21,9 @@ export default function Home() {
             </select>
             <input type="text" name="" placeholder="Nhập từ khoá..." className="md:flex-1 flex-none w-[100%] bg-white h-[56px] rounded-[4px] px-[20px] font-[500] text-[16px]" />
             <button
-              className="relative overflow-hidden
-             w-full md:w-[240px] h-[56px] rounded-[8px]
-             font-semibold text-[16px] text-white
-             inline-flex items-center justify-center
-             shadow-md hover:shadow-lg
-             transition-transform duration-300 ease-in-out
-             transform hover:scale-[1.03] group">
-              <span
-                className="absolute inset-0 z-0 rounded-[8px]
-               bg-gradient-to-r from-[#0F2027] via-[#005E92] to-[#0F2027]
-               bg-[length:200%_100%] bg-left
-               transition-all duration-500 ease-in-out
-               group-hover:bg-right">
+              className="relative overflow-hidden w-full md:w-[240px] h-[56px] rounded-[8px] font-semibold text-[16px] text-white inline-flex items-center justify-center shadow-md hover:shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-[1.03] group"
+            >
+              <span className="absolute inset-0 z-0 rounded-[8px] bg-gradient-to-r from-[#0F2027] via-[#005E92] to-[#0F2027] bg-[length:200%_100%] bg-left transition-all duration-500 ease-in-out group-hover:bg-right">
               </span>
               <span className="relative z-10 flex items-center">
                 <FaMagnifyingGlass className="text-[20px] mr-[10px]" />

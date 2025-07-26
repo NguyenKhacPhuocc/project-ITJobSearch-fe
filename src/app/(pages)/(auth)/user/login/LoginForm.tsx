@@ -1,14 +1,14 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 import JustValidate from "just-validate"
 import { useRouter } from "next/navigation";
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 
 export const LoginForm = () => {
   const router = useRouter();
-
+  const validatorRef = useRef<InstanceType<typeof JustValidate> | null>(null);
   useEffect(() => {
+    if (validatorRef.current) return; // Ngăn không cho gắn nhiều lần
     const validator = new JustValidate("#login-form")
     validator
       .addField('#email', [
@@ -75,7 +75,8 @@ export const LoginForm = () => {
             }
           })
       })
-  }, [])
+    validatorRef.current = validator; // Lưu lại để không bị tạo lại
+  }, [router]);
 
   return (
     <>
