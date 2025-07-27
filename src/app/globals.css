@@ -8,6 +8,12 @@
   font-family: "Lexend", sans-serif;
 }
 
-select, input, textarea {
+select,
+input,
+textarea {
   outline: none;
+}
+
+html {
+  scroll-behavior: smooth;
 }

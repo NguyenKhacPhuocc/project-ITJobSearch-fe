@@ -60,11 +60,11 @@ export const HeaderMenu = ({ showMenu }: { showMenu: boolean }) => {
         {menuList.map((menu, index) => (
           <li
             key={index}
-            className={"inline-flex lg:w-auto w-full lg:justify-start justify-between p-[10px] items-center gap-x-[8px] relative group/sub-1 flex-wrap transition-all duration-300 ease-in-out " + (menu.isLogin !== undefined && menu.isLogin !== isLogin ? "hidden" : "")}
+            className={"inline-flex lg:w-auto w-full lg:justify-start justify-between p-[10px] items-center gap-x-[8px] relative group/sub-1 flex-wrap transition-all duration-200 ease-in-out " + (menu.isLogin !== undefined && menu.isLogin !== isLogin ? "hidden" : "")}
           >
             <Link
               href={menu.link}
-              className="text-white  text-[16px] transition-all duration-300 ease-in-out"
+              className="text-white  text-[16px] transition-all duration-200 ease-in-out"
             >
               {menu.name}
             </Link>
@@ -77,16 +77,16 @@ export const HeaderMenu = ({ showMenu }: { showMenu: boolean }) => {
                 {menu.children.map((menuSub1, indexSub1) => (
                   <li
                     key={indexSub1}
-                    className="py-[10px] px-[16px] rounded-[4px] flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 flex-wrap transition-colors duration-200 ease-in-out"
+                    className=" flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 flex-wrap transition-colors duration-200 ease-in-out"
                   >
                     <Link
                       href={menuSub1.link}
-                      className="text-white font-medium text-[16px] transition-colors duration-200 ease-in-out"
+                      className="text-white font-medium text-[15px] w-[90%] py-[10px] px-[15px] transition-colors duration-200 ease-in-out"
                     >
                       {menuSub1.name}
                     </Link>
                     {menuSub1.children && (
-                      <FaAngleRight className="text-white text-[16px] transition-transform duration-200 group-hover/sub-2:translate-x-1" />
+                      <FaAngleRight className="text-white text-[16px] pr-[8px] transition-transform duration-200 group-hover/sub-2:translate-x-1" />
                     )}
 
                     {menuSub1.children && (
@@ -94,11 +94,11 @@ export const HeaderMenu = ({ showMenu }: { showMenu: boolean }) => {
                         {menuSub1.children.map((menuSub2, indexSub2) => (
                           <li
                             key={indexSub2}
-                            className="py-[10px] px-[16px] rounded-[4px] flex items-center justify-between hover:bg-[#18324e] transition-colors duration-200 ease-in-out"
+                            className=" flex items-center justify-between hover:bg-[#18324e] transition-colors duration-200 ease-in-out"
                           >
                             <a
                               href={menuSub2.link}
-                              className="text-white font-medium text-[16px] transition-colors duration-200 ease-in-out"
+                              className="text-white font-medium text-[15px] w-[90%] py-[10px] px-[15px]  transition-colors duration-200 ease-in-out"
                             >
                               {menuSub2.name}
                             </a>

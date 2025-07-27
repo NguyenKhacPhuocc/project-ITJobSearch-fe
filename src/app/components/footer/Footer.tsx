@@ -1,16 +1,49 @@
+import { FaFacebookF, FaLinkedinIn, FaGithub } from "react-icons/fa";
+
 export const Footer = () => {
   return (
-    <>
-      <footer className="bg-[linear-gradient(to_right,_#000000_0%,_#0D1B2A_60%,_#005E92_120%)] py-[24px]">
-        <div className="container mx-auto px-[16px]">
-          <div className="text-white font-[800] text-[28px] text-center mb-[10px]">
-            ITJobSearch
-          </div>
-          <div className="text-[#A6A6A6] font-[400] text-[14px] text-center">
-            Copyright © ITJobSearch
+    <footer className="bg-[linear-gradient(to_right,_#000000_0%,_#0D1B2A_60%,_#005E92_120%)] text-white pt-10 pb-6">
+      <div className="container mx-auto px-4 grid md:grid-cols-3 gap-10 text-center md:text-left">
+        {/* Logo + giới thiệu */}
+        <div>
+          <div className="text-3xl font-extrabold mb-2">ITJobSearch</div>
+          <p className="text-[#ccc] text-sm leading-relaxed">
+            Nền tảng tìm việc IT hiện đại, kết nối ứng viên với các công ty công nghệ hàng đầu.
+          </p>
+        </div>
+
+        {/* Liên kết nhanh */}
+        <div>
+          <h3 className="text-lg font-bold mb-3">Liên kết</h3>
+          <ul className="space-y-2 text-sm text-[#ccc]">
+            <li><a href="#" className="hover:text-white transition">Việc làm</a></li>
+            <li><a href="#" className="hover:text-white transition">Công ty</a></li>
+            <li><a href="#" className="hover:text-white transition">Về chúng tôi</a></li>
+            <li><a href="#" className="hover:text-white transition">Liên hệ</a></li>
+          </ul>
+        </div>
+
+        {/* Mạng xã hội */}
+        <div>
+          <h3 className="text-lg font-bold mb-3">Kết nối</h3>
+          <div className="flex justify-center md:justify-start gap-4">
+            <a href="#" className="p-2 bg-white/10 hover:bg-white/20 rounded-full transition">
+              <FaFacebookF size={18} />
+            </a>
+            <a href="#" className="p-2 bg-white/10 hover:bg-white/20 rounded-full transition">
+              <FaLinkedinIn size={18} />
+            </a>
+            <a href="#" className="p-2 bg-white/10 hover:bg-white/20 rounded-full transition">
+              <FaGithub size={18} />
+            </a>
           </div>
         </div>
-      </footer>
-    </>
-  )
-}
+      </div>
+
+      {/* Đường line + bản quyền */}
+      <div className="border-t border-white/10 mt-8 pt-4 text-center text-sm text-[#A6A6A6]">
+        © {new Date().getFullYear()} ITJobSearch. All rights reserved.
+      </div>
+    </footer>
+  );
+};

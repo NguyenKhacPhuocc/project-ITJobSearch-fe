@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       {/* Section 1 */}
-      <div className="bg-[linear-gradient(to_right,_#000000_0%,_#0D1B2A_60%,_#005E92_120%)] pt-[100px] py-[50px]">
+      <div className="bg-[linear-gradient(to_right,_#000000_0%,_#0D1B2A_60%,_#005E92_120%)] pt-[100px] py-[50px] mt-[-65px]">
         <div className="container mx-auto px-[16px]">
           <h1 className="text-white font-[700] text-[28px] text-center mb-[30px]">
             887 Việc làm IT cho Developer &quot;Chất&quot;
