@@ -8,7 +8,7 @@ import 'filepond/dist/filepond.min.css';
 import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
-import { useRouter } from "next/navigation";
+import { Toaster, toast } from 'sonner'
 
 // Đăng ký plugins
 registerPlugin(
@@ -17,7 +17,6 @@ registerPlugin(
 );
 
 export const ProfileForm = () => {
-  const router = useRouter();
   const { infoUser } = useAuth();
   const [avatars, setAvatars] = useState<any[]>([]);
   const [isValid, setIsValid] = useState(false);
@@ -101,11 +100,10 @@ export const ProfileForm = () => {
         .then(res => res.json())
         .then(data => {
           if (data.code == "success") {
-            router.push("/user-manage/profile");
-            console.log("thanh cong");
+            toast.success(data.message)
           }
           if (data.code == "error") {
-            console.log("F");
+            toast.error(data.message)
           }
         })
     }
@@ -114,6 +112,7 @@ export const ProfileForm = () => {
 
   return (
     <>
+      <Toaster position="top-right" richColors />
       {infoUser && (
         <form id="profileForm" action="" onSubmit={handleSubmit} className="grid sm:grid-cols-2 grid-cols-1 gap-x-[20px] gap-y-[15px]">
           <div className="sm:col-span-2">
@@ -173,7 +172,7 @@ export const ProfileForm = () => {
             <button
               className="relative overflow-hidden h-[48px] px-[25px] rounded-[8px] text-[15px] text-white inline-flex items-center justify-center shadow-md hover:shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-[1.03] group"
             >
-              <span className="absolute inset-0 z-0 rounded-[8px] bg-gradient-to-r from-[#0F2027] via-[#005E92] to-[#0F2027] bg-[length:200%_100%] bg-left transition-all duration-500 ease-in-out group-hover:bg-right"></span>
+              <span className="absolute inset-0 z-0 rounded-[8px] bg-gradient-to-r from-[#0F2027] via-[#005E92] to-[#0F2027] bg-[length:200%_100%] bg-left transition-all duration-300 ease-in-out group-hover:bg-right"></span>
 
               <span className="relative z-10">Cập nhật</span>
             </button>

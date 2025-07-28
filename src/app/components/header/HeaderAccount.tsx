@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 import { useAuth } from "@/hooks/useAuth";
 import Link from "next/link";
@@ -32,7 +33,18 @@ export const HeaderAccount = () => {
           infoUser ? (
             <>
               {/* Đã đăng nhập dành cho ứng viên */}
-              <Link href="/user-manage/profile" className="text-[15px]">{infoUser.fullName}</Link>
+              <Link href="/user-manage/profile" className="flex items-center gap-3">
+                <div className="w-[42px] h-[42px] relative rounded-full overflow-hidden">
+                  <img
+                    src={infoUser.avatar}
+                    alt={infoUser.fullName}
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <div className="text-[15px] ">{infoUser.fullName}</div>
+                </div>
+              </Link>
               <ul className="absolute top-[100%] right-[0px] w-[200px] bg-[#0D1B2A] hidden group-hover/sub-1:block z-[999]">
                 <li className="flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 transition-colors duration-200 ease-in-out">
                   <Link href="/user-manage/profile" className="py-[10px] px-[15px] w-full text-white text-[15px]">Thông tin cá nhân</Link>
