@@ -20,6 +20,7 @@ export const ProfileForm = () => {
   const { infoUser } = useAuth();
   const [avatars, setAvatars] = useState<any[]>([]);
   const [isValid, setIsValid] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (infoUser) {
@@ -69,7 +70,7 @@ export const ProfileForm = () => {
     }
   }, [infoUser]);
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
 
     const fullName = event.target.fullName.value;
@@ -92,20 +93,28 @@ export const ProfileForm = () => {
       }
       // Giữ nguyên ảnh thì KHÔNG gửi gì cả
 
-      fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/profile`, {
+      setIsSubmitting(true); // 🔄 Bắt đầu loading
+
+      const promise = fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/profile`, {
         method: "PATCH",
         body: formData,
         credentials: "include", // Gửi kèm cookie
       })
-        .then(res => res.json())
-        .then(data => {
-          if (data.code == "success") {
-            toast.success(data.message)
+        .then(async (res) => {
+          const data = await res.json();
+          if (data.code === "error") {
+            throw new Error(data.message);
           }
-          if (data.code == "error") {
-            toast.error(data.message)
-          }
+          return data;
         })
+        .finally(() => {
+          setIsSubmitting(false); // ✅ Kết thúc loading
+        });
+      toast.promise(promise, {
+        loading: 'Đang cập nhật...',
+        success: (data) => `${data.message}`,
+        error: (err) => err.message || `Đã xảy ra lỗi!`,
+      });
     }
   }
 
@@ -170,11 +179,24 @@ export const ProfileForm = () => {
           </div>
           <div className="sm:col-span-2 text-center mt-[15px]">
             <button
-              className="relative overflow-hidden h-[48px] px-[25px] rounded-[8px] text-[15px] text-white inline-flex items-center justify-center shadow-md hover:shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-[1.03] group"
+              type="submit"
+              disabled={isSubmitting}
+              className={`relative overflow-hidden h-[48px] px-[25px] rounded-[8px] text-[15px] text-white inline-flex items-center justify-center shadow-md transition-transform duration-300 ease-in-out transform group ${isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-lg hover:scale-[1.03]'} `}
             >
               <span className="absolute inset-0 z-0 rounded-[8px] bg-gradient-to-r from-[#0F2027] via-[#005E92] to-[#0F2027] bg-[length:200%_100%] bg-left transition-all duration-300 ease-in-out group-hover:bg-right"></span>
-
-              <span className="relative z-10">Cập nhật</span>
+              <span className="relative z-10 flex items-center gap-2">
+                {isSubmitting ? (
+                  <>
+                    <svg className="w-5 h-5 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                    </svg>
+                    Đang cập nhật...
+                  </>
+                ) : (
+                  "Cập nhật"
+                )}
+              </span>
             </button>
           </div>
         </form>
