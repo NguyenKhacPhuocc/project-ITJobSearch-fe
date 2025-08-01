@@ -1,0 +1,279 @@
+{
+  "HeaderAccount": {
+    "user-profile": "Thông tin cá nhân",
+    "cv-submitted": "CV đã gửi",
+    "logout": "Đăng xuất",
+    "company-info": "Thông tin công ty",
+    "job-management": "Quản lý công việc",
+    "cv-management": "Quản lý CV",
+    "login": "Đăng nhập",
+    "register": "Đăng ký"
+  },
+  "Footer": {
+    "description": "Nền tảng tìm việc IT hiện đại, kết nối ứng viên với các công ty công nghệ hàng đầu.",
+    "quick-links-title": "Liên kết",
+    "quick-links": {
+      "jobs": "Việc làm",
+      "companies": "Công ty",
+      "about-us": "Về chúng tôi",
+      "contact": "Liên hệ"
+    },
+    "social-title": "Kết nối",
+    "copyright": "Bản quyền"
+  },
+  "UserManageProfilePage": {
+    "user-profile": "Thông tin cá nhân"
+  },
+  "ProfileForm": {
+    "name": "Họ tên",
+    "avatar": "Ảnh đại diện",
+    "email": "Email",
+    "phone": "Số điện thoại",
+    "update": "Cập nhật",
+    "pending-update": "Đang cập nhật...",
+    "update-successfull": "Cập nhật thành công!"
+  },
+  "UserManageCVListPage": {
+    "cv-submitted-management": "Quản lý CV đã gửi",
+    "view": "Xem",
+    "delete": "Xóa",
+    "page": "Trang"
+  },
+  "SearchPage": {
+    "jobs": "việc làm",
+    "level": {
+      "level": "Cấp bậc",
+      "intern": "Intern",
+      "fresher": "Fresher",
+      "junior": "Junior",
+      "middle": "Middle",
+      "senior": "Senior",
+      "manager": "Manager"
+    },
+    "work-type": {
+      "work-type": "Hình thức làm việc",
+      "on-site": "Tại văn phòng",
+      "remote": "Làm từ xa",
+      "flexible": "Linh hoạt"
+    },
+    "page": "Trang"
+  },
+  "JobDetailPage": {
+    "detail-description": "Mô tả chi tiết",
+    "apply-now": "Ứng tuyển ngay",
+    "form": {
+      "full-name": "Họ tên",
+      "email": "Email",
+      "phone": "Số điện thoại",
+      "file-cv": "File CV dạng PDF",
+      "submit-button": "Gửi CV ứng tuyển"
+    }
+  },
+  "CompanyManageProfilePage": {
+    "company-info": "Thông tin công ty",
+    "company-name": "Tên công ty",
+    "company-logo": "Logo",
+    "company-city": "Thành phố",
+    "company-address": "Địa chỉ",
+    "company-model": "Mô hình công ty",
+    "company-size": "Quy mô công ty",
+    "company-worktime": "Thời gian làm việc",
+    "company-worktime-ot": "Làm việc ngoài giờ",
+    "company-email": "Email",
+    "company-phone": "Số điện thoại",
+    "company-detail-description": "Mô tả chi tiết",
+    "update": "Cập nhật",
+    "pending-update": "Đang cập nhật...",
+    "update-successfull": "Cập nhật thành công!"
+  },
+  "CompanyManageJobListPage": {
+    "management-job": "Quản lý công việc",
+    "create-new-job": "Thêm mới",
+    "edit-job": "Sửa",
+    "delete-job": "Xóa",
+    "page": "Trang"
+  },
+  "CompanyManageJobCreatePage": {
+    "title": "Thêm mới công việc",
+    "back-to-list": "Quay lại danh sách",
+    "job-title": "Tên công việc",
+    "salary-min": "Mức lương tối thiểu ($)",
+    "salary-max": "Mức lương tối đa ($)",
+    "position": "Cấp bậc",
+    "positions": {
+      "intern": "Intern",
+      "fresher": "Fresher",
+      "junior": "Junior",
+      "middle": "Middle",
+      "senior": "Senior",
+      "manager": "Manager"
+    },
+    "working-form": "Hình thức làm việc",
+    "working-forms": {
+      "on-site": "Tại văn phòng",
+      "remote": "Làm từ xa",
+      "flexible": "Linh hoạt"
+    },
+    "technologies": "Các công nghệ",
+    "images": "Danh sách ảnh",
+    "detail-description": "Mô tả chi tiết",
+    "create-button": "Tạo mới"
+  },
+  "CompanyManageCVListPage": {
+    "title": "Quản lý CV",
+    "candidate": "Ứng viên:",
+    "working-form": "Tại văn phòng",
+    "view-status": "Chưa xem",
+    "approve-status": "Chưa duyệt",
+    "actions": {
+      "view": "Xem",
+      "approve": "Duyệt",
+      "reject": "Từ chối",
+      "delete": "Xóa"
+    },
+    "page": "Trang"
+  },
+  "CompanyManageCVDetailPage": {
+    "cv-information": "Thông tin CV",
+    "back-to-list": "Quay lại danh sách",
+    "full-name": "Họ tên: ",
+    "email": "Email: ",
+    "phone-number": "Số điện thoại: ",
+    "cv-file": "File CV: ",
+    "job-information": "Thông tin công việc",
+    "job-title": "Tên công việc: ",
+    "salary": "Mức lương: ",
+    "level": "Cấp bậc: ",
+    "work-type": "Hình thức làm việc: ",
+    "technology": "Công nghệ: ",
+    "view-job-details": "Xem chi tiết công việc"
+  },
+  "CompanyListPage": {
+    "top-employers": "Nhà tuyển dụng hàng đầu",
+    "page": "Trang"
+  },
+  "CompanyDetailPage": {
+    "company-model": "Mô hình công ty: ",
+    "company-size": "Quy mô công ty: ",
+    "working-time": "Thời gian làm việc: ",
+    "overtime": "Làm việc ngoài giờ: ",
+    "detailed-description": "Mô tả chi tiết",
+    "pre-jobs": "Công ty có",
+    "post-jobs": "việc làm"
+  },
+  "Home": {
+    "title": "Việc làm IT cho Developer \"Chất\"",
+    "all-cities": "Tất cả thành phố",
+    "hanoi": "Hà Nội",
+    "danang": "Đà Nẵng",
+    "ho-chi-minh": "Hồ Chí Minh",
+    "other": "Khác",
+    "search-placeholder": "Nhập từ khoá...",
+    "search-button": "Tìm Kiếm",
+    "trending-searches": "Mọi người đang tìm kiếm: ",
+    "reactjs": "ReactJS",
+    "javascript": "Javascript",
+    "nodejs": "NodeJS",
+    "top-company": "Nhà tuyển dụng hàng đầu"
+  },
+  "UserRegisterPage": {
+    "title": "Đăng ký (Ứng viên)"
+  },
+  "UserLoginPage": {
+    "title": "Đăng nhập (Ứng viên)"
+  },
+  "UserFormRegister": {
+    "name": "Họ tên",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "register-button": "Đăng ký"
+  },
+  "UserLoginForm": {
+    "email": "Email",
+    "password": "Mật khẩu",
+    "login-button": "Đăng nhập"
+  },
+  "CompanyRegisterPage": {
+    "title": "Đăng ký (Nhà tuyển dụng)"
+  },
+  "CompanyLoginPage": {
+    "title": "Đăng nhập (Nhà tuyển dụng)"
+  },
+  "CompanyFormRegister": {
+    "company-name": "Tên công ty",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "register-button": "Đăng ký"
+  },
+  "CompanyLoginForm": {
+    "email": "Email",
+    "password": "Mật khẩu",
+    "login-button": "Đăng nhập"
+  },
+  "Metadata": {
+    "HomePage": {
+      "title": "ITJobSearch",
+      "description": "Trang web tuyển dụng IT hàng đầu Việt Nam."
+    },
+    "UserManageProfilePage": {
+      "title": "Thông tin cá nhân",
+      "description": "Trang thông tin cá nhân người dùng."
+    },
+    "UserManageCVListPage": {
+      "title": "CV đã gửi",
+      "description": "Trang quản lý cv đã nộp."
+    },
+    "SearchPage": {
+      "title": "Kết quả tìm kiếm",
+      "description": "Kết quả tìm kiếm công việc..."
+    },
+    "JobDetailPage": {
+      "title": "Chi tiết công việc",
+      "description": "Mô tả chi tiết công việc."
+    },
+    "CompanyManageProfilePage": {
+      "title": "Thông tin công ty",
+      "description": "Mô tả thông tin công ty."
+    },
+    "CompanyManageJobListPage": {
+      "title": "Quản lý công việc",
+      "description": "Mô tả quản lý công việc"
+    },
+    "CompanyManageJobCreatePage": {
+      "title": "Thêm mới công việc",
+      "description": "Mô tả thêm mới công việc"
+    },
+    "CompanyManageCVListPage": {
+      "title": "Quản lý CV",
+      "description": "Mô tả quản lý CV"
+    },
+    "CompanyManageCVDetailPage": {
+      "title": "Chi tiết CV",
+      "description": "Mô tả chi tiết CV"
+    },
+    "CompanyListPage": {
+      "title": "Danh sách công ty",
+      "description": "Mô tả danh sách công ty"
+    },
+    "CompanyDetailPage": {
+      "title": "Chi tiết công ty",
+      "description": "Mô tả chi tiết công ty"
+    },
+    "UserRegisterPage": {
+      "title": "Đăng ký (Ứng viên)",
+      "description": "Trang đăng ký tài khoản cho ứng viên (người tìm kiếm việc làm)"
+    },
+    "UserLoginPage": {
+      "title": "Đăng nhập (Ứng viên)",
+      "description": "Trang đăng nhập (người tìm kiếm việc làm)"
+    },
+    "CompanyRegisterPage": {
+      "title": "Đăng ký (Nhà tuyển dụng)",
+      "description": "Mô tả trang đăng ký (Nhà tuyển dụng)..."
+    },
+    "CompanyLoginPage": {
+      "title": "Đăng nhập (Nhà tuyển dụng)",
+      "description": "Mô tả trang đăng nhập (Nhà tuyển dụng)..."
+    }
+  }
+}

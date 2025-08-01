@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client"
 import { useAuth } from "@/hooks/useAuth";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -25,6 +26,8 @@ export const HeaderAccount = () => {
       .catch(error => console.error("Error:", error));
   };
 
+  const t = useTranslations('HeaderAccount');
+
   return (
     <>
 
@@ -47,16 +50,20 @@ export const HeaderAccount = () => {
               </Link>
               <ul className="absolute top-[100%] right-[0px] w-[200px] bg-[#0D1B2A] hidden group-hover/sub-1:block z-[999]">
                 <li className="flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 transition-colors duration-200 ease-in-out">
-                  <Link href="/user-manage/profile" className="py-[10px] px-[15px] w-full text-white text-[15px]">Thông tin cá nhân</Link>
+                  <Link href="/user-manage/profile" className="py-[10px] px-[15px] w-full text-white text-[15px]">
+                    {t('user-profile')}
+                  </Link>
                 </li>
                 <li className=" flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 transition-colors duration-200 ease-in-out">
-                  <Link href="/user-manage/cv/list" className="py-[10px] px-[15px] w-full text-white text-[15px]">CV đã gửi</Link>
+                  <Link href="/user-manage/cv/list" className="py-[10px] px-[15px] w-full text-white text-[15px]">
+                    {t('cv-submitted')}
+                  </Link>
                 </li>
                 <li
                   className="py-[10px] px-[15px] flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 cursor-pointer transition-colors duration-200 ease-in-out"
                   onClick={() => handleLogout("/user/login")}
                 >
-                  Đăng xuất
+                  {t('logout')}
                 </li>
               </ul>
             </>
@@ -66,19 +73,25 @@ export const HeaderAccount = () => {
               <Link href="#" className="text-[15px]">{infoCompany.companyName}</Link>
               <ul className="absolute top-[100%] right-[0px] w-[200px] bg-[#0D1B2A] hidden group-hover/sub-1:block z-[999]">
                 <li className="py-[10px] px-[15px] flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 transition-colors duration-200 ease-in-out">
-                  <Link href="" className="text-white text-[15px]">Thông tin công ty</Link>
+                  <Link href="" className="text-white text-[15px]">
+                    {t('company-info')}
+                  </Link>
                 </li>
                 <li className="py-[10px] px-[15px] flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 transition-colors duration-200 ease-in-out">
-                  <Link href="" className="text-white text-[15px]">Quản lý công việc</Link>
+                  <Link href="" className="text-white text-[15px]">
+                    {t('job-management')}
+                  </Link>
                 </li>
                 <li className="py-[10px] px-[15px] flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 transition-colors duration-200 ease-in-out">
-                  <Link href="" className="text-white text-[15px]">Quản lý CV</Link>
+                    <Link href="" className="text-white text-[15px]">
+                     {t('cv-management')}
+                    </Link>
                 </li>
                 <li
                   className="py-[10px] px-[15px] flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 cursor-pointer transition-colors duration-200 ease-in-out"
                   onClick={() => handleLogout("/company/login")}
                 >
-                  Đăng xuất
+                  {t('logout')}
                 </li>
               </ul>
             </>
@@ -87,11 +100,11 @@ export const HeaderAccount = () => {
           <>
             {/* Chưa đăng nhập */}
             <Link href="/user/login" className="">
-              Đăng Nhập
+              {t('login')}
             </Link>
             <span className="">/</span>
             <Link href="/user/register" className="">
-              Đăng Ký
+              {t('register')}
             </Link>
           </>
         )}

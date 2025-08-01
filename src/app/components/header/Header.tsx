@@ -5,11 +5,20 @@ import { FaBars } from "react-icons/fa6"
 import { HeaderMenu } from "./HeaderMenu"
 import { useEffect, useRef, useState } from "react"
 import { HeaderAccount } from "./HeaderAccount"
+import { useParams } from 'next/navigation';
+import { Locale } from 'next-intl';
+import { ChangeEvent, useTransition } from 'react';
+import { usePathname, useRouter } from '@/i18n/navigation';
+
 
 export const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [hideHeader, setHideHeader] = useState(false);
   const prevScrollY = useRef(0);
+  const router = useRouter();
+  const pathname = usePathname();
+  const params = useParams();
+  const [isPending, startTransition] = useTransition();
 
   const handleShowMenu = () => {
     setShowMenu(!showMenu);
@@ -35,6 +44,19 @@ export const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+
+  function onLocaleChange(event: ChangeEvent<HTMLSelectElement>) {
+    const nextLocale = event.target.value as Locale;
+    startTransition(() => {
+      router.replace(
+        // @ts-expect-error -- ignore TS here because we control routes
+        { pathname, params },
+        { locale: nextLocale }
+      );
+    });
+  }
+
+
   return (
     <>
       <header
@@ -50,7 +72,23 @@ export const Header = () => {
             {/* Menu */}
             <HeaderMenu showMenu={showMenu} />
             {/* Account */}
-            <HeaderAccount />
+            <div className="flex justify-center items-center gap-[20px]">
+              <HeaderAccount />
+
+              {/* Locale Switcher */}
+
+              <select
+                className="bg-white text-[12px] border border-gray-300 py-[5px] px-[8px] rounded-full shadow-sm transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 hover:border-blue-400"
+                defaultValue={params.locale as string}
+                disabled={isPending}
+                onChange={onLocaleChange}
+              >
+                <option value="vi">🇻🇳 Tiếng việt</option>
+                <option value="en">🇺🇸 English</option>
+              </select>
+
+            </div>
+
             {/* Button Menu Mobile */}
             <button
               onClick={handleShowMenu}

@@ -1,6 +1,10 @@
+import { useTranslations } from "next-intl";
 import { FaFacebookF, FaLinkedinIn, FaGithub } from "react-icons/fa";
 
 export const Footer = () => {
+
+  const t = useTranslations('Footer');
+
   return (
     <footer className="bg-[linear-gradient(to_right,_#000000_0%,_#0D1B2A_60%,_#005E92_120%)] text-white pt-10 pb-6">
       <div className="container mx-auto px-4 grid md:grid-cols-3 gap-10 text-center md:text-left">
@@ -8,24 +12,42 @@ export const Footer = () => {
         <div>
           <div className="text-3xl font-extrabold mb-2">ITJobSearch</div>
           <p className="text-[#ccc] text-sm leading-relaxed">
-            Nền tảng tìm việc IT hiện đại, kết nối ứng viên với các công ty công nghệ hàng đầu.
+            {t('description')}
           </p>
         </div>
 
         {/* Liên kết nhanh */}
         <div>
-          <h3 className="text-lg font-bold mb-3">Liên kết</h3>
+          <h3 className="text-lg font-bold mb-3">{t('quick-links-title')}</h3>
           <ul className="space-y-2 text-sm text-[#ccc]">
-            <li><a href="#" className="hover:text-white transition">Việc làm</a></li>
-            <li><a href="#" className="hover:text-white transition">Công ty</a></li>
-            <li><a href="#" className="hover:text-white transition">Về chúng tôi</a></li>
-            <li><a href="#" className="hover:text-white transition">Liên hệ</a></li>
+            <li>
+              <a href="#" className="hover:text-white transition">
+                {t('quick-links.jobs')}
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-white transition">
+                {t('quick-links.companies')}
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-white transition">
+                {t('quick-links.about-us')}
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-white transition">
+                {t('quick-links.contact')}
+              </a>
+            </li>
           </ul>
         </div>
 
         {/* Mạng xã hội */}
         <div>
-          <h3 className="text-lg font-bold mb-3">Kết nối</h3>
+          <h3 className="text-lg font-bold mb-3">
+            {t('social-title')}
+          </h3>
           <div className="flex justify-center md:justify-start gap-4">
             <a href="#" className="p-2 bg-white/10 hover:bg-white/20 rounded-full transition">
               <FaFacebookF size={18} />
@@ -42,7 +64,7 @@ export const Footer = () => {
 
       {/* Đường line + bản quyền */}
       <div className="border-t border-white/10 mt-8 pt-4 text-center text-sm text-[#A6A6A6]">
-        © {new Date().getFullYear()} ITJobSearch. All rights reserved.
+        {t('copyright')} © {new Date().getFullYear()} ITJobSearch
       </div>
     </footer>
   );

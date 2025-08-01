@@ -1,0 +1,279 @@
+{
+  "HeaderAccount": {
+    "user-profile": "Personal Information",
+    "cv-submitted": "Submitted CVs",
+    "logout": "Log Out",
+    "company-info": "Company Information",
+    "job-management": "Job Management",
+    "cv-management": "CV Management",
+    "login": "Log In",
+    "register": "Register"
+  },
+  "Footer": {
+    "description": "A modern IT job search platform connecting candidates with leading technology companies.",
+    "quick-links-title": "Links",
+    "quick-links": {
+      "jobs": "Jobs",
+      "companies": "Companies",
+      "about-us": "About Us",
+      "contact": "Contact"
+    },
+    "social-title": "Connect",
+    "copyright": "Copyright"
+  },
+  "UserManageProfilePage": {
+    "user-profile": "Personal Information"
+  },
+  "ProfileForm": {
+    "name": "Full Name",
+    "avatar": "Profile Picture",
+    "email": "Email",
+    "phone": "Phone Number",
+    "update": "Update",
+    "pending-update": "Updating...",
+    "update-successfull": "Updated Successfully!"
+  },
+  "UserManageCVListPage": {
+    "cv-submitted-management": "Manage Submitted CVs",
+    "view": "View",
+    "delete": "Delete",
+    "page": "Page"
+  },
+  "SearchPage": {
+    "jobs": "jobs",
+    "level": {
+      "level": "Level",
+      "intern": "Intern",
+      "fresher": "Fresher",
+      "junior": "Junior",
+      "middle": "Middle",
+      "senior": "Senior",
+      "manager": "Manager"
+    },
+    "work-type": {
+      "work-type": "Work Type",
+      "on-site": "On-site",
+      "remote": "Remote",
+      "flexible": "Flexible"
+    },
+    "page": "Page"
+  },
+  "JobDetailPage": {
+    "detail-description": "Detailed Description",
+    "apply-now": "Apply Now",
+    "form": {
+      "full-name": "Full Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "file-cv": "CV File (PDF)",
+      "submit-button": "Submit CV"
+    }
+  },
+  "CompanyManageProfilePage": {
+    "company-info": "Company Information",
+    "company-name": "Company Name",
+    "company-logo": "Logo",
+    "company-city": "City",
+    "company-address": "Address",
+    "company-model": "Company Model",
+    "company-size": "Company Size",
+    "company-worktime": "Working Hours",
+    "company-worktime-ot": "Overtime",
+    "company-email": "Email",
+    "company-phone": "Phone Number",
+    "company-detail-description": "Detailed Description",
+    "update": "Update",
+    "pending-update": "Updating...",
+    "update-successfull": "Updated successfully!"
+  },
+  "CompanyManageJobListPage": {
+    "management-job": "Job Management",
+    "create-new-job": "Add New",
+    "edit-job": "Edit",
+    "delete-job": "Delete",
+    "page": "Page"
+  },
+  "CompanyManageJobCreatePage": {
+    "title": "Add New Job",
+    "back-to-list": "Back to List",
+    "job-title": "Job Title",
+    "salary-min": "Minimum Salary ($)",
+    "salary-max": "Maximum Salary ($)",
+    "position": "Level",
+    "positions": {
+      "intern": "Intern",
+      "fresher": "Fresher",
+      "junior": "Junior",
+      "middle": "Middle",
+      "senior": "Senior",
+      "manager": "Manager"
+    },
+    "working-form": "Work Type",
+    "working-forms": {
+      "on-site": "On-site",
+      "remote": "Remote",
+      "flexible": "Flexible"
+    },
+    "technologies": "Technologies",
+    "images": "Image List",
+    "detail-description": "Detailed Description",
+    "create-button": "Create"
+  },
+  "CompanyManageCVListPage": {
+    "title": "CV Management",
+    "candidate": "Candidate:",
+    "working-form": "On-site",
+    "view-status": "Not Viewed",
+    "approve-status": "Not Approved",
+    "actions": {
+      "view": "View",
+      "approve": "Approve",
+      "reject": "Reject",
+      "delete": "Delete"
+    },
+    "page": "Page"
+  },
+  "CompanyManageCVDetailPage": {
+    "cv-information": "CV Information",
+    "back-to-list": "Back to List",
+    "full-name": "Full Name: ",
+    "email": "Email: ",
+    "phone-number": "Phone Number: ",
+    "cv-file": "CV File: ",
+    "job-information": "Job Information",
+    "job-title": "Job Title: ",
+    "salary": "Salary: ",
+    "level": "Level: ",
+    "work-type": "Work Type: ",
+    "technology": "Technology: ",
+    "view-job-details": "View Job Details"
+  },
+  "CompanyListPage": {
+    "top-employers": "Top Employers",
+    "page": "Page"
+  },
+  "CompanyDetailPage": {
+    "company-model": "Company Model: ",
+    "company-size": "Company Size: ",
+    "working-time": "Working Hours: ",
+    "overtime": "Overtime: ",
+    "detailed-description": "Detailed Description",
+    "pre-jobs": "The company has",
+    "post-jobs": "jobs"
+  },
+  "Home": {
+    "title": "IT Jobs for Quality Developers",
+    "all-cities": "All Cities",
+    "hanoi": "Hanoi",
+    "danang": "Da Nang",
+    "ho-chi-minh": "Ho Chi Minh",
+    "other": "Other",
+    "search-placeholder": "Enter keywords...",
+    "search-button": "Search",
+    "trending-searches": "People are searching for: ",
+    "reactjs": "ReactJS",
+    "javascript": "Javascript",
+    "nodejs": "NodeJS",
+    "top-company": "Top Employers"
+  },
+  "UserRegisterPage": {
+    "title": "Register (Candidate)"
+  },
+  "UserLoginPage": {
+    "title": "Log In (Candidate)"
+  },
+  "UserFormRegister": {
+    "name": "Full Name",
+    "email": "Email",
+    "password": "Password",
+    "register-button": "Register"
+  },
+  "UserLoginForm": {
+    "email": "Email",
+    "password": "Password",
+    "login-button": "Log In"
+  },
+  "CompanyRegisterPage": {
+    "title": "Register (Employer)"
+  },
+  "CompanyLoginPage": {
+    "title": "Log In (Employer)"
+  },
+  "CompanyFormRegister": {
+    "company-name": "Company Name",
+    "email": "Email",
+    "password": "Password",
+    "register-button": "Register"
+  },
+  "CompanyLoginForm": {
+    "email": "Email",
+    "password": "Password",
+    "login-button": "Log In"
+  },
+  "Metadata": {
+    "HomePage": {
+      "title": "ITJobSearch",
+      "description": "Vietnam's leading IT recruitment website."
+    },
+    "UserManageProfilePage": {
+      "title": "Personal Information",
+      "description": "User personal information page."
+    },
+    "UserManageCVListPage": {
+      "title": "Submitted CVs",
+      "description": "Manage submitted CVs page."
+    },
+    "SearchPage": {
+      "title": "Search Results",
+      "description": "Job search results..."
+    },
+    "JobDetailPage": {
+      "title": "Job Details",
+      "description": "Detailed job description."
+    },
+    "CompanyManageProfilePage": {
+      "title": "Company Information",
+      "description": "Company information description."
+    },
+    "CompanyManageJobListPage": {
+      "title": "Job Management",
+      "description": "Job management description."
+    },
+    "CompanyManageJobCreatePage": {
+      "title": "Add New Job",
+      "description": "Add new job description."
+    },
+    "CompanyManageCVListPage": {
+      "title": "CV Management",
+      "description": "CV management description."
+    },
+    "CompanyManageCVDetailPage": {
+      "title": "CV Details",
+      "description": "Detailed CV description."
+    },
+    "CompanyListPage": {
+      "title": "Company List",
+      "description": "Company list description."
+    },
+    "CompanyDetailPage": {
+      "title": "Company Details",
+      "description": "Detailed company description."
+    },
+    "UserRegisterPage": {
+      "title": "Register (Candidate)",
+      "description": "Registration page for candidates (job seekers)."
+    },
+    "UserLoginPage": {
+      "title": "Log In (Candidate)",
+      "description": "Login page for job seekers."
+    },
+    "CompanyRegisterPage": {
+      "title": "Register (Employer)",
+      "description": "Registration page for employers..."
+    },
+    "CompanyLoginPage": {
+      "title": "Log In (Employer)",
+      "description": "Login page for employers..."
+    }
+  }
+}
