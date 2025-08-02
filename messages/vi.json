@@ -74,6 +74,7 @@
     "company-name": "Tên công ty",
     "company-logo": "Logo",
     "company-city": "Thành phố",
+    "select-city": "Chọn thành phố",
     "company-address": "Địa chỉ",
     "company-model": "Mô hình công ty",
     "company-size": "Quy mô công ty",
@@ -84,7 +85,12 @@
     "company-detail-description": "Mô tả chi tiết",
     "update": "Cập nhật",
     "pending-update": "Đang cập nhật...",
-    "update-successfull": "Cập nhật thành công!"
+    "update-successfull": "Cập nhật thành công!",
+    "company-name-required": "Vui lòng nhập tên công ty!",
+    "company-name-max-length": "Tên công ty không được vượt quá 200 ký tự!",
+    "company-email-required": "Vui lòng nhập email của công ty!",
+    "company-email-invalid": "Email không đúng định dạng!",
+    "city-required": "Vui lòng chọn thành phố!"
   },
   "CompanyManageJobListPage": {
     "management-job": "Quản lý công việc",

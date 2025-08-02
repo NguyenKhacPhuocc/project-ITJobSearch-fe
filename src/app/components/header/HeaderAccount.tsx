@@ -37,11 +37,11 @@ export const HeaderAccount = () => {
             <>
               {/* Đã đăng nhập dành cho ứng viên */}
               <Link href="/user-manage/profile" className="flex items-center gap-3">
-                <div className="w-[42px] h-[42px] relative rounded-full overflow-hidden">
+                <div className="w-[42px] h-[42px] relative rounded-full overflow-hidden group">
                   <img
                     src={infoUser.avatar}
                     alt={infoUser.fullName}
-                    className="object-cover"
+                    className="w-full h-full object-cover object-center transition-transform duration-200 group-hover:scale-110"
                   />
                 </div>
                 <div className="flex flex-col">
@@ -70,22 +70,33 @@ export const HeaderAccount = () => {
           ) : infoCompany ? (
             <>
               {/* Đã đăng nhập dành cho công ty */}
-              <Link href="#" className="text-[15px]">{infoCompany.companyName}</Link>
+              <Link href="/company-manage/profile" className="flex items-center gap-3">
+                <div className="w-[42px] h-[42px] relative rounded-full overflow-hidden group">
+                  <img
+                    src={infoCompany.logo}
+                    alt={infoCompany.companyName}
+                    className="w-full h-full object-contain object-center transition-transform duration-200 group-hover:scale-150"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <div className="text-[15px] ">{infoCompany.companyName}</div>
+                </div>
+              </Link>
               <ul className="absolute top-[100%] right-[0px] w-[200px] bg-[#0D1B2A] hidden group-hover/sub-1:block z-[999]">
-                <li className="py-[10px] px-[15px] flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 transition-colors duration-200 ease-in-out">
-                  <Link href="" className="text-white text-[15px]">
+                <li className="flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 transition-colors duration-200 ease-in-out">
+                  <Link href="/company-manage/profile" className="text-white text-[15px] py-[10px] px-[15px] w-full">
                     {t('company-info')}
                   </Link>
                 </li>
-                <li className="py-[10px] px-[15px] flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 transition-colors duration-200 ease-in-out">
-                  <Link href="" className="text-white text-[15px]">
+                <li className="flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 transition-colors duration-200 ease-in-out">
+                  <Link href="/company-manage/job/list" className="text-white text-[15px] py-[10px] px-[15px] w-full">
                     {t('job-management')}
                   </Link>
                 </li>
-                <li className="py-[10px] px-[15px] flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 transition-colors duration-200 ease-in-out">
-                    <Link href="" className="text-white text-[15px]">
-                     {t('cv-management')}
-                    </Link>
+                <li className="flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 transition-colors duration-200 ease-in-out">
+                  <Link href="/company-manage/cv/list" className="text-white text-[15px] py-[10px] px-[15px] w-full">
+                    {t('cv-management')}
+                  </Link>
                 </li>
                 <li
                   className="py-[10px] px-[15px] flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 cursor-pointer transition-colors duration-200 ease-in-out"

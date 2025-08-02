@@ -1,30 +1,32 @@
 /* eslint-disable @next/next/no-img-element */
+import Image from "next/image"
 import Link from "next/link"
 import { FaUserTie } from "react-icons/fa6"
 
 export const CardCompanyItem = () => {
   return (
     <>
-      <Link 
-        href="" 
+      <Link
+        href=""
         className="border border-[#DEDEDE] rounded-[8px] flex flex-col relative truncate"
         style={{
           background: "linear-gradient(180deg, #F6F6F6 2.38%, #FFFFFF 70.43%)"
         }}
       >
-        <img 
-          src="/assets/images/card-bg.svg" 
-          alt="" 
+        <Image
+          src="/assets/images/card-bg.svg"
+          alt=""
+          fill
           className="absolute top-[0px] left-[0px] w-[100%] h-auto"
         />
-        <div 
+        <div
           className="relative sm:mt-[32px] mt-[20px] sm:w-[160px] w-[125px] sm:h-[160px] h-[125px] bg-white mx-auto rounded-[8px] p-[10px]"
           style={{
             boxShadow: "0px 4px 24px 0px #0000001F"
           }}
         >
-          <img 
-            src="/assets/images/demo-cong-ty-1.png" 
+          <img
+            src="/assets/images/demo-cong-ty-1.png"
             alt="LG Electronics Development Vietnam (LGEDV)"
             className="w-[100%] h-[100%] object-contain"
           />
