@@ -1,9 +1,11 @@
-import {NextConfig} from 'next';
+import { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 
 const nextConfig: NextConfig = {
-  /* config options here */
-
+  // Thêm experimental options trực tiếp vào nextConfig
+  experimental: {
+    optimizePackageImports: ['next-intl', 'react-icons'], // Thêm các thư viện cần tối ưu
+  },
   reactStrictMode: true,
 };
 

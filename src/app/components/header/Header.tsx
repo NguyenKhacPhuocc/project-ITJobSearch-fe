@@ -72,13 +72,12 @@ export const Header = () => {
             {/* Menu */}
             <HeaderMenu showMenu={showMenu} />
             {/* Account */}
-            <div className="flex justify-center items-center gap-[20px]">
+            <div className="flex justify-center items-center gap-[25px]">
               <HeaderAccount />
 
               {/* Locale Switcher */}
-
               <select
-                className="bg-white text-[12px] border border-gray-300 py-[5px] px-[8px] rounded-full shadow-sm transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 hover:border-blue-400"
+                className="bg-white text-[12px] py-[5px] px-[8px] rounded-[20px] shadow-sm transition-all duration-200 ease-in-out  focus:rounded-b-none"
                 defaultValue={params.locale as string}
                 disabled={isPending}
                 onChange={onLocaleChange}
@@ -86,7 +85,6 @@ export const Header = () => {
                 <option value="vi">🇻🇳 Tiếng việt</option>
                 <option value="en">🇺🇸 English</option>
               </select>
-
             </div>
 
             {/* Button Menu Mobile */}

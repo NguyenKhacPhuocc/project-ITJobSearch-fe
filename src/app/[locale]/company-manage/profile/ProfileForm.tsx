@@ -2,7 +2,7 @@
 "use client"
 import { useAuth } from "@/hooks/useAuth"
 import JustValidate from "just-validate";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { FilePond, registerPlugin } from 'react-filepond';
 import 'filepond/dist/filepond.min.css';
 import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
@@ -13,6 +13,7 @@ import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 import { useCities } from "@/hooks/useCities";
 import { FaSpinner } from "react-icons/fa6";
+import { TinyMCE } from "@/app/components/editor/TinyMCE";
 
 // Đăng ký plugins
 registerPlugin(
@@ -28,7 +29,7 @@ export default function ProfileForm() {
   const t = useTranslations('CompanyManageProfilePage');
   const params = useParams();
   const { cities, loading, error } = useCities();
-
+  const editorRef = useRef(null);
   // Initialize form validation
   const initValidation = useCallback(() => {
     if (!infoCompany) return;
@@ -73,8 +74,11 @@ export default function ProfileForm() {
     const workOvertime = event.target.workOvertime.value;
     const email = event.target.email.value;
     const phone = event.target.phone.value;
-    const description = event.target.description.value;
-
+    // const description = event.target.description.value;
+    let description = "";
+    if (editorRef.current) {
+      description = (editorRef.current as any).getContent();
+    }
     if (isValid) {
       const formData = new FormData();
       formData.append("companyName", companyName);
@@ -272,18 +276,13 @@ export default function ProfileForm() {
             <label htmlFor="description" className="block font-[500] text-[14px] text-black mb-[5px]">
               {t('company-detail-description')}
             </label>
-            <textarea
-              name="description"
-              id="description"
-              className="w-[100%] h-[350px] border border-[#DEDEDE] rounded-[4px] py-[14px] px-[15px] font-[500] text-[14px] text-black"
-              defaultValue={infoCompany.description}
-            ></textarea>
+            <TinyMCE editorRef = {editorRef} value={infoCompany.description} /> 
           </div>
           <div className="sm:col-span-2 text-center mt-[15px]">
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`relative overflow-hidden h-[48px] w-[150px] px-[25px] rounded-[8px] text-[15px] text-white inline-flex items-center justify-center shadow-md transition-transform duration-300 ease-in-out transform group ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:shadow-lg hover:scale-[1.03]'} `}
+              className={`relative overflow-hidden h-[48px]  px-[25px] rounded-[8px] text-[15px] text-white inline-flex items-center justify-center shadow-md transition-transform duration-300 ease-in-out transform group ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:shadow-lg hover:scale-[1.03]'} `}
             >
               <span className="absolute inset-0 z-0 rounded-[8px] bg-gradient-to-r from-[#0F2027] via-[#005E92] to-[#0F2027] bg-[length:200%_100%] bg-left transition-all duration-300 ease-in-out group-hover:bg-right"></span>
               <span className="relative z-10 flex items-center gap-2">

@@ -36,7 +36,7 @@ export const HeaderAccount = () => {
           infoUser ? (
             <>
               {/* Đã đăng nhập dành cho ứng viên */}
-              <Link href="/user-manage/profile" className="flex items-center gap-3">
+              <Link href="/user-manage/profile" className="flex items-center gap-[8px]">
                 <div className="w-[42px] h-[42px] relative rounded-full overflow-hidden group">
                   <img
                     src={infoUser.avatar}
@@ -70,8 +70,8 @@ export const HeaderAccount = () => {
           ) : infoCompany ? (
             <>
               {/* Đã đăng nhập dành cho công ty */}
-              <Link href="/company-manage/profile" className="flex items-center gap-3">
-                <div className="w-[42px] h-[42px] relative rounded-full overflow-hidden group">
+              <Link href="/company-manage/profile" className="flex items-center gap-[8px]">
+                <div className="w-[42px] h-[42px] relative rounded-full overflow-hidden group bg-black">
                   <img
                     src={infoCompany.logo}
                     alt={infoCompany.companyName}
