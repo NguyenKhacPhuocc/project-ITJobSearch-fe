@@ -3,13 +3,12 @@ import { defineRouting } from 'next-intl/routing';
 export const routing = defineRouting({
   // Các ngôn ngữ được hỗ trợ
   locales: ['vi', 'en'],
-
+  localeDetection: false,
   // Ngôn ngữ mặc định
   defaultLocale: 'vi',
 
   pathnames: {
     '/': '/',
-    
     '/company': {
       vi: '/cong-ty',
       en: '/company'
@@ -30,7 +29,7 @@ export const routing = defineRouting({
       vi: '/cong-ty/chi-tiet/[slug]',
       en: '/company/detail/[slug]'
     },
-    
+
     '/company-manage': {
       vi: '/quan-ly-cong-ty',
       en: '/company-manage'

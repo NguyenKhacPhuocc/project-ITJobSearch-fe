@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from "next/image"
 import Link from "next/link"
 import { FaUserTie } from "react-icons/fa6"
 
@@ -13,10 +12,9 @@ export const CardCompanyItem = () => {
           background: "linear-gradient(180deg, #F6F6F6 2.38%, #FFFFFF 70.43%)"
         }}
       >
-        <Image
+        <img
           src="/assets/images/card-bg.svg"
           alt=""
-          fill
           className="absolute top-[0px] left-[0px] w-[100%] h-auto"
         />
         <div

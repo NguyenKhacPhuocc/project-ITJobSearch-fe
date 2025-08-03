@@ -1,13 +1,14 @@
 "use client"
 
+import ReactCountryFlag from "react-country-flag";
 import Link from "next/link"
 import { FaBars } from "react-icons/fa6"
 import { HeaderMenu } from "./HeaderMenu"
 import { useEffect, useRef, useState } from "react"
 import { HeaderAccount } from "./HeaderAccount"
 import { useParams } from 'next/navigation';
-import { Locale } from 'next-intl';
-import { ChangeEvent, useTransition } from 'react';
+// import { Locale } from 'next-intl';
+import { useTransition } from 'react';
 import { usePathname, useRouter } from '@/i18n/navigation';
 
 
@@ -19,10 +20,13 @@ export const Header = () => {
   const pathname = usePathname();
   const params = useParams();
   const [isPending, startTransition] = useTransition();
+  const [showLocaleMenu, setShowLocaleMenu] = useState(false);
+  const localeDropdownRef = useRef<HTMLDivElement>(null);
 
   const handleShowMenu = () => {
     setShowMenu(!showMenu);
   }
+  const currentLocale = params.locale as string;
 
   // Theo dõi hướng cuộn
   useEffect(() => {
@@ -45,8 +49,8 @@ export const Header = () => {
   }, []);
 
 
-  function onLocaleChange(event: ChangeEvent<HTMLSelectElement>) {
-    const nextLocale = event.target.value as Locale;
+  const handleLocaleChange = (nextLocale: string) => {
+    // const nextLocale = event.target.value as Locale;
     startTransition(() => {
       router.replace(
         // @ts-expect-error -- ignore TS here because we control routes
@@ -55,6 +59,20 @@ export const Header = () => {
       );
     });
   }
+
+  // Đóng locale dropdown khi click ra ngoài
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        localeDropdownRef.current &&
+        !localeDropdownRef.current.contains(event.target as Node)
+      ) {
+        setShowLocaleMenu(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
 
   return (
@@ -76,15 +94,66 @@ export const Header = () => {
               <HeaderAccount />
 
               {/* Locale Switcher */}
-              <select
-                className="bg-white text-[12px] py-[5px] px-[8px] rounded-[20px] shadow-sm transition-all duration-200 ease-in-out  focus:rounded-b-none"
-                defaultValue={params.locale as string}
-                disabled={isPending}
-                onChange={onLocaleChange}
-              >
-                <option value="vi">🇻🇳 Tiếng việt</option>
-                <option value="en">🇺🇸 English</option>
-              </select>
+              <div className="relative" ref={localeDropdownRef}>
+                <button
+                  className="flex justify-center items-center bg-white text-xs py-1.5 px-2 rounded-full shadow-sm transition-all duration-200 ease-in-out w-[100px] hover:bg-gray-50 "
+                  onClick={() => setShowLocaleMenu(!showLocaleMenu)}
+                  disabled={isPending}
+                  aria-label="Language selector"
+                  aria-haspopup="true"
+                  aria-expanded={showLocaleMenu}
+                >
+                  <span className="flex gap-1.5 items-center">
+                    <ReactCountryFlag
+                      countryCode={currentLocale === 'vi' ? 'VN' : 'US'}
+                      svg
+                      className="w-5 h-5"
+                      aria-hidden="true"
+                      style={{
+                        width: '18px',
+                        height: '18px',
+                      }}
+                    />
+                    <span className="truncate">
+                      {currentLocale === 'vi' ? 'Tiếng Việt' : 'English'}
+                    </span>
+                  </span>
+                </button>
+
+                {/* Dropdown menu */}
+                <div
+                  className={`absolute right-0 mt-1 w-[100px] bg-white border border-gray-100 rounded-md shadow-lg z-10 text-xs overflow-hidden transition-all duration-200 ease-out ${showLocaleMenu ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-1 pointer-events-none'}`}
+                  role="menu"
+                >
+                  <button
+                    onClick={() => handleLocaleChange('vi')}
+                    className="flex gap-1.5 items-center w-full text-left px-2.5 py-2 hover:bg-gray-50 focus:bg-gray-50 focus:outline-none"
+                    role="menuitem"
+                  >
+                    <ReactCountryFlag
+                      countryCode="VN"
+                      svg
+                      className="w-4.5 h-4.5"
+                      aria-hidden="true"
+                    />
+                    <span className="truncate">Tiếng Việt</span>
+                  </button>
+                  <button
+                    onClick={() => handleLocaleChange('en')}
+                    className="flex gap-1.5 items-center w-full text-left px-2.5 py-2 hover:bg-gray-50 focus:bg-gray-50 focus:outline-none"
+                    role="menuitem"
+                  >
+                    <ReactCountryFlag
+                      countryCode="US"
+                      svg
+                      className="w-4.5 h-4.5"
+                      aria-hidden="true"
+                    />
+                    <span className="truncate">English</span>
+                  </button>
+                </div>
+                
+              </div>
             </div>
 
             {/* Button Menu Mobile */}
