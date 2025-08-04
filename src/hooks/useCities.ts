@@ -1,30 +1,29 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 // hooks/useCities.ts
-"use client"
-import { useEffect, useState } from "react";
+import useSWR from 'swr';
+
+const fetcher = async (url: string) => {
+  const res = await fetch(url, {
+    method: "GET",
+    credentials: "include",
+  });
+  return res.json();
+};
 
 export const useCities = () => {
-  const [cities, setCities] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { data, error, isLoading } = useSWR(
+    `${process.env.NEXT_PUBLIC_API_URL}/city/api/list`,
+    fetcher,
+    {
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+      shouldRetryOnError: false,
+      dedupingInterval: 60000, // 60s chống gọi API trùng lặp
+    }
+  );
 
-  useEffect(() => {
-    const fetchCities = async () => {
-      try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/city/api/list`, {
-          method: "GET",
-          credentials: "include",
-        });
-        const data = await res.json();
-        setCities(data.cities);
-      } catch (err) {
-        setError("Failed to fetch cities: " + err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchCities();
-  }, []);
-
-  return { cities, loading, error };
+  return {
+    cities: data?.cities || [],
+    loading: isLoading,
+    error: error ? error.message : null,
+  };
 };

@@ -1,34 +1,54 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import useSWR, { mutate } from 'swr';
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
+
+const fetcher = async (url: string) => {
+  const res = await fetch(url, {
+    method: "GET",
+    credentials: "include"
+  });
+  const data = await res.json();
+
+  if (data.code === "success") {
+    console.log("check login: success");
+  } else {
+    console.log("check login: error");
+  }
+
+  return data;
+};
 
 export const useAuth = () => {
-  const [isLogin, setIsLogin] = useState(false);
-  const [info, setInfo] = useState<any>(null); // có thể là user hoặc company
-  const pathname = usePathname(); // lấy đường dẫn hiện tại
+  const pathname = usePathname();
+  const lastPathname = useRef(pathname);
 
+  const { data, error } = useSWR(
+    `${process.env.NEXT_PUBLIC_API_URL}/auth/check-login`,
+    fetcher,
+    {
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+      shouldRetryOnError: false,
+      dedupingInterval: 5000, // Chống gọi API trùng lặp trong 5s
+      refreshInterval: 30000  // refresh sau 30s
+    }
+  );
+
+  // Thêm effect để force revalidate khi pathname thay đổi
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/check-login`, {
-      method: "GET",
-      credentials: "include", // gửi cookie từ backend
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.code === "success") {
-          setIsLogin(true);
-          setInfo(data.info); // info chứa cả role
-          console.log("success")
-        } else {
-          setIsLogin(false);
-          setInfo(null);
-          console.log("error")
-        }
-      });
+    // Chỉ revalidate khi pathname THỰC SỰ thay đổi
+    if (pathname !== lastPathname.current) {
+      lastPathname.current = pathname;
+      mutate(`${process.env.NEXT_PUBLIC_API_URL}/auth/check-login`);
+    }
   }, [pathname]);
+  const isLogin = data?.code === "success";
+  const info = isLogin ? data.info : null;
 
   return {
     isLogin,
     infoUser: info?.role === "user" ? info : null,
     infoCompany: info?.role === "company" ? info : null,
+    isLoading: !data && !error
   };
 }

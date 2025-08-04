@@ -171,7 +171,7 @@ export default function ProfileForm() {
               className="w-[100%] h-[46px] border border-[#DEDEDE] rounded-[4px]  px-[15px] font-[500] text-[14px] text-black"
             >
               <option value="">{t('select-city')}</option>
-              {!loading && !error && cities.map((city) => (
+              {!loading && !error && cities.map((city: any) => (
                 <option key={city._id} value={city._id}>
                   {params.locale === "vi" ? city.name.vi : city.name.en}
                 </option>
