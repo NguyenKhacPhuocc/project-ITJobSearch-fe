@@ -105,8 +105,8 @@
     "job-title": "Tên công việc",
     "salary-min": "Mức lương tối thiểu ($)",
     "salary-max": "Mức lương tối đa ($)",
-    "position": "Cấp bậc",
-    "positions": {
+    "level": "Cấp bậc",
+    "levels": {
       "intern": "Intern",
       "fresher": "Fresher",
       "junior": "Junior",
@@ -120,10 +120,17 @@
       "remote": "Làm từ xa",
       "flexible": "Linh hoạt"
     },
-    "technologies": "Các công nghệ",
+    "skills": "Kỹ năng",
+    "expertise": "Chuyên môn công việc",
     "images": "Danh sách ảnh",
     "detail-description": "Mô tả chi tiết",
-    "create-button": "Tạo mới"
+    "job-name-required": "Vui lòng nhập tên công việc!",
+    "salary-valid": "Vui lòng nhập mức lương >= 0!",
+    "job-level-required": "Vui lòng cấp bậc của công việc!",
+    "working-form-required": "Vui lòng chọn hình thức làm việc!",
+    "create-button": "Tạo mới",
+    "pending-create": "Đang tạo mới...",
+    "create-successfull": "Tạo mới công việc thành công!"
   },
   "CompanyManageCVListPage": {
     "title": "Quản lý CV",

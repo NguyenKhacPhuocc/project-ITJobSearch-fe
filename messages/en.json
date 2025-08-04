@@ -100,13 +100,13 @@
     "page": "Page"
   },
   "CompanyManageJobCreatePage": {
-    "title": "Add New Job",
+    "title": "Create New Job",
     "back-to-list": "Back to List",
     "job-title": "Job Title",
     "salary-min": "Minimum Salary ($)",
     "salary-max": "Maximum Salary ($)",
-    "position": "Level",
-    "positions": {
+    "level": "Job Level",
+    "levels": {
       "intern": "Intern",
       "fresher": "Fresher",
       "junior": "Junior",
@@ -114,16 +114,23 @@
       "senior": "Senior",
       "manager": "Manager"
     },
-    "working-form": "Work Type",
+    "working-form": "Working Type",
     "working-forms": {
       "on-site": "On-site",
       "remote": "Remote",
       "flexible": "Flexible"
     },
-    "technologies": "Technologies",
+    "skills": "Skills",
+    "expertise": "Job Expertise",
     "images": "Image List",
     "detail-description": "Detailed Description",
-    "create-button": "Create"
+    "job-name-required": "Please enter the job title!",
+    "salary-valid": "Please enter a salary >= 0!",
+    "job-level-required": "Please select the job level!",
+    "working-form-required": "Please select the working type!",
+    "create-button": "Create",
+    "pending-create": "Creating...",
+    "create-successfull": "Job created successfully!"
   },
   "CompanyManageCVListPage": {
     "title": "CV Management",

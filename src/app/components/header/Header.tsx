@@ -84,9 +84,11 @@ export const Header = () => {
           {/* Wrap */}
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="text-white font-[800] sm:text-[28px] text-[20px] lg:flex-none flex-1">
-              ITJobSearch
-            </Link>
+            <div>
+              <Link href="/" className="text-white font-[800] sm:text-[28px] text-[20px] lg:flex-none flex-1 inline">
+                ITJobSearch
+              </Link>
+            </div>
             {/* Menu */}
             <HeaderMenu showMenu={showMenu} />
             {/* Account */}
@@ -96,7 +98,7 @@ export const Header = () => {
               {/* Locale Switcher */}
               <div className="relative" ref={localeDropdownRef}>
                 <button
-                  className="flex justify-center items-center bg-white text-xs py-1.5 px-2 rounded-full shadow-sm transition-all duration-200 ease-in-out w-[100px] hover:bg-gray-50 "
+                  className="flex justify-center items-center bg-white text-xs py-1.5 px-2 rounded-full shadow-sm transition-all duration-200 ease-in-out lg:w-[100px] w-[40px] hover:bg-gray-50 "
                   onClick={() => setShowLocaleMenu(!showLocaleMenu)}
                   disabled={isPending}
                   aria-label="Language selector"
@@ -114,7 +116,7 @@ export const Header = () => {
                         height: '18px',
                       }}
                     />
-                    <span className="truncate">
+                    <span className="truncate lg:block hidden">
                       {currentLocale === 'vi' ? 'Tiếng Việt' : 'English'}
                     </span>
                   </span>
@@ -152,20 +154,23 @@ export const Header = () => {
                     <span className="truncate">English</span>
                   </button>
                 </div>
-                
               </div>
+              {/* Button Menu Mobile */}
+              <button
+                onClick={handleShowMenu}
+                className="text-white text-[25px] lg:hidden inline-block"
+              >
+                <FaBars className="" />
+              </button>
             </div>
-
-            {/* Button Menu Mobile */}
-            <button
-              onClick={handleShowMenu}
-              className="text-white text-[20px] lg:hidden inline-block ml-[12px]"
-            >
-              <FaBars className="" />
-            </button>
           </div>
         </div>
       </header>
+      {/* Overlay for mobile menu */}
+      <div
+        className={`fixed inset-0 bg-gray-800 bg-opacity-50 z-[998] transition-opacity duration-500 lg:hidden ${showMenu ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        onClick={handleShowMenu}
+      ></div>
     </>
   )
 }

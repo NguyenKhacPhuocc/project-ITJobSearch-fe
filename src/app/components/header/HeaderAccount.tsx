@@ -44,8 +44,8 @@ export const HeaderAccount = () => {
                     className="w-full h-full object-cover object-center transition-transform duration-200 group-hover:scale-110"
                   />
                 </div>
-                <div className="flex flex-col">
-                  <div className="text-[15px] ">{infoUser.fullName}</div>
+                <div className="flex flex-col ">
+                  <div className="text-[15px]">{infoUser.fullName}</div>
                 </div>
               </Link>
               <ul className="absolute top-[100%] right-[0px] w-[200px] bg-[#0D1B2A] hidden group-hover/sub-1:block z-[999]">
@@ -79,7 +79,7 @@ export const HeaderAccount = () => {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <div className="text-[15px] ">{infoCompany.companyName}</div>
+                  <div className="text-[15px]  hidden md:block ">{infoCompany.companyName}</div>
                 </div>
               </Link>
               <ul className="absolute top-[100%] right-[0px] w-[200px] bg-[#0D1B2A] hidden group-hover/sub-1:block z-[999]">

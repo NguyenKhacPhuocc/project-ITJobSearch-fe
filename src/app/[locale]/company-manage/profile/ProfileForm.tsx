@@ -117,7 +117,7 @@ export default function ProfileForm() {
         });
       toast.promise(promise, {
         loading: t('pending-update'),
-        success: () => t('update-successfull'),
+        success: t('update-successfull'),
         error: (err) => err.message || `Đã xảy ra lỗi!`,
       });
     }
@@ -276,7 +276,7 @@ export default function ProfileForm() {
             <label htmlFor="description" className="block font-[500] text-[14px] text-black mb-[5px]">
               {t('company-detail-description')}
             </label>
-            <TinyMCE editorRef = {editorRef} value={infoCompany.description} /> 
+            <TinyMCE editorRef={editorRef} value={infoCompany.description} />
           </div>
           <div className="sm:col-span-2 text-center mt-[15px]">
             <button
