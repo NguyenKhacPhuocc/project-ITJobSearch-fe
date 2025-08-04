@@ -26,8 +26,8 @@ export const useAuth = () => {
     `${process.env.NEXT_PUBLIC_API_URL}/auth/check-login`,
     fetcher,
     {
-      revalidateOnFocus: false,
-      revalidateOnReconnect: false,
+      revalidateOnFocus: true,
+      revalidateOnReconnect: true,
       shouldRetryOnError: false,
       dedupingInterval: 5000, // Chống gọi API trùng lặp trong 5s
       refreshInterval: 30000  // refresh sau 30s

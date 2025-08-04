@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { FilePond, registerPlugin } from 'react-filepond';
 import 'filepond/dist/filepond.min.css';
@@ -10,6 +10,7 @@ import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 import { TinyMCE } from "@/app/components/editor/TinyMCE";
 import JustValidate from "just-validate";
 import { Toaster, toast } from 'sonner'
+import { levelList, workingFormList } from "@/config/variable";
 
 // Đăng ký plugins
 registerPlugin(
@@ -17,12 +18,15 @@ registerPlugin(
   FilePondPluginImagePreview
 );
 
+type Locale = "vi" | "en";
+
 export const CreateForm = () => {
   const t = useTranslations('CompanyManageJobCreatePage');
   const [images, setImages] = useState<any[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isValid, setIsValid] = useState(false);
   const editorRef = useRef(null);
+  const locale = useLocale() as Locale;
 
   // Initialize form validation
   const initValidation = useCallback(() => {
@@ -160,12 +164,9 @@ export const CreateForm = () => {
             id="level"
             className="w-[100%] border border-[#DEDEDE] rounded-[4px] py-[14px]  px-[15px] font-[500] text-[14px] text-black"
           >
-            <option value="intern">{t('levels.intern')}</option>
-            <option value="fresher">{t('levels.fresher')}</option>
-            <option value="junior">{t('levels.junior')}</option>
-            <option value="middle">{t('levels.middle')}</option>
-            <option value="senior">{t('levels.senior')}</option>
-            <option value="manager">{t('levels.manager')}</option>
+            {levelList.map((item, index) => (
+              <option key={index} value={item.value}>{item.label}</option>
+            ))}
           </select>
         </div>
         <div className="">
@@ -178,9 +179,9 @@ export const CreateForm = () => {
             id="workingForm"
             className="w-[100%]  border border-[#DEDEDE] rounded-[4px] py-[14px]  px-[15px] font-[500] text-[14px] text-black"
           >
-            <option value="onsite">{t('working-forms.on-site')}</option>
-            <option value="remote">{t('working-forms.remote')}</option>
-            <option value="flexible">{t('working-forms.flexible')}</option>
+            {workingFormList.map((item, index) => (
+              <option key={index} value={item.value}>{item.label[locale]}</option>
+            ))}
           </select>
         </div>
         <div className="sm:col-span-2">
