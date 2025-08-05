@@ -165,7 +165,9 @@ export const CreateForm = () => {
             className="w-[100%] border border-[#DEDEDE] rounded-[4px] py-[14px]  px-[15px] font-[500] text-[14px] text-black"
           >
             {levelList.map((item, index) => (
-              <option key={index} value={item.value}>{item.label}</option>
+              <option key={index} value={item.value}>
+                {item.label}
+              </option>
             ))}
           </select>
         </div>
@@ -180,7 +182,9 @@ export const CreateForm = () => {
             className="w-[100%]  border border-[#DEDEDE] rounded-[4px] py-[14px]  px-[15px] font-[500] text-[14px] text-black"
           >
             {workingFormList.map((item, index) => (
-              <option key={index} value={item.value}>{item.label[locale]}</option>
+              <option key={index} value={item.value}>
+                {item.label[locale]}
+              </option>
             ))}
           </select>
         </div>

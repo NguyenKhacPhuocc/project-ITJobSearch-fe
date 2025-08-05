@@ -21,15 +21,20 @@ export default function CompanyManageJobListPage() {
         <div className="container mx-auto px-[16px]">
 
           <div className="flex flex-wrap gap-[20px] items-center justify-between mb-[20px]">
-            <h2 className="font-[700] sm:text-[28px] text-[24px] sm:w-auto w-[100%] text-[#121212]">
+            <h2 className="font-[700] sm:text-[28px] text-[24px] sm:w-auto w-[100%] text-[#000000]">
               {t('management-job')}
             </h2>
-            <Link href="/company-manage/job/create" className="bg-[#0088FF] rounded-[4px] font-[400] text-[14px] text-white inline-block py-[8px] px-[20px] hover:cursor-pointer">
+            <Link
+              href="/company-manage/job/create"
+              className="bg-[#005E92] rounded-[4px] font-[400] text-[14px] text-white inline-block py-[8px] px-[20px] hover:cursor-pointer
+             transition-all duration-200 ease-[cubic-bezier(0.2,0.8,0.5,1.5)]
+             hover:scale-105 active:scale-95 group-hover:animate-bounce-out"
+            >
               {t('create-new-job')}
             </Link>
           </div>
 
-          <JobList/>
+          <JobList />
 
           <div className="mt-[30px]">
             <select name="" className="border border-[#DEDEDE] rounded-[8px] py-[12px] px-[18px] font-[400] text-[16px] text-[#414042]">

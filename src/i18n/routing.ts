@@ -3,7 +3,7 @@ import { defineRouting } from 'next-intl/routing';
 export const routing = defineRouting({
   // Các ngôn ngữ được hỗ trợ
   locales: ['vi', 'en'],
-  localeDetection: false,
+  localeDetection: true,   // tự động xác định ngôn ngữ dựa trên Accept-Language và cookie
   // Ngôn ngữ mặc định
   defaultLocale: 'vi',
 

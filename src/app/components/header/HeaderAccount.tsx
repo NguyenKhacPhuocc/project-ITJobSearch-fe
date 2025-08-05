@@ -70,12 +70,12 @@ export const HeaderAccount = () => {
           ) : infoCompany ? (
             <>
               {/* Đã đăng nhập dành cho công ty */}
-              <Link href="/company-manage/profile" className="flex items-center gap-[8px]">
-                <div className="w-[42px] h-[42px] relative rounded-full overflow-hidden group bg-black">
+              <Link href="/company-manage/profile" className="group flex items-center gap-[8px]">
+                <div className="w-[42px] h-[42px] relative rounded-full overflow-hidden  bg-black">
                   <img
                     src={infoCompany.logo}
                     alt={infoCompany.companyName}
-                    className="w-full h-full object-contain object-center transition-transform duration-200 group-hover:scale-150"
+                    className="w-full h-full object-contain object-center transition-transform duration-200 group-hover:scale-110"
                   />
                 </div>
                 <div className="flex flex-col">

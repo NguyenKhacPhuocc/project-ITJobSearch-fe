@@ -24,7 +24,10 @@ export default function CompanyManageJobCreatePage() {
               <h1 className="sm:w-auto w-[100%] font-[700] text-[20px] text-black">
                 {t('title')}
               </h1>
-              <Link href="/company-manage/job/list" className="font-[400] text-[14px] text-[#0088FF] underline">
+              <Link
+                href="/company-manage/job/list"
+                className="bg-[#005E92] rounded-[4px] font-[400] text-[14px] text-white inline-block py-[8px] px-[20px] hover:cursor-pointer transition-all duration-200 ease-[cubic-bezier(0.2,0.8,0.5,1.5)] hover:scale-105 active:scale-95 group-hover:animate-bounce-out"
+              >
                 {t('back-to-list')}
               </Link>
             </div>
