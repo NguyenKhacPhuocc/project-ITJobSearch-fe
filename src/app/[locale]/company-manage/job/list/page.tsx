@@ -33,16 +33,8 @@ export default function CompanyManageJobListPage() {
               {t('create-new-job')}
             </Link>
           </div>
-
+          
           <JobList />
-
-          <div className="mt-[30px]">
-            <select name="" className="border border-[#DEDEDE] rounded-[8px] py-[12px] px-[18px] font-[400] text-[16px] text-[#414042]">
-              <option value="">{t('page')} 1</option>
-              <option value="">{t('page')} 2</option>
-              <option value="">{t('page')} 3</option>
-            </select>
-          </div>
 
         </div>
       </div>
