@@ -8,6 +8,7 @@ import useSWR from "swr";
 import { FaBriefcase, FaDev, FaLocationDot, FaUserTie } from "react-icons/fa6";
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { ButtonDelete } from "@/app/components/button/ButtonDelete";
 
 const JobCardSkeleton = () => {
   return (
@@ -79,14 +80,14 @@ export const JobList = () => {
 
   // fetch data job-list
   const { data, error, isLoading } = useSWR(
-    [`${process.env.NEXT_PUBLIC_API_URL}/company/job/list?page=${page}`, locale, page],
-    ([url, locale]) => fetcher(url, locale),
-    {
+    [`${process.env.NEXT_PUBLIC_API_URL}/company/job/list`, locale, page], // listKey
+    ([url, locale, page]) => fetcher(`${url}?page=${page}`, locale),  // thực hiện fetch
+    {                                                                   // các option
       dedupingInterval: 5000,
     }
   );
+
   if (error) return <div>Error loading data</div>;
-  ;
 
   const jobList = data?.code === "success" ? data.jobList : [];
   const totalPage = data?.code === "success" ? data.totalPage : [];
@@ -175,9 +176,11 @@ export const JobList = () => {
                     <Link href={`/company-manage/job/edit/${item.id}`} className="bg-[#FFB200] rounded-[4px] font-[400] text-[14px] text-black inline-block py-[8px] px-[20px]">
                       {t('edit-job')}
                     </Link>
-                    <Link href="#" className="bg-[#FF0000] rounded-[4px] font-[400] text-[14px] text-white inline-block py-[8px] px-[20px]">
-                      {t('delete-job')}
-                    </Link>
+                    <ButtonDelete
+                      api={`${process.env.NEXT_PUBLIC_API_URL}/company/job/delete/${item.id}`}
+                      item={item}
+                      listKey={[`${process.env.NEXT_PUBLIC_API_URL}/company/job/list`, locale, page]}  // listKey = useSWR([listKey],.....)
+                    />
                   </div>
                 </div>
               )

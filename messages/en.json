@@ -97,7 +97,9 @@
     "create-new-job": "Add New",
     "edit-job": "Edit",
     "delete-job": "Delete",
-    "page": "Page"
+    "page": "Page",
+    "pending-delete": "Deleting...",
+    "delete-successfull": "Deleted Successfully!"
   },
   "CompanyManageJobCreatePage": {
     "title": "Create New Job",

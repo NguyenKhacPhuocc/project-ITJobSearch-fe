@@ -140,6 +140,7 @@ export const CreateForm = () => {
             type="number"
             name="salaryMin"
             id="salaryMin"
+            defaultValue={0}
             className="w-[100%]   border border-[#DEDEDE] rounded-[4px] py-[14px]  px-[15px] font-[500] text-[14px] text-black"
           />
         </div>
@@ -151,6 +152,7 @@ export const CreateForm = () => {
             type="number"
             name="salaryMax"
             id="salaryMax"
+            defaultValue={0}
             className="w-[100%]   border border-[#DEDEDE] rounded-[4px] py-[14px]  px-[15px] font-[500] text-[14px] text-black"
           />
         </div>

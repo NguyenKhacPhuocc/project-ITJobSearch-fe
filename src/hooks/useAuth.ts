@@ -30,7 +30,7 @@ export const useAuth = () => {
       revalidateOnReconnect: true,
       shouldRetryOnError: false,
       dedupingInterval: 5000, // Chống gọi API trùng lặp trong 5s
-      refreshInterval: 30000  // refresh sau 30s
+      refreshInterval: 1000000  // refresh sau 1000s
     }
   );
 

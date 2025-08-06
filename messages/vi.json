@@ -97,7 +97,9 @@
     "create-new-job": "Thêm mới",
     "edit-job": "Sửa",
     "delete-job": "Xóa",
-    "page": "Trang"
+    "page": "Trang",
+    "pending-delete": "Đang xóa...",
+    "delete-successfull": "Xóa thành công!"
   },
   "CompanyManageJobCreatePage": {
     "title": "Thêm mới công việc",
