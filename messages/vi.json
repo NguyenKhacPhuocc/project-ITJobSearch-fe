@@ -132,6 +132,39 @@
     "pending-create": "Đang tạo mới...",
     "create-successfull": "Tạo mới công việc thành công!"
   },
+  "CompanyManageJobEditPage": {
+    "title": "Chỉnh sửa công việc",
+    "back-to-list": "Quay lại danh sách",
+    "job-title": "Tên công việc",
+    "salary-min": "Mức lương tối thiểu ($)",
+    "salary-max": "Mức lương tối đa ($)",
+    "level": "Cấp bậc",
+    "levels": {
+      "intern": "Intern",
+      "fresher": "Fresher",
+      "junior": "Junior",
+      "middle": "Middle",
+      "senior": "Senior",
+      "manager": "Manager"
+    },
+    "working-form": "Hình thức làm việc",
+    "working-forms": {
+      "on-site": "Tại văn phòng",
+      "remote": "Làm từ xa",
+      "flexible": "Linh hoạt"
+    },
+    "skills": "Kỹ năng",
+    "expertise": "Chuyên môn công việc",
+    "images": "Danh sách ảnh",
+    "detail-description": "Mô tả chi tiết",
+    "job-name-required": "Vui lòng nhập tên công việc!",
+    "salary-valid": "Vui lòng nhập mức lương >= 0!",
+    "job-level-required": "Vui lòng cấp bậc của công việc!",
+    "working-form-required": "Vui lòng chọn hình thức làm việc!",
+    "update-button": "Cập nhật",
+    "pending-update": "Đang cập nhật...",
+    "update-successfull": "Cập nhật công việc thành công!"
+  },
   "CompanyManageCVListPage": {
     "title": "Quản lý CV",
     "candidate": "Ứng viên:",
@@ -255,6 +288,10 @@
     "CompanyManageJobCreatePage": {
       "title": "Thêm mới công việc",
       "description": "Mô tả thêm mới công việc"
+    },
+    "CompanyManageJobEditPage": {
+      "title": "Chỉnh sửa công việc",
+      "description": "Mô tả chỉnh sửa công việc"
     },
     "CompanyManageCVListPage": {
       "title": "Quản lý CV",

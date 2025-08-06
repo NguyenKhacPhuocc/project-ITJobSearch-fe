@@ -59,6 +59,10 @@ export const routing = defineRouting({
       vi: '/quan-ly-cong-ty/viec-lam/danh-sach-viec-lam',
       en: '/company-manage/job/list'
     },
+    '/company-manage/job/edit/[id]': {
+      vi: '/quan-ly-cong-ty/viec-lam/chinh-sua-cong-viec/[id]',
+      en: '/company-manage/job/edit/[id]'
+    },
     '/company-manage/profile': {
       vi: '/quan-ly-cong-ty/thong-tin-cong-ty',
       en: '/company-manage/profile'

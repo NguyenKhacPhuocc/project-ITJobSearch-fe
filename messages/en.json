@@ -132,6 +132,39 @@
     "pending-create": "Creating...",
     "create-successfull": "Job created successfully!"
   },
+  "CompanyManageJobEditPage": {
+    "title": "Edit Job",
+    "back-to-list": "Back to List",
+    "job-title": "Job Title",
+    "salary-min": "Minimum Salary ($)",
+    "salary-max": "Maximum Salary ($)",
+    "level": "Level",
+    "levels": {
+      "intern": "Intern",
+      "fresher": "Fresher",
+      "junior": "Junior",
+      "middle": "Middle",
+      "senior": "Senior",
+      "manager": "Manager"
+    },
+    "working-form": "Working Form",
+    "working-forms": {
+      "on-site": "On-site",
+      "remote": "Remote",
+      "flexible": "Flexible"
+    },
+    "skills": "Skills",
+    "expertise": "Job Expertise",
+    "images": "Image List",
+    "detail-description": "Detailed Description",
+    "job-name-required": "Please enter the job title!",
+    "salary-valid": "Please enter a salary >= 0!",
+    "job-level-required": "Please select the job level!",
+    "working-form-required": "Please select the working form!",
+    "update-button": "Update",
+    "pending-update": "Updating...",
+    "update-successfull": "Job updated successfully!"
+  },
   "CompanyManageCVListPage": {
     "title": "CV Management",
     "candidate": "Candidate:",
@@ -255,6 +288,10 @@
     "CompanyManageJobCreatePage": {
       "title": "Add New Job",
       "description": "Add new job description."
+    },
+    "CompanyManageJobEditPage": {
+      "title": "Edit Job",
+      "description": "Edit job description"
     },
     "CompanyManageCVListPage": {
       "title": "CV Management",
