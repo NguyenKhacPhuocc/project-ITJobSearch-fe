@@ -7,7 +7,6 @@ import { HeaderMenu } from "./HeaderMenu"
 import { useEffect, useRef, useState } from "react"
 import { HeaderAccount } from "./HeaderAccount"
 import { useParams } from 'next/navigation';
-// import { Locale } from 'next-intl';
 import { useTransition } from 'react';
 import { usePathname, useRouter } from '@/i18n/navigation';
 
@@ -78,7 +77,7 @@ export const Header = () => {
   return (
     <>
       <header
-        className={`bg-[linear-gradient(to_right,_#000000_0%,_#0D1B2A_60%,_#005E92_120%)] py-[10px] px-[15px] border-b border-[#656565] fixed w-full top-0 z-[999] transition-transform duration-700 ${hideHeader ? "-translate-y-full" : "translate-y-0"}`}
+        className={`bg-[linear-gradient(to_right,_#000000_0%,_#0D1B2A_60%,_#005E92_120%)] py-[10px] h-[65px] flex items-center px-[15px] border-b border-[#656565] fixed w-full top-0 z-[999] transition-transform duration-700 ${hideHeader ? "-translate-y-full" : "translate-y-0"}`}
       >
         <div className="container mx-auto">
           {/* Wrap */}

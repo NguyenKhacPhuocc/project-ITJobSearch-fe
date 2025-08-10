@@ -258,6 +258,37 @@
     "password": "Password",
     "login-button": "Log In"
   },
+  "HeaderMenu": {
+    "it-jobs": "IT Jobs",
+    "it-jobs-by-skill": "IT Jobs by Skill",
+    "it-jobs-by-expertise": "IT Jobs by Expertise",
+    "it-jobs-by-city": "IT Jobs by City",
+    "top-it-companies": "Top IT Companies",
+    "employers": "Employers",
+    "login": "Login",
+    "register": "Register",
+    "expertise": {
+      "backend": "Backend Developer",
+      "fullstack": "Fullstack Developer",
+      "frontend": "Frontend Developer",
+      "mobile": "Mobile Developer",
+      "autotesting": "Automation Testing",
+      "devops": "DevOps Engineer",
+      "businessanalysis": "Business Analyst",
+      "ai": "AI/Machine Learning Engineer",
+      "management": "Management",
+      "testcoordinator": "Test Coordinator",
+      "systemadmin": "System Administrator",
+      "dataengineer": "Data Engineer",
+      "dataanalysis": "Data Analyst",
+      "softwareengineer": "Software Engineer"
+    },
+    "cities": {
+      "hochiminh": "Ho Chi Minh",
+      "hanoi": "Ha Noi",
+      "danang": "Da Nang"
+    }
+  },
   "Metadata": {
     "HomePage": {
       "title": "ITJobSearch",

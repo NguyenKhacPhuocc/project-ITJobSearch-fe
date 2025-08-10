@@ -258,6 +258,37 @@
     "password": "Mật khẩu",
     "login-button": "Đăng nhập"
   },
+  "HeaderMenu": {
+    "it-jobs": "Việc Làm IT",
+    "it-jobs-by-skill": "Việc làm IT theo kỹ năng",
+    "it-jobs-by-expertise": "Việc làm IT theo chuyên môn",
+    "it-jobs-by-city": "Việc làm IT theo thành phố",
+    "top-it-companies": "Top Công Ty IT",
+    "employers": "Nhà Tuyển Dụng",
+    "login": "Đăng Nhập",
+    "register": "Đăng Ký",
+    "expertise": {
+      "backend": "Lập trình viên Backend",
+      "fullstack": "Lập trình viên Fullstack",
+      "frontend": "Lập trình viên Frontend",
+      "mobile": "Lập trình viên Ứng dụng Di động",
+      "autotesting": "Kiểm thử tự động",
+      "devops": "Kỹ sư DevOps",
+      "businessanalysis": "Phân tích nghiệp vụ",
+      "ai": "Kỹ sư AI / Machine Learning",
+      "management": "Quản lý",
+      "testcoordinator": "Điều phối viên Kiểm thử",
+      "systemadmin": "Kỹ sư Hệ thống / Quản trị viên",
+      "dataengineer": "Kỹ sư Dữ liệu",
+      "dataanalysis": "Phân tích Dữ liệu",
+      "softwareengineer": "Kỹ thuật viên Phần mềm / Kỹ thuật"
+    },
+    "cities": {
+      "hochiminh": "Hồ Chí Minh",
+      "hanoi": "Hà Nội",
+      "danang": "Đà Nẵng"
+    }
+  },
   "Metadata": {
     "HomePage": {
       "title": "ITJobSearch",

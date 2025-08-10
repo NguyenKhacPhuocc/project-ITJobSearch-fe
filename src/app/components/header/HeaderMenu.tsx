@@ -1,4 +1,5 @@
 import { useAuth } from "@/hooks/useAuth";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { FaAngleDown, FaAngleRight } from "react-icons/fa6";
 
@@ -13,13 +14,15 @@ interface MenuItem {
 export const HeaderMenu = ({ showMenu }: { showMenu: boolean }) => {
   const { isLogin } = useAuth();
 
+  const t = useTranslations('HeaderMenu');
+
   const menuList: MenuItem[] = [
     {
-      name: "Việc Làm IT",
+      name: t('it-jobs'),
       link: "#",
       children: [
         {
-          name: "Việc làm IT theo kỹ năng",
+          name: t('it-jobs-by-skill'),
           link: "#",
           children: [
             { name: "ReactJS", link: "/search?skill=ReactJS" },
@@ -43,38 +46,38 @@ export const HeaderMenu = ({ showMenu }: { showMenu: boolean }) => {
           ],
         },
         {
-          name: "Việc làm IT theo chuyên môn",
+          name: t('it-jobs-by-expertise'),
           link: "#",
           children: [
-            { name: "Lập trình viên Backend", link: "/search?expertise=Backend" },
-            { name: "Lập trình viên Fullstack", link: "/search?expertise=Fullstack" },
-            { name: "Lập trình viên Frontend", link: "/search?expertise=Frontend" },
-            { name: "Lập trình viên Ứng dụng Di động", link: "/search?expertise=Mobile" },
-            { name: "Kiểm thử tự động", link: "/search?expertise=AutoTesting" },
-            { name: "Kỹ sư DevOps", link: "/search?expertise=DevOps" },
-            { name: "Phân tích nghiệp vụ", link: "/search?expertise=BusinessAnalysis" },
-            { name: "Kỹ sư AI / Machine Learning", link: "/search?expertise=AI" },
-            { name: "Quản lý", link: "/search?expertise=Management" },
-            { name: "Điều phối viên Kiểm thử", link: "/search?expertise=TestCoordinator" },
-            { name: "Kỹ sư Hệ thống / Quản trị viên", link: "/search?expertise=SystemAdmin" },
-            { name: "Kỹ sư Dữ liệu", link: "/search?expertise=DataEngineer" },
-            { name: "Phân tích Dữ liệu", link: "/search?expertise=DataAnalysis" },
-            { name: "Kỹ thuật viên Phần mềm / Kỹ thuật", link: "/search?expertise=SoftwareEngineer" },
+            { name: t('expertise.backend'), link: "/search?expertise=Backend" },
+            { name: t('expertise.fullstack'), link: "/search?expertise=Fullstack" },
+            { name: t('expertise.frontend'), link: "/search?expertise=Frontend" },
+            { name: t('expertise.mobile'), link: "/search?expertise=Mobile" },
+            { name: t('expertise.autotesting'), link: "/search?expertise=AutoTesting" },
+            { name: t('expertise.devops'), link: "/search?expertise=DevOps" },
+            { name: t('expertise.businessanalysis'), link: "/search?expertise=BusinessAnalysis" },
+            { name: t('expertise.ai'), link: "/search?expertise=AI" },
+            { name: t('expertise.management'), link: "/search?expertise=Management" },
+            { name: t('expertise.testcoordinator'), link: "/search?expertise=TestCoordinator" },
+            { name: t('expertise.systemadmin'), link: "/search?expertise=SystemAdmin" },
+            { name: t('expertise.dataengineer'), link: "/search?expertise=DataEngineer" },
+            { name: t('expertise.dataanalysis'), link: "/search?expertise=DataAnalysis" },
+            { name: t('expertise.softwareengineer'), link: "/search?expertise=SoftwareEngineer" }
           ],
         },
         {
-          name: "Việc làm IT theo thành phố",
+          name: t('it-jobs-by-city'),
           link: "#",
           children: [
-            { name: "Hồ Chí Minh", link: "/search?city=HoChiMinh" },
-            { name: "Hà Nội", link: "/search?city=Hanoi" },
-            { name: "Đà Nẵng", link: "/search?city=DaNang" },
+            { name: t('cities.hochiminh'), link: "/search?city=HoChiMinh" },
+            { name: t('cities.hanoi'), link: "/search?city=Hanoi" },
+            { name: t('cities.danang'), link: "/search?city=DaNang" },
           ],
         },
       ],
     },
     {
-      name: "Top Công Ty IT",
+      name: t('top-it-companies'),
       link: "#",
       children: [
         { name: "FPT Software", link: "/company/detail/fpt-software" },
@@ -87,12 +90,12 @@ export const HeaderMenu = ({ showMenu }: { showMenu: boolean }) => {
       ],
     },
     {
-      name: "Nhà Tuyển Dụng",
+      name: t('employers'),
       link: "#",
       isLogin: false,
       children: [
-        { name: "Đăng Nhập", link: "/company/login" },
-        { name: "Đăng Ký", link: "/company/register" },
+        { name: t('login'), link: "/company/login" },
+        { name: t('register'), link: "/company/register" },
       ],
     },
   ];
