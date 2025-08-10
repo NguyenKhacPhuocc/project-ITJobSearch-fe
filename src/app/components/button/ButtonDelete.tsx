@@ -23,7 +23,7 @@ export const ButtonDelete = (props: {
         .then(res => res.json())
         .then(data => {
           if (data.code == "success") {
-            mutate(listKey);
+            mutate(listKey);    // gọi tới useSWR có key = listkey để render lại
           } else {
             toast(data.message)
           }

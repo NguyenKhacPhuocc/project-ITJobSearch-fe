@@ -49,18 +49,18 @@ export const HeaderAccount = () => {
                 </div>
               </Link>
               <ul className="absolute top-[100%] right-[0px] w-[200px] bg-[#0D1B2A] hidden group-hover/sub-1:block z-[999]">
-                <li className="flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 transition-colors duration-200 ease-in-out">
+                <li className="flex items-center justify-between hover:bg-[#18324e] relative group/sub-2">
                   <Link href="/user-manage/profile" className="py-[10px] px-[15px] w-full text-white text-[15px]">
                     {t('user-profile')}
                   </Link>
                 </li>
-                <li className=" flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 transition-colors duration-200 ease-in-out">
+                <li className=" flex items-center justify-between hover:bg-[#18324e] relative group/sub-2">
                   <Link href="/user-manage/cv/list" className="py-[10px] px-[15px] w-full text-white text-[15px]">
                     {t('cv-submitted')}
                   </Link>
                 </li>
                 <li
-                  className="py-[10px] px-[15px] flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 cursor-pointer transition-colors duration-200 ease-in-out"
+                  className="py-[10px] px-[15px] flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 cursor-pointer "
                   onClick={() => handleLogout("/user/login")}
                 >
                   {t('logout')}
@@ -83,23 +83,23 @@ export const HeaderAccount = () => {
                 </div>
               </Link>
               <ul className="absolute top-[100%] right-[0px] w-[200px] bg-[#0D1B2A] hidden group-hover/sub-1:block z-[999]">
-                <li className="flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 transition-colors duration-200 ease-in-out">
+                <li className="flex items-center justify-between hover:bg-[#18324e] relative group/sub-2">
                   <Link href="/company-manage/profile" className="text-white text-[15px] py-[10px] px-[15px] w-full">
                     {t('company-info')}
                   </Link>
                 </li>
-                <li className="flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 transition-colors duration-200 ease-in-out">
+                <li className="flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 ">
                   <Link href="/company-manage/job/list" className="text-white text-[15px] py-[10px] px-[15px] w-full">
                     {t('job-management')}
                   </Link>
                 </li>
-                <li className="flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 transition-colors duration-200 ease-in-out">
+                <li className="flex items-center justify-between hover:bg-[#18324e] relative group/sub-2">
                   <Link href="/company-manage/cv/list" className="text-white text-[15px] py-[10px] px-[15px] w-full">
                     {t('cv-management')}
                   </Link>
                 </li>
                 <li
-                  className="py-[10px] px-[15px] flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 cursor-pointer transition-colors duration-200 ease-in-out"
+                  className="py-[10px] px-[15px] flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 cursor-pointer"
                   onClick={() => handleLogout("/company/login")}
                 >
                   {t('logout')}
