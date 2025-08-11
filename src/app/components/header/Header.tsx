@@ -6,7 +6,7 @@ import { FaBars } from "react-icons/fa6"
 import { HeaderMenu } from "./HeaderMenu"
 import { useEffect, useRef, useState } from "react"
 import { HeaderAccount } from "./HeaderAccount"
-import { useParams } from 'next/navigation';
+import { useParams, useSearchParams } from 'next/navigation';
 import { useTransition } from 'react';
 import { usePathname, useRouter } from '@/i18n/navigation';
 
@@ -18,6 +18,7 @@ export const Header = () => {
   const router = useRouter();
   const pathname = usePathname();
   const params = useParams();
+  const searchParams = useSearchParams()
   const [isPending, startTransition] = useTransition();
   const [showLocaleMenu, setShowLocaleMenu] = useState(false);
   const localeDropdownRef = useRef<HTMLDivElement>(null);
@@ -53,7 +54,7 @@ export const Header = () => {
     startTransition(() => {
       router.replace(
         // @ts-expect-error -- ignore TS here because we control routes
-        { pathname, params },
+        { pathname, query: Object.fromEntries(searchParams) },
         { locale: nextLocale }
       );
     });

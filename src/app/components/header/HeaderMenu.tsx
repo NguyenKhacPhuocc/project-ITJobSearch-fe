@@ -153,9 +153,9 @@ export const HeaderMenu = ({ showMenu }: { showMenu: boolean }) => {
                               <div className="w-1/2">
                                 {menuSub1.children.slice(0, 5).map((menuSub2, indexSub2) => (
                                   <li key={indexSub2} className="hover:bg-[#18324e]">
-                                    <a href={menuSub2.link} className="text-white font-medium text-[15px] block py-[10px] px-[15px]">
+                                    <Link href={menuSub2.link} className="text-white font-medium text-[15px] block py-[10px] px-[15px]">
                                       {menuSub2.name}
-                                    </a>
+                                    </Link>
                                   </li>
                                 ))}
                               </div>
@@ -164,9 +164,9 @@ export const HeaderMenu = ({ showMenu }: { showMenu: boolean }) => {
                               <div className="w-1/2">
                                 {menuSub1.children.slice(5, 10).map((menuSub2, indexSub2) => (
                                   <li key={indexSub2 + 5} className="hover:bg-[#18324e]">
-                                    <a href={menuSub2.link} className="text-white font-medium text-[15px] block py-[10px] px-[15px]">
+                                    <Link href={menuSub2.link} className="text-white font-medium text-[15px] block py-[10px] px-[15px]">
                                       {menuSub2.name}
-                                    </a>
+                                    </Link>
                                   </li>
                                 ))}
                               </div>
@@ -177,18 +177,18 @@ export const HeaderMenu = ({ showMenu }: { showMenu: boolean }) => {
                           <>
                             {menuSub1.children.map((menuSub2, indexSub2) => (
                               <li key={indexSub2} className="hover:bg-[#18324e]">
-                                <a href={menuSub2.link} className="text-white font-medium text-[15px] block py-[10px] px-[15px]">
+                                <Link href={menuSub2.link} className="text-white font-medium text-[15px] block py-[10px] px-[15px]">
                                   {menuSub2.name}
-                                </a>
+                                </Link>
                               </li>
                             ))}
                           </>
                         )}
                         <div className="w-full border-t border-[#18324e]">
                           <li className="hover:bg-[#18324e]">
-                            <a href={menuSub1.link} className="text-blue-400 font-bold text-[15px] block py-[10px] px-[15px]">
+                            <Link href={menuSub1.link} className="text-blue-400 font-bold text-[15px] block py-[10px] px-[15px]">
                               Xem tất cả ({menuSub1.children.length})
-                            </a>
+                            </Link>
                           </li>
                         </div>
                       </ul>
