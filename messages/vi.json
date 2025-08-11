@@ -216,7 +216,7 @@
     "danang": "Đà Nẵng",
     "ho-chi-minh": "Hồ Chí Minh",
     "other": "Khác",
-    "search-placeholder": "Nhập từ khoá...",
+    "search-placeholder": "Nhập từ khoá theo kỹ năng, chức vụ, công ty...",
     "search-button": "Tìm Kiếm",
     "trending-searches": "Mọi người đang tìm kiếm: ",
     "reactjs": "ReactJS",
@@ -288,6 +288,9 @@
       "hanoi": "Hà Nội",
       "danang": "Đà Nẵng"
     }
+  },
+  "CardCompanyItem":{
+    "job": "Việc làm"
   },
   "Metadata": {
     "HomePage": {

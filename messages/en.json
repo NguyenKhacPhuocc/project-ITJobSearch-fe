@@ -216,7 +216,7 @@
     "danang": "Da Nang",
     "ho-chi-minh": "Ho Chi Minh",
     "other": "Other",
-    "search-placeholder": "Enter keywords...",
+    "search-placeholder": "Enter keyword skill (Java, iOS...), job title, company...",
     "search-button": "Search",
     "trending-searches": "People are searching for: ",
     "reactjs": "ReactJS",
@@ -288,6 +288,9 @@
       "hanoi": "Ha Noi",
       "danang": "Da Nang"
     }
+  },
+  "CardCompanyItem": {
+    "job": "Jobs"
   },
   "Metadata": {
     "HomePage": {
