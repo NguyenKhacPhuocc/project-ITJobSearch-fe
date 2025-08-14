@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+"use client"
 import { useAuth } from "@/hooks/useAuth";
 import { useCities } from "@/hooks/useCities";
+import { useCompanies } from "@/hooks/useCompanies";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { FaAngleDown, FaAngleRight } from "react-icons/fa6";
@@ -17,6 +19,7 @@ export const HeaderMenu = ({ showMenu }: { showMenu: boolean }) => {
   const { isLogin } = useAuth();
   const locale = useLocale();
   const { cities } = useCities();
+  const { companies } = useCompanies();
 
   const t = useTranslations('HeaderMenu');
 
@@ -27,7 +30,7 @@ export const HeaderMenu = ({ showMenu }: { showMenu: boolean }) => {
       children: [
         {
           name: t('it-jobs-by-skill'),
-          link: "#",
+          link: "#", // xem tất cả
           children: [
             { name: "ReactJS", link: "/search?skill=ReactJS" },
             { name: "NodeJS", link: "/search?skill=NodeJS" },
@@ -51,7 +54,7 @@ export const HeaderMenu = ({ showMenu }: { showMenu: boolean }) => {
         },
         {
           name: t('it-jobs-by-expertise'),
-          link: "#",
+          link: "#", // xem tất cả
           children: [
             { name: t('expertise.backend'), link: "/search?expertise=Backend" },
             { name: t('expertise.fullstack'), link: "/search?expertise=Fullstack" },
@@ -71,7 +74,7 @@ export const HeaderMenu = ({ showMenu }: { showMenu: boolean }) => {
         },
         {
           name: t('it-jobs-by-city'),
-          link: "#",
+          link: "#", // xem tất cả
           children: cities.map((city: any) => ({
             name: city.name[locale], // Lấy tên thành phố theo ngôn ngữ hiện tại
             link: `/search?city=${encodeURIComponent(city.name[locale])}` // Sử dụng tên tiếng Anh cho URL
@@ -81,16 +84,11 @@ export const HeaderMenu = ({ showMenu }: { showMenu: boolean }) => {
     },
     {
       name: t('top-it-companies'),
-      link: "#",
-      children: [
-        { name: "FPT Software", link: "/company/detail/fpt-software" },
-        { name: "VNG Corporation", link: "/company/detail/vng-corporation" },
-        { name: "Techcombank", link: "/company/detail/techcombank" },
-        { name: "MB Bank", link: "/company/detail/mb-bank" },
-        { name: "TMA Solutions", link: "/company/detail/tma-solutions" },
-        { name: "VinAI", link: "/company/detail/vinai" },
-        { name: "CNHH", link: "/company/detail/tnhh" },
-      ],
+      link: "/company/list",
+      children: companies.slice(0, 5).map((company: any) => ({
+        name: company.companyName,
+        link: `/company/detail/${company.slug}`
+      }))
     },
     {
       name: t('employers'),
@@ -133,7 +131,7 @@ export const HeaderMenu = ({ showMenu }: { showMenu: boolean }) => {
                 {menu.children.map((menuSub1, indexSub1) => (
                   <li
                     key={indexSub1}
-                    className=" flex items-center justify-between hover:bg-[#18324e] relative group/sub-2 flex-wrap "
+                    className=" flex items-center justify-between hover:bg-[#18324e] group/sub-2 flex-wrap "
                   >
                     <Link
                       href={menuSub1.link}

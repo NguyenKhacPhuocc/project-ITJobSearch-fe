@@ -40,7 +40,7 @@
     "page": "Page"
   },
   "SearchPage": {
-    "jobs": "jobs",
+    "search-results-for": "Search results for",
     "level": {
       "level": "Level",
       "intern": "Intern",
@@ -58,7 +58,9 @@
     },
     "page": "Page",
     "no-job": "No results found!",
-    "try-another-search": "Try another search"
+    "try-another-search": "Try another search",
+    "view-detail": "View detail",
+    "searching": "Searching..."
   },
   "JobDetailPage": {
     "detail-description": "Detailed Description",

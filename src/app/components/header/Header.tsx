@@ -54,7 +54,7 @@ export const Header = () => {
     startTransition(() => {
       router.replace(
         // @ts-expect-error -- ignore TS here because we control routes
-        { pathname, query: Object.fromEntries(searchParams) },
+        { pathname, params, query: Object.fromEntries(searchParams) },
         { locale: nextLocale }
       );
     });

@@ -1,8 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { CardJobItem } from "@/app/components/card/CardJobItem"
 import { useLocale, useTranslations } from "next-intl";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { FaLocationDot } from "react-icons/fa6";
 import useSWR from "swr";
 
 const JobCardSkeleton = () => {
@@ -53,10 +56,11 @@ export const SearchContent = () => {
   const searchParams = useSearchParams();
   const skill = searchParams.get("skill") || "";
   const city = searchParams.get("city") || "";
+  const keysearch = searchParams.get("keysearch") || "";
   const locale = useLocale();
 
   const { data, isLoading } = useSWR(
-    `${process.env.NEXT_PUBLIC_API_URL}/search?skill=${skill}&city=${city}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/search?skill=${skill}&city=${city}&keysearch=${keysearch}`,
     fetcher,
     {
       keepPreviousData: true,     // Giữ data cũ khi đổi key
@@ -65,82 +69,119 @@ export const SearchContent = () => {
   );
 
   const jobList = data?.code === "success" ? data.jobs : [];
+  const companyInfo = data?.code === "success" ? data.companyInfo : [];
 
   return (
     <>
-      <div className="container mx-auto px-[16px]">
-
-        <h2 className="font-[700] text-[28px] text-[#121212] mb-[30px] flex items-center">
-          <div className="bg-[#F0F6FF] text-[#0088FF] flex justify-center items-center h-[40px] w-[80px] mr-[5px] rounded-[8px] border border-[#D6E6FF]">
-            {jobList.length ? jobList.length : 0}
-          </div>
-          {t('jobs')} <span className="text-[#0088FF] ml-[7px]">{skill} {city}</span>
-        </h2>
-
-        <div
-          className="bg-white rounded-[8px] py-[10px] px-[20px] mb-[30px] flex flex-wrap gap-[12px]"
-          style={{
-            boxShadow: "0px 4px 20px 0px #0000000F"
-          }}
-        >
-          <select name="" className="border border-[#DEDEDE] rounded-[20px] h-[36px] px-[18px] font-[400] text-[16px] text-[#414042]">
-            <option value="">{t('level.level')}</option>
-            <option value="intern">{t('level.intern')}</option>
-            <option value="fresher">{t('level.fresher')}</option>
-            <option value="junior">{t('level.junior')}</option>
-            <option value="middle">{t('level.middle')}</option>
-            <option value="senior">{t('level.senior')}</option>
-            <option value="manager">{t('level.manager')}</option>
-          </select>
-          <select name="" className="border border-[#DEDEDE] rounded-[20px] h-[36px] px-[18px] font-[400] text-[16px] text-[#414042]">
-            <option value="">{t('work-type.work-type')}</option>
-            <option value="">{t('work-type.on-site')}</option>
-            <option value="">{t('work-type.remote')}</option>
-            <option value="">{t('work-type.flexible')}</option>
-          </select>
-        </div>
-
-        {jobList.length > 0 ?
-          (
-            <>
-              <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-[20px]">
-                {isLoading
-                  ? Array.from({ length: 3 }).map((_, idx) => (
-                    <JobCardSkeleton key={idx} />
-                  ))
-                  : jobList.map((item: any) => (
-                    <CardJobItem key={item.id} item={item} locale={locale} />
-                  ))}
+      {!isLoading ? (
+        <div className="container mx-auto px-[16px]">
+          {/* Thông tin công ty */}
+          {companyInfo && companyInfo.companyName && (
+            <div className="border border-[#DEDEDE] rounded-[8px] px-[20px] py-[10px] mb-[20px]">
+              <div className="flex flex-wrap items-center gap-[16px] ">
+                <div className="w-[100px] border rounded-[4px] overflow-hidden shadow-lg">
+                  <img
+                    src={companyInfo.logo}
+                    alt={companyInfo.companyName}
+                    className="w-[100%] aspect-square object-cover rounded-[4px]"
+                  />
+                </div>
+                <div className="sm:flex-1">
+                  <div className="flex justify-between items-center mb-[10px]">
+                    <h1 className="font-[700] text-[28px] text-[#121212] ">
+                      {companyInfo.companyName}
+                    </h1>
+                    <Link href={`/company/detail/${companyInfo.slug}`} className="bg-[#005E92] rounded-[4px] font-[400] text-[14px] text-white inline-block py-[8px] px-[20px] hover:cursor-pointer transition-all duration-200 ease-[cubic-bezier(0.2,0.8,0.5,1.5)] hover:scale-105 active:scale-95 group-hover:animate-bounce-out">
+                      {t('view-detail')}
+                    </Link>
+                  </div>
+                  <div className="flex items-center gap-[8px] font-[400] text-[14px] text-[#121212]">
+                    <FaLocationDot className="text-[16px]" /> {companyInfo.address}
+                  </div>
+                </div>
               </div>
-              <div className="mt-[30px]">
-                <select name="" className="border border-[#DEDEDE] rounded-[8px] py-[12px] px-[18px] font-[400] text-[16px] text-[#414042] outline-none">
-                  <option value="">{t('page')} 1</option>
-                  <option value="">{t('page')} 2</option>
-                  <option value="">{t('page')} 3</option>
-                </select>
-              </div>
-            </>
-          ) : (
-            <div className="flex flex-col items-center justify-center py-16">
-              <svg
-                className="w-16 h-16 text-blue-400 mb-4"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 9V5.25m0 0A2.25 2.25 0 0013.5 3h-3A2.25 2.25 0 008.25 5.25v3A2.25 2.25 0 0010.5 10.5h3A2.25 2.25 0 0015.75 8.25V5.25zm-7.5 9.75v3A2.25 2.25 0 0010.5 21h3a2.25 2.25 0 002.25-2.25v-3A2.25 2.25 0 0013.5 13.5h-3a2.25 2.25 0 00-2.25 2.25z"
-                />
-              </svg>
-              <div className="text-xl font-semibold text-gray-700 mb-2">{t('no-job')}</div>
-              <div className="text-gray-500">{t('try-another-search')}</div>
             </div>
-          )
-        }
-      </div>
+          )}
+          {/* Hết Thông tin công ty */}
+
+          <h2 className="font-[700] text-[28px] text-[#121212] mb-[30px] flex items-center">
+            <div className="bg-[#F0F6FF] text-[#0088FF] flex justify-center items-center h-[40px] w-[80px] mr-[10px] rounded-[8px] border border-[#D6E6FF]">
+              {jobList.length ? jobList.length : 0}
+            </div>
+            {t('search-results-for')} <span className="text-[#0088FF] ml-[10px]">{[skill, city, keysearch].filter(Boolean).join(', ')}</span>
+          </h2>
+
+          <div
+            className="bg-white rounded-[8px] py-[10px] px-[20px] mb-[30px] flex flex-wrap gap-[12px]"
+            style={{
+              boxShadow: "0px 4px 20px 0px #0000000F"
+            }}
+          >
+            <select name="" className="border border-[#DEDEDE] rounded-[20px] h-[36px] px-[18px] font-[400] text-[16px] text-[#414042]">
+              <option value="">{t('level.level')}</option>
+              <option value="intern">{t('level.intern')}</option>
+              <option value="fresher">{t('level.fresher')}</option>
+              <option value="junior">{t('level.junior')}</option>
+              <option value="middle">{t('level.middle')}</option>
+              <option value="senior">{t('level.senior')}</option>
+              <option value="manager">{t('level.manager')}</option>
+            </select>
+            <select name="" className="border border-[#DEDEDE] rounded-[20px] h-[36px] px-[18px] font-[400] text-[16px] text-[#414042]">
+              <option value="">{t('work-type.work-type')}</option>
+              <option value="">{t('work-type.on-site')}</option>
+              <option value="">{t('work-type.remote')}</option>
+              <option value="">{t('work-type.flexible')}</option>
+            </select>
+          </div>
+
+          {jobList.length > 0 ?
+            (
+              <>
+                <div className="h-[500px]">
+                  <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-[20px]">
+                    {isLoading
+                      ? Array.from({ length: 3 }).map((_, idx) => (
+                        <JobCardSkeleton key={idx} />
+                      ))
+                      : jobList.map((item: any) => (
+                        <CardJobItem key={item.id} item={item} locale={locale} />
+                      ))}
+                  </div>
+                </div>
+                <div className="mt-[30px]">
+                  <select name="" className="border border-[#DEDEDE] rounded-[8px] py-[12px] px-[18px] font-[400] text-[16px] text-[#414042] outline-none">
+                    <option value="">{t('page')} 1</option>
+                    <option value="">{t('page')} 2</option>
+                    <option value="">{t('page')} 3</option>
+                  </select>
+                </div>
+              </>
+            ) : (
+              <div className="flex flex-col items-center justify-center py-16 h-[300px]">
+                <svg
+                  className="w-16 h-16 text-blue-400 mb-4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15.75 9V5.25m0 0A2.25 2.25 0 0013.5 3h-3A2.25 2.25 0 008.25 5.25v3A2.25 2.25 0 0010.5 10.5h3A2.25 2.25 0 0015.75 8.25V5.25zm-7.5 9.75v3A2.25 2.25 0 0010.5 21h3a2.25 2.25 0 002.25-2.25v-3A2.25 2.25 0 0013.5 13.5h-3a2.25 2.25 0 00-2.25 2.25z"
+                  />
+                </svg>
+                <div className="text-xl font-semibold text-gray-700 mb-2">{t('no-job')}</div>
+                <div className="text-gray-500">{t('try-another-search')}</div>
+              </div>
+            )
+          }
+        </div >
+      ) : (
+        <div className="flex justify-center items-center h-[300px] text-lg font-semibold text-gray-700 min-h-[550px]">
+          {t('searching')}
+        </div>
+      )}
     </>
   )
 }

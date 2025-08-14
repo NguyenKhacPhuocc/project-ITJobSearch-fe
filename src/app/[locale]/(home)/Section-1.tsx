@@ -7,18 +7,34 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FaMagnifyingGlass } from "react-icons/fa6"
 
+interface MenuItem {
+  name: string;
+  link: string;
+}
+
 export const Section1 = () => {
   const { cities, loading, error } = useCities();
   const locale = useLocale();
   const t = useTranslations('Home');
   const router = useRouter();
 
+  const menuList: MenuItem[] = [
+    { name: "ReactJS", link: "/search?skill=ReactJS" },
+    { name: "NodeJS", link: "/search?skill=NodeJS" },
+    { name: "Python", link: "/search?skill=Python" },
+    { name: "Java", link: "/search?skill=Java" },
+    { name: "DevOps", link: "/search?skill=DevOps" },
+    { name: "PHP", link: "/search?skill=PHP" },
+    { name: "JavaScript", link: "/search?skill=JavaScript" },
+    { name: "HTML5", link: "/search?skill=HTML5" },
+  ];
+
   const handleSearch = (event: any) => {
     event.preventDefault();
     const city = event.target.city.value;
-    const keyword = event.target.keyword.value;
+    const keysearch = event.target.keysearch.value;
 
-    router.push(`/search?city=${city}&keyword=${keyword}`);
+    router.push(`/search?city=${city}&keysearch=${keysearch}`);
   }
 
 
@@ -37,13 +53,14 @@ export const Section1 = () => {
               aria-busy={loading} // tăng accessibility
               className="bg-white md:w-[200px] w-[100%] h-[56px] rounded-[4px] px-[20px] font-[500] text-[15px] text-[#121212]"
             >
+              <option value="">{t('all-cities')}</option>
               {!loading && !error && cities.map((city: any) => (
-                <option key={city._id} value={city._id}>
+                <option key={city._id} value={city.name[locale]}>
                   {locale === "vi" ? city.name.vi : city.name.en}
                 </option>
               ))}
             </select>
-            <input type="text" name="keyword" id="keyword" placeholder={t('search-placeholder')} className="md:flex-1 flex-none w-[100%] bg-white h-[56px] rounded-[4px] px-[20px] font-[500] text-[16px]" />
+            <input type="text" name="keysearch" id="keysearch" placeholder={t('search-placeholder')} className="md:flex-1 flex-none w-[100%] bg-white h-[56px] rounded-[4px] px-[20px] font-[500] text-[16px]" />
             <button
               className="relative overflow-hidden w-full md:w-[240px] h-[56px] rounded-[8px] font-semibold text-[16px] text-white inline-flex items-center justify-center shadow-md hover:shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-[1.03] group"
             >
@@ -60,15 +77,11 @@ export const Section1 = () => {
               {t('trending-searches')}
             </div>
             <div className="flex flex-wrap gap-[10px]">
-              <Link href="#" className="border border-[#414042] bg-[#121212] hover:bg-[#414042] rounded-[20px] inline-block text-[#DEDEDE] hover:text-white font-[500] text-[16px] py-[8px] px-[22px] transition-all duration-200 ease-in-out">
-                ReactJS
-              </Link>
-              <Link href="#" className="border border-[#414042] bg-[#121212] hover:bg-[#414042] rounded-[20px] inline-block text-[#DEDEDE] hover:text-white font-[500] text-[16px] py-[8px] px-[22px] transition-all duration-200 ease-in-out">
-                Javascript
-              </Link>
-              <Link href="#" className="border border-[#414042] bg-[#121212] hover:bg-[#414042] rounded-[20px] inline-block text-[#DEDEDE] hover:text-white font-[500] text-[16px] py-[8px] px-[22px] transition-all duration-200 ease-in-out">
-                NodeJS
-              </Link>
+              {menuList.map((item, index) => (
+                <Link key={index} href={item.link} className="border border-[#414042] bg-[#121212] hover:bg-[#414042] rounded-[20px] inline-block text-[#DEDEDE] hover:text-white font-[500] text-[16px] py-[8px] px-[22px] transition-all duration-200 ease-in-out">
+                  {item.name}
+                </Link>
+              ))}
             </div>
           </div>
         </div>

@@ -40,7 +40,7 @@
     "page": "Trang"
   },
   "SearchPage": {
-    "jobs": "việc làm",
+    "search-results-for": "Kết quả tìm kiếm cho",
     "level": {
       "level": "Cấp bậc",
       "intern": "Intern",
@@ -58,7 +58,9 @@
     },
     "page": "Trang",
     "no-job": "Không có kết quả tìm kiếm!",
-    "try-another-search": "Hãy thử tìm kiếm khác"
+    "try-another-search": "Hãy thử tìm kiếm khác",
+    "view-detail": "Xem chi tiết",
+    "searching": "Đang tìm kiếm..."
   },
   "JobDetailPage": {
     "detail-description": "Mô tả chi tiết",
@@ -292,7 +294,7 @@
     },
     "view-all": "Xem tất cả"
   },
-  "CardCompanyItem":{
+  "CardCompanyItem": {
     "job": "Việc làm"
   },
   "Metadata": {
