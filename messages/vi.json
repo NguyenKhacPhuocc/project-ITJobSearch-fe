@@ -103,7 +103,8 @@
     "delete-job": "Xóa",
     "page": "Trang",
     "pending-delete": "Đang xóa...",
-    "delete-successfull": "Xóa thành công!"
+    "delete-successfull": "Xóa thành công!",
+    "no-jobs-created": "Chưa có công việc nào được tạo"
   },
   "CompanyManageJobCreatePage": {
     "title": "Thêm mới công việc",

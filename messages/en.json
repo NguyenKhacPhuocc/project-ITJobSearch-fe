@@ -103,7 +103,8 @@
     "delete-job": "Delete",
     "page": "Page",
     "pending-delete": "Deleting...",
-    "delete-successfull": "Deleted Successfully!"
+    "delete-successfull": "Deleted Successfully!",
+    "no-jobs-created": "No jobs have been created"
   },
   "CompanyManageJobCreatePage": {
     "title": "Create New Job",

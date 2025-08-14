@@ -119,7 +119,7 @@ export const JobList = () => {
               <JobCardSkeleton key={index} />
             ))}
           </div>
-        ) : (
+        ) : jobList.length > 0 ? (
           <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-[20px]">
             {jobList.map((item: any) => {
               const level = levelList.find(itemLevel => itemLevel.value == item.level)?.label;
@@ -195,12 +195,29 @@ export const JobList = () => {
               )
             })}
           </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center py-16 h-[300px]">
+            <svg
+              className="w-16 h-16 text-blue-400 mb-4"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.75 9V5.25m0 0A2.25 2.25 0 0013.5 3h-3A2.25 2.25 0 008.25 5.25v3A2.25 2.25 0 0010.5 10.5h3A2.25 2.25 0 0015.75 8.25V5.25zm-7.5 9.75v3A2.25 2.25 0 0010.5 21h3a2.25 2.25 0 002.25-2.25v-3A2.25 2.25 0 0013.5 13.5h-3a2.25 2.25 0 00-2.25 2.25z"
+              />
+            </svg>
+            <div className="text-xl font-semibold text-gray-700 mb-2">{t('no-jobs-created')}</div>
+          </div>
         )}
       </div>
 
       <hr />
 
-      {totalPage && (
+      {totalPage > 0 && (
         <div className="mt-[20px]">
           <select
             name="pagination"

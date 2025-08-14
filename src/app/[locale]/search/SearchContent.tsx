@@ -6,6 +6,7 @@ import { levelList, workingFormList } from "@/config/variable";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import useSWR from "swr";
 
@@ -60,11 +61,13 @@ export const SearchContent = () => {
   const keysearch = searchParams.get("keysearch") || "";
   const level = searchParams.get("level") || "";
   const workingForm = searchParams.get("workingForm") || "";
+  const currentPage = parseInt(searchParams.get('page') || '1'); // Mặc định trang 1
+  const [page, setPage] = useState(currentPage);
   const locale = useLocale();
   const router = useRouter();
 
   const { data, isLoading } = useSWR(
-    `${process.env.NEXT_PUBLIC_API_URL}/search?skill=${skill}&city=${city}&keysearch=${keysearch}&level=${level}&workingForm=${workingForm}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/search?skill=${skill}&city=${city}&keysearch=${keysearch}&level=${level}&workingForm=${workingForm}&page=${page}`,
     fetcher,
     {
       keepPreviousData: true,     // Giữ data cũ khi đổi key
@@ -72,8 +75,21 @@ export const SearchContent = () => {
     }
   );
 
+  // lấy tổng số trang
+  const { data: totalPageData } = useSWR(
+    `${process.env.NEXT_PUBLIC_API_URL}/search/total-pages?skill=${skill}&city=${city}&keysearch=${keysearch}&level=${level}&workingForm=${workingForm}`,
+    fetcher,
+    {
+      keepPreviousData: true,     // Giữ data cũ khi đổi key
+      revalidateOnFocus: false,   // Không fetch lại khi focus tab
+      dedupingInterval: 60000, // Cache for 1 minute
+    }
+  );
+
   const jobList = data?.code === "success" ? data.jobs : [];
   const companyInfo = data?.code === "success" ? data.companyInfo : [];
+  const totalPage = totalPageData?.code === "success" ? totalPageData.totalPage : 0;
+  const totalRecord = totalPageData?.code === "success" ? totalPageData.totalRecord : 0;
 
   const handleFilterLevel = (event: any) => {
     const value = event.target.value;
@@ -96,6 +112,18 @@ export const SearchContent = () => {
       params.delete("workingForm");
     }
 
+    router.push(`?${params.toString()}`)
+  }
+
+  const handlePagination = (event: any) => {
+    const value = event.target.value;
+    setPage(value);
+    const params = new URLSearchParams(searchParams.toString());
+    if (value) {
+      params.set("page", value);
+    } else {
+      params.delete("page");
+    }
     router.push(`?${params.toString()}`)
   }
 
@@ -133,7 +161,7 @@ export const SearchContent = () => {
 
         <h2 className="font-[700] text-[28px] text-[#121212] mb-[30px] flex items-center">
           <div className="bg-[#F0F6FF] text-[#0088FF] flex justify-center items-center h-[40px] w-[80px] mr-[10px] rounded-[8px] border border-[#D6E6FF]">
-            {jobList.length ? jobList.length : 0}
+            {totalRecord ? totalRecord : 0}
           </div>
           {t('search-results-for')} <span className="text-[#0088FF] ml-[10px]">{[skill, city, keysearch].filter(Boolean).join(', ')}</span>
         </h2>
@@ -160,31 +188,22 @@ export const SearchContent = () => {
 
         {isLoading ? (
           // Trường hợp 1: Đang loading
-          <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-[20px]">
-            {Array.from({ length: 3 }).map((_, idx) => (
-              <JobCardSkeleton key={idx} />
-            ))}
+          <div className="h-[500px]">
+            <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-[20px]">
+              {Array.from({ length: 3 }).map((_, idx) => (
+                <JobCardSkeleton key={idx} />
+              ))}
+            </div>
           </div>
         ) : jobList.length > 0 ? (
           // Trường hợp 2: Có job sau khi load xong
-          <>
-            <div className="h-[500px]">
-              <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-[20px]">
-                {jobList.map((item: any) => (
-                  <CardJobItem key={item.id} item={item} locale={locale} />
-                ))}
-              </div>
+          <div className="h-[500px]">
+            <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-[20px]">
+              {jobList.map((item: any) => (
+                <CardJobItem key={item.id} item={item} locale={locale} />
+              ))}
             </div>
-            <div className="mt-[30px]">
-              <select
-                className="border border-[#DEDEDE] rounded-[8px] py-[12px] px-[18px] font-[400] text-[16px] text-[#414042] outline-none"
-              >
-                <option value="">{t('page')} 1</option>
-                <option value="">{t('page')} 2</option>
-                <option value="">{t('page')} 3</option>
-              </select>
-            </div>
-          </>
+          </div>
         ) : (
           // Trường hợp 3: Không có job sau khi load xong
           <div className="flex flex-col items-center justify-center py-16 h-[300px]">
@@ -203,6 +222,23 @@ export const SearchContent = () => {
             </svg>
             <div className="text-xl font-semibold text-gray-700 mb-2">{t('no-job')}</div>
             <div className="text-gray-500">{t('try-another-search')}</div>
+          </div>
+        )}
+        <hr />
+        {totalPage > 0 && (
+          <div className="mt-[20px]">
+            <select
+              name="pagination"
+              className="border border-[#DEDEDE] rounded-[8px] py-[12px] px-[18px] font-[400] text-[16px] text-[#414042]"
+              onChange={handlePagination}
+              value={currentPage}
+            >
+              {Array.from({ length: totalPage }).map((_, index: number) => (
+                <option key={index} value={index + 1}>
+                  {t('page')} {index + 1}
+                </option>
+              ))}
+            </select>
           </div>
         )}
       </div >
