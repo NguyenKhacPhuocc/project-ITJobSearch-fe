@@ -48,7 +48,7 @@ export const HeaderAccount = () => {
                   <div className="text-[15px]">{infoUser.fullName}</div>
                 </div>
               </Link>
-              <ul className="absolute top-[100%] right-[0px] w-[200px] bg-[#0D1B2A] hidden group-hover/sub-1:block z-[999]">
+              <ul className="absolute top-[100%] right-[0px] w-[200px] bg-black  hidden group-hover/sub-1:block z-[999]">
                 <li className="flex items-center justify-between hover:bg-[#18324e] relative group/sub-2">
                   <Link href="/user-manage/profile" className="py-[10px] px-[15px] w-full text-white text-[15px]">
                     {t('user-profile')}
@@ -82,7 +82,7 @@ export const HeaderAccount = () => {
                   <div className="text-[15px]  hidden md:block ">{infoCompany.companyName}</div>
                 </div>
               </Link>
-              <ul className="absolute top-[100%] right-[0px] w-[200px] bg-[#0D1B2A] hidden group-hover/sub-1:block z-[999]">
+              <ul className="absolute top-[100%] right-[0px] w-[200px] bg-black hidden group-hover/sub-1:block z-[999]">
                 <li className="flex items-center justify-between hover:bg-[#18324e] relative group/sub-2">
                   <Link href="/company-manage/profile" className="text-white text-[15px] py-[10px] px-[15px] w-full">
                     {t('company-info')}

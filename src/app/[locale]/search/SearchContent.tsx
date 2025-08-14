@@ -52,10 +52,11 @@ export const SearchContent = () => {
   const t = useTranslations('SearchPage');
   const searchParams = useSearchParams();
   const skill = searchParams.get("skill") || "";
+  const city = searchParams.get("city") || "";
   const locale = useLocale();
 
   const { data, isLoading } = useSWR(
-    `${process.env.NEXT_PUBLIC_API_URL}/search?skill=${skill}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/search?skill=${skill}&city=${city}`,
     fetcher,
     {
       keepPreviousData: true,     // Giữ data cũ khi đổi key
@@ -69,8 +70,11 @@ export const SearchContent = () => {
     <>
       <div className="container mx-auto px-[16px]">
 
-        <h2 className="font-[700] text-[28px] text-[#121212] mb-[30px]">
-          {jobList.length ? jobList.length : ""} {t('jobs')} <span className="text-[#0088FF]">{skill}</span>
+        <h2 className="font-[700] text-[28px] text-[#121212] mb-[30px] flex items-center">
+          <div className="bg-[#F0F6FF] text-[#0088FF] flex justify-center items-center h-[40px] w-[80px] mr-[5px] rounded-[8px] border border-[#D6E6FF]">
+            {jobList.length ? jobList.length : 0}
+          </div>
+          {t('jobs')} <span className="text-[#0088FF] ml-[7px]">{skill} {city}</span>
         </h2>
 
         <div
@@ -96,24 +100,46 @@ export const SearchContent = () => {
           </select>
         </div>
 
-        <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-[20px]">
-          {isLoading
-            ? Array.from({ length: 3 }).map((_, idx) => (
-              <JobCardSkeleton key={idx} />
-            ))
-            : jobList.map((item: any) => (
-              <CardJobItem key={item.id} item={item} locale={locale} />
-            ))}
-        </div>
-
-        <div className="mt-[30px]">
-          <select name="" className="border border-[#DEDEDE] rounded-[8px] py-[12px] px-[18px] font-[400] text-[16px] text-[#414042] outline-none">
-            <option value="">{t('page')} 1</option>
-            <option value="">{t('page')} 2</option>
-            <option value="">{t('page')} 3</option>
-          </select>
-        </div>
-
+        {jobList.length > 0 ?
+          (
+            <>
+              <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-[20px]">
+                {isLoading
+                  ? Array.from({ length: 3 }).map((_, idx) => (
+                    <JobCardSkeleton key={idx} />
+                  ))
+                  : jobList.map((item: any) => (
+                    <CardJobItem key={item.id} item={item} locale={locale} />
+                  ))}
+              </div>
+              <div className="mt-[30px]">
+                <select name="" className="border border-[#DEDEDE] rounded-[8px] py-[12px] px-[18px] font-[400] text-[16px] text-[#414042] outline-none">
+                  <option value="">{t('page')} 1</option>
+                  <option value="">{t('page')} 2</option>
+                  <option value="">{t('page')} 3</option>
+                </select>
+              </div>
+            </>
+          ) : (
+            <div className="flex flex-col items-center justify-center py-16">
+              <svg
+                className="w-16 h-16 text-blue-400 mb-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.75 9V5.25m0 0A2.25 2.25 0 0013.5 3h-3A2.25 2.25 0 008.25 5.25v3A2.25 2.25 0 0010.5 10.5h3A2.25 2.25 0 0015.75 8.25V5.25zm-7.5 9.75v3A2.25 2.25 0 0010.5 21h3a2.25 2.25 0 002.25-2.25v-3A2.25 2.25 0 0013.5 13.5h-3a2.25 2.25 0 00-2.25 2.25z"
+                />
+              </svg>
+              <div className="text-xl font-semibold text-gray-700 mb-2">{t('no-job')}</div>
+              <div className="text-gray-500">{t('try-another-search')}</div>
+            </div>
+          )
+        }
       </div>
     </>
   )

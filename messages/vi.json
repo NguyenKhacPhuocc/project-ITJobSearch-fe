@@ -56,7 +56,9 @@
       "remote": "Làm từ xa",
       "flexible": "Linh hoạt"
     },
-    "page": "Trang"
+    "page": "Trang",
+    "no-job": "Không có kết quả tìm kiếm!",
+    "try-another-search": "Hãy thử tìm kiếm khác"
   },
   "JobDetailPage": {
     "detail-description": "Mô tả chi tiết",
@@ -287,7 +289,8 @@
       "hochiminh": "Hồ Chí Minh",
       "hanoi": "Hà Nội",
       "danang": "Đà Nẵng"
-    }
+    },
+    "view-all": "Xem tất cả"
   },
   "CardCompanyItem":{
     "job": "Việc làm"

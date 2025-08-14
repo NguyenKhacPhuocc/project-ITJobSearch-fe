@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useAuth } from "@/hooks/useAuth";
-import { useTranslations } from "next-intl";
+import { useCities } from "@/hooks/useCities";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { FaAngleDown, FaAngleRight } from "react-icons/fa6";
 
@@ -13,6 +15,8 @@ interface MenuItem {
 
 export const HeaderMenu = ({ showMenu }: { showMenu: boolean }) => {
   const { isLogin } = useAuth();
+  const locale = useLocale();
+  const { cities } = useCities();
 
   const t = useTranslations('HeaderMenu');
 
@@ -68,11 +72,10 @@ export const HeaderMenu = ({ showMenu }: { showMenu: boolean }) => {
         {
           name: t('it-jobs-by-city'),
           link: "#",
-          children: [
-            { name: t('cities.hochiminh'), link: "/search?city=HoChiMinh" },
-            { name: t('cities.hanoi'), link: "/search?city=Hanoi" },
-            { name: t('cities.danang'), link: "/search?city=DaNang" },
-          ],
+          children: cities.map((city: any) => ({
+            name: city.name[locale], // Lấy tên thành phố theo ngôn ngữ hiện tại
+            link: `/search?city=${encodeURIComponent(city.name[locale])}` // Sử dụng tên tiếng Anh cho URL
+          }))
         },
       ],
     },
@@ -124,9 +127,9 @@ export const HeaderMenu = ({ showMenu }: { showMenu: boolean }) => {
             {menu.children && (
               <FaAngleDown className="text-white text-[16px] transition-transform duration-300 group-hover/sub-1:rotate-180" />
             )}
-
+            {/* bg-[#0D1B2A] */}
             {menu.children && (
-              <ul className="lg:absolute relative lg:top-full top-0 left-0 lg:w-[280px] w-full bg-[#0D1B2A] hidden group-hover/sub-1:block z-[999] ">
+              <ul className="lg:absolute relative lg:top-full top-0 left-0 lg:w-[280px] w-full bg-black hidden group-hover/sub-1:block z-[999] ">
                 {menu.children.map((menuSub1, indexSub1) => (
                   <li
                     key={indexSub1}
@@ -143,7 +146,7 @@ export const HeaderMenu = ({ showMenu }: { showMenu: boolean }) => {
                     )}
 
                     {menuSub1.children && (
-                      <ul className={`lg:absolute relative top-0 lg:left-full left-0 bg-[#0D1B2A] hidden group-hover/sub-2:block z-[999] transition-all duration-200 ease-in-out ${menuSub1.children.length > 5 ? 'lg:w-[560px]' : 'lg:w-[280px]'}`}>
+                      <ul className={`lg:absolute relative top-0 lg:left-full left-0 bg-black  hidden group-hover/sub-2:block z-[999] transition-all duration-200 ease-in-out ${menuSub1.children.length > 5 ? 'lg:w-[560px]' : 'lg:w-[280px]'}`}>
 
                         {/* Kiểm tra nếu có nhiều hơn 5 items thì chia cột */}
                         {menuSub1.children.length > 5 ? (
@@ -187,7 +190,7 @@ export const HeaderMenu = ({ showMenu }: { showMenu: boolean }) => {
                         <div className="w-full border-t border-[#18324e]">
                           <li className="hover:bg-[#18324e]">
                             <Link href={menuSub1.link} className="text-blue-400 font-bold text-[15px] block py-[10px] px-[15px]">
-                              Xem tất cả ({menuSub1.children.length})
+                              {t('view-all')} ({menuSub1.children.length})
                             </Link>
                           </li>
                         </div>

@@ -77,6 +77,15 @@ export const JobList = () => {
   const currentPage = parseInt(searchParams.get('page') || '1'); // Mặc định trang 1
   const [page, setPage] = useState(currentPage);
 
+  // Fetch total pages once when component mounts
+  const { data: totalPageData } = useSWR(
+    [`${process.env.NEXT_PUBLIC_API_URL}/company/job/total-pages`, locale],
+    ([url, locale]) => fetcher(url, locale),
+    {
+      dedupingInterval: 60000, // Cache for 1 minute
+      revalidateOnFocus: false,
+    }
+  );
 
   // fetch data job-list
   const { data, error, isLoading } = useSWR(
@@ -90,7 +99,7 @@ export const JobList = () => {
   if (error) return <div>Error loading data</div>;
 
   const jobList = data?.code === "success" ? data.jobList : [];
-  const totalPage = data?.code === "success" ? data.totalPage : [];
+  const totalPage = totalPageData?.code === "success" ? totalPageData.totalPage : 1;
   //end fetch data job-list
 
 

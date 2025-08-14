@@ -56,7 +56,9 @@
       "remote": "Remote",
       "flexible": "Flexible"
     },
-    "page": "Page"
+    "page": "Page",
+    "no-job": "No results found!",
+    "try-another-search": "Try another search"
   },
   "JobDetailPage": {
     "detail-description": "Detailed Description",
@@ -287,7 +289,8 @@
       "hochiminh": "Ho Chi Minh",
       "hanoi": "Ha Noi",
       "danang": "Da Nang"
-    }
+    },
+    "view-all": "View all"
   },
   "CardCompanyItem": {
     "job": "Jobs"
