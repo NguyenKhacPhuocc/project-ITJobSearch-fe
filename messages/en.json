@@ -71,7 +71,13 @@
       "phone": "Phone Number",
       "file-cv": "CV File (PDF)",
       "submit-button": "Submit CV"
-    }
+    },
+    "apply": "Apply",
+    "view-detail": "View company",
+    "company-model": "Company model: ",
+    "company-employees": "Company size: ",
+    "working-time": "Working hours: ",
+    "working-over-time": "Overtime work: "
   },
   "CompanyManageProfilePage": {
     "company-info": "Company Information",

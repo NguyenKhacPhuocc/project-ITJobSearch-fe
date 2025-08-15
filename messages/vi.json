@@ -71,7 +71,13 @@
       "phone": "Số điện thoại",
       "file-cv": "File CV dạng PDF",
       "submit-button": "Gửi CV ứng tuyển"
-    }
+    },
+    "apply": "Ứng tuyển",
+    "view-detail": "Xem công ty",
+    "company-model":"Mô hình công ty: ",
+    "company-employees":"Quy mô công ty: ",
+    "working-time":"Thời gian làm việc: ",
+    "working-over-time":"Làm việc ngoài giờ: "
   },
   "CompanyManageProfilePage": {
     "company-info": "Thông tin công ty",

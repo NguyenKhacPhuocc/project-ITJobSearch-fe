@@ -13,7 +13,7 @@ export const CardCompanyItem = (props: {
   return (
     <>
       <Link
-        href={`/company/detail/${item.id}`}
+        href={`/company/detail/${item.slug}`}
         className="border border-[#DEDEDE] rounded-[8px] flex flex-col relative truncate"
         style={{
           background: "linear-gradient(180deg, #F6F6F6 2.38%, #FFFFFF 70.43%)"
