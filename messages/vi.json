@@ -31,7 +31,13 @@
     "phone": "Số điện thoại",
     "update": "Cập nhật",
     "pending-update": "Đang cập nhật...",
-    "update-successfull": "Cập nhật thành công!"
+    "update-successfull": "Cập nhật thành công!",
+    "fullName_required": "Vui lòng nhập họ tên!",
+    "fullName_minLength": "Họ tên phải có ít nhất 5 ký tự!",
+    "fullName_maxLength": "Họ tên không được vượt quá 50 ký tự!",
+    "email_required": "Vui lòng nhập email của bạn!",
+    "email_invalid": "Email không đúng định dạng!",
+    "phone-invalid": "Số điện thoại không đúng định dạng!"
   },
   "UserManageCVListPage": {
     "cv-submitted-management": "Quản lý CV đã gửi",
@@ -70,14 +76,28 @@
       "email": "Email",
       "phone": "Số điện thoại",
       "file-cv": "File CV dạng PDF",
-      "submit-button": "Gửi CV ứng tuyển"
+      "submit-button": "Gửi CV ứng tuyển",
+      "pending-submit-button": "Đang gửi CV ứng tuyển..."
     },
     "apply": "Ứng tuyển",
     "view-detail": "Xem công ty",
-    "company-model":"Mô hình công ty: ",
-    "company-employees":"Quy mô công ty: ",
-    "working-time":"Thời gian làm việc: ",
-    "working-over-time":"Làm việc ngoài giờ: "
+    "company-model": "Mô hình công ty: ",
+    "company-employees": "Quy mô công ty: ",
+    "working-time": "Thời gian làm việc: ",
+    "working-over-time": "Làm việc ngoài giờ: ",
+    "fullName_required": "Vui lòng nhập họ tên!",
+    "fullName_minLength": "Họ tên phải có ít nhất 5 ký tự!",
+    "fullName_maxLength": "Họ tên không được vượt quá 50 ký tự!",
+    "email_required": "Vui lòng nhập email của bạn!",
+    "email_invalid": "Email không đúng định dạng!",
+    "phone_required": "Vui lòng nhập số điện thoại!",
+    "phone_invalid": "Số điện thoại không đúng định dạng!",
+    "cv_required": "Vui lòng chọn file CV!",
+    "cv_pdf_only": "File phải là định dạng PDF!",
+    "cv_max_size": "Dung lượng file không được vượt quá 5MB!",
+    "apply_success": "Ứng tuyển thành công!",
+    "apply_fail": "Ứng tuyển thất bại",
+    "jobid-not-found": "Không tìm thấy công việc này!"
   },
   "CompanyManageProfilePage": {
     "company-info": "Thông tin công ty",
@@ -100,7 +120,8 @@
     "company-name-max-length": "Tên công ty không được vượt quá 200 ký tự!",
     "company-email-required": "Vui lòng nhập email của công ty!",
     "company-email-invalid": "Email không đúng định dạng!",
-    "city-required": "Vui lòng chọn thành phố!"
+    "city-required": "Vui lòng chọn thành phố!",
+    "phone-invalid": "Số điện thoại không đúng định dạng!"
   },
   "CompanyManageJobListPage": {
     "management-job": "Quản lý công việc",
@@ -236,7 +257,18 @@
     "top-company": "Nhà tuyển dụng hàng đầu"
   },
   "UserRegisterPage": {
-    "title": "Đăng ký (Ứng viên)"
+    "title": "Đăng ký (Ứng viên)",
+    "fullName_required": "Vui lòng nhập họ tên!",
+    "fullName_minLength": "Họ tên phải có ít nhất 5 ký tự!",
+    "fullName_maxLength": "Họ tên không được vượt quá 50 ký tự!",
+    "email_required": "Vui lòng nhập email của bạn!",
+    "email_invalid": "Email không đúng định dạng!",
+    "password_required": "Vui lòng nhập mật khẩu!",
+    "password_minLength": "Mật khẩu phải chứa ít nhất 8 ký tự!",
+    "password_uppercase": "Mật khẩu phải chứa ít nhất một chữ cái in hoa!",
+    "password_lowercase": "Mật khẩu phải chứa ít nhất một chữ cái thường!",
+    "password_number": "Mật khẩu phải chứa ít nhất một chữ số!",
+    "password_special": "Mật khẩu phải chứa ít nhất một ký tự đặc biệt!"
   },
   "UserLoginPage": {
     "title": "Đăng nhập (Ứng viên)"
@@ -262,7 +294,17 @@
     "company-name": "Tên công ty",
     "email": "Email",
     "password": "Mật khẩu",
-    "register-button": "Đăng ký"
+    "register-button": "Đăng ký",
+    "companyName_required": "Vui lòng nhập tên công ty!",
+    "companyName_maxLength": "Tên công ty không được vượt quá 200 ký tự!",
+    "email_required": "Vui lòng nhập email của bạn!",
+    "email_invalid": "Email không đúng định dạng!",
+    "password_required": "Vui lòng nhập mật khẩu!",
+    "password_minLength": "Mật khẩu phải chứa ít nhất 8 ký tự!",
+    "password_uppercase": "Mật khẩu phải chứa ít nhất một chữ cái in hoa!",
+    "password_lowercase": "Mật khẩu phải chứa ít nhất một chữ cái thường!",
+    "password_number": "Mật khẩu phải chứa ít nhất một chữ số!",
+    "password_special": "Mật khẩu phải chứa ít nhất một ký tự đặc biệt!"
   },
   "CompanyLoginForm": {
     "email": "Email",

@@ -6,6 +6,7 @@ import { getTranslations } from "next-intl/server";
 import Link from "next/link"
 import { notFound } from "next/navigation";
 import { FaBriefcase, FaLocationDot, FaUserTie } from "react-icons/fa6"
+import { ApplyForm } from "./ApplyForm";
 
 // Hàm này chạy trên server, trước khi render
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -98,40 +99,7 @@ export default async function JobDetailPage({ params }: {
                 {/* Hết Mô tả chi tiết */}
 
                 {/* Form ứng tuyển */}
-                <div id="applyForm" className="border border-[#DEDEDE] rounded-[8px] p-[20px] mt-[20px]">
-                  <h2 className="font-[700] text-[20px] text-black mb-[20px]">
-                    {t('apply-now')}
-                  </h2>
-                  <form action="" className="">
-                    <div className="mb-[15px]">
-                      <label htmlFor="fullName" className="block font-[500] text-[14px] text-black mb-[5px]">
-                        {t('form.full-name')} *
-                      </label>
-                      <input type="text" name="" id="fullName" className="w-[100%] h-[46px] border border-[#DEDEDE] rounded-[4px] py-[14px] px-[20px] font-[500] text-[14px] text-black" />
-                    </div>
-                    <div className="mb-[15px]">
-                      <label htmlFor="email" className="block font-[500] text-[14px] text-black mb-[5px]">
-                        {t('form.email')} *
-                      </label>
-                      <input type="email" name="" id="email" className="w-[100%] h-[46px] border border-[#DEDEDE] rounded-[4px] py-[14px] px-[20px] font-[500] text-[14px] text-black" />
-                    </div>
-                    <div className="mb-[15px]">
-                      <label htmlFor="phone" className="block font-[500] text-[14px] text-black mb-[5px]">
-                        {t('form.phone')} *
-                      </label>
-                      <input type="text" name="" id="phone" className="w-[100%] h-[46px] border border-[#DEDEDE] rounded-[4px] py-[14px] px-[20px] font-[500] text-[14px] text-black" />
-                    </div>
-                    <div className="mb-[15px]">
-                      <label htmlFor="fileCV" className="block font-[500] text-[14px] text-black mb-[5px]">
-                        {t('form.file-cv')} *
-                      </label>
-                      <input type="file" name="" id="fileCV" accept="application/pdf" className="" />
-                    </div>
-                    <button className="w-[100%] h-[48px] rounded-[4px] bg-[#0088FF] font-[700] text-[16px] text-white hover:bg-[#0364b8]">
-                      {t('form.submit-button')}
-                    </button>
-                  </form>
-                </div>
+                <ApplyForm jobId={detailedJob.id} />
                 {/* Hết Form ứng tuyển */}
               </div>
               {/* Right */}

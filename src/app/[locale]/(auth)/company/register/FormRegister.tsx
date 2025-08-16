@@ -8,6 +8,8 @@ import { useEffect, useRef } from "react";
 export const FormRegister = () => {
   const router = useRouter();
   const validatorRef = useRef<InstanceType<typeof JustValidate> | null>(null);
+  const t = useTranslations('CompanyFormRegister');
+
   useEffect(() => {
     if (validatorRef.current) return; // Ngăn không cho gắn nhiều lần
     const validator = new JustValidate("#registerForm");
@@ -16,48 +18,48 @@ export const FormRegister = () => {
       .addField('#companyName', [
         {
           rule: 'required',
-          errorMessage: 'Vui lòng nhập tên công ty!'
+          errorMessage: t('companyName_required')
         },
         {
           rule: 'maxLength',
           value: 200,
-          errorMessage: 'Tên công ty không được vượt quá 200 ký tự!',
+          errorMessage: t('companyName_maxLength'),
         },
       ])
       .addField('#email', [
         {
           rule: 'required',
-          errorMessage: 'Vui lòng nhập email của bạn!',
+          errorMessage: t('email_required'),
         },
         {
           rule: 'email',
-          errorMessage: 'Email không đúng định dạng!',
+          errorMessage: t('email_invalid'),
         },
       ])
       .addField('#password', [
         {
           rule: 'required',
-          errorMessage: 'Vui lòng nhập mật khẩu!',
+          errorMessage: t('password_required'),
         },
         {
           validator: (value: string) => value.length >= 8,
-          errorMessage: 'Mật khẩu phải chứa ít nhất 8 ký tự!',
+          errorMessage: t('password_minLength'),
         },
         {
           validator: (value: string) => /[A-Z]/.test(value),
-          errorMessage: 'Mật khẩu phải chứa ít nhất một chữ cái in hoa!',
+          errorMessage: t('password_uppercase'),
         },
         {
           validator: (value: string) => /[a-z]/.test(value),
-          errorMessage: 'Mật khẩu phải chứa ít nhất một chữ cái thường!',
+          errorMessage: t('password_lowercase'),
         },
         {
           validator: (value: string) => /\d/.test(value),
-          errorMessage: 'Mật khẩu phải chứa ít nhất một chữ số!',
+          errorMessage: t('password_number'),
         },
         {
           validator: (value: string) => /[@$!%*?&]/.test(value),
-          errorMessage: 'Mật khẩu phải chứa ít nhất một ký tự đặc biệt!',
+          errorMessage: t('password_special'),
         },
       ])
       .onSuccess((event: any) => {
@@ -90,9 +92,8 @@ export const FormRegister = () => {
           })
       });
     validatorRef.current = validator; // Lưu lại để không bị tạo lại
-  }, [router]);
+  }, [router, t]);
 
-  const t = useTranslations('CompanyFormRegister');
 
   return (
     <>

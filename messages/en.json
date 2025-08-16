@@ -31,7 +31,13 @@
     "phone": "Phone Number",
     "update": "Update",
     "pending-update": "Updating...",
-    "update-successfull": "Updated Successfully!"
+    "update-successfull": "Updated Successfully!",
+    "fullName_required": "Please enter your full name!",
+    "fullName_minLength": "Full name must be at least 5 characters!",
+    "fullName_maxLength": "Full name must not exceed 50 characters!",
+    "email_required": "Please enter your email!",
+    "email_invalid": "Invalid email format!",
+    "phone-invalid": "Phone format is invalid!"
   },
   "UserManageCVListPage": {
     "cv-submitted-management": "Manage Submitted CVs",
@@ -70,14 +76,28 @@
       "email": "Email",
       "phone": "Phone Number",
       "file-cv": "CV File (PDF)",
-      "submit-button": "Submit CV"
+      "submit-button": "Submit CV",
+      "pending-submit-button": "Submitting CV..."
     },
     "apply": "Apply",
     "view-detail": "View company",
     "company-model": "Company model: ",
     "company-employees": "Company size: ",
     "working-time": "Working hours: ",
-    "working-over-time": "Overtime work: "
+    "working-over-time": "Overtime work: ",
+    "fullName_required": "Please enter your full name!",
+    "fullName_minLength": "Full name must be at least 5 characters!",
+    "fullName_maxLength": "Full name must not exceed 50 characters!",
+    "email_required": "Please enter your email!",
+    "email_invalid": "Invalid email format!",
+    "phone_required": "Please enter your phone number!",
+    "phone_invalid": "Invalid phone number format!",
+    "cv_required": "Please select your CV file!",
+    "cv_pdf_only": "The file must be in PDF format!",
+    "cv_max_size": "The file size must not exceed 5MB!",
+    "apply_success": "Application successful!",
+    "apply_fail": "Application failed",
+    "jobid-not-found": "Job not found"
   },
   "CompanyManageProfilePage": {
     "company-info": "Company Information",
@@ -100,7 +120,8 @@
     "company-name-max-length": "Company name cannot exceed 200 characters!",
     "company-email-required": "Please enter the company email!",
     "company-email-invalid": "Email format is invalid!",
-    "city-required": "Please select a city!"
+    "city-required": "Please select a city!",
+    "phone-invalid": "Phone format is invalid!"
   },
   "CompanyManageJobListPage": {
     "management-job": "Job Management",
@@ -236,7 +257,18 @@
     "top-company": "Top Employers"
   },
   "UserRegisterPage": {
-    "title": "Register (Candidate)"
+    "title": "Register (Candidate)",
+    "fullName_required": "Please enter your full name!",
+    "fullName_minLength": "Full name must be at least 5 characters!",
+    "fullName_maxLength": "Full name must not exceed 50 characters!",
+    "email_required": "Please enter your email!",
+    "email_invalid": "Invalid email format!",
+    "password_required": "Please enter your password!",
+    "password_minLength": "Password must be at least 8 characters!",
+    "password_uppercase": "Password must contain at least one uppercase letter!",
+    "password_lowercase": "Password must contain at least one lowercase letter!",
+    "password_number": "Password must contain at least one number!",
+    "password_special": "Password must contain at least one special character!"
   },
   "UserLoginPage": {
     "title": "Log In (Candidate)"
@@ -262,7 +294,17 @@
     "company-name": "Company Name",
     "email": "Email",
     "password": "Password",
-    "register-button": "Register"
+    "register-button": "Register",
+    "companyName_required": "Please enter your company name!",
+    "companyName_maxLength": "Company name must not exceed 200 characters!",
+    "email_required": "Please enter your email!",
+    "email_invalid": "Invalid email format!",
+    "password_required": "Please enter your password!",
+    "password_minLength": "Password must be at least 8 characters long!",
+    "password_uppercase": "Password must contain at least one uppercase letter!",
+    "password_lowercase": "Password must contain at least one lowercase letter!",
+    "password_number": "Password must contain at least one number!",
+    "password_special": "Password must contain at least one special character!"
   },
   "CompanyLoginForm": {
     "email": "Email",

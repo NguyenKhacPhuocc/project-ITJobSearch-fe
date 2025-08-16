@@ -40,27 +40,27 @@ export const ProfileForm = () => {
         .addField('#fullName', [
           {
             rule: 'required',
-            errorMessage: 'Vui lòng nhập họ tên!'
+            errorMessage: t('fullName_required')
           },
           {
             rule: 'minLength',
             value: 5,
-            errorMessage: 'Họ tên phải có ít nhất 5 ký tự!',
+            errorMessage: t('fullName_minLength'),
           },
           {
             rule: 'maxLength',
             value: 50,
-            errorMessage: 'Họ tên không được vượt quá 50 ký tự!',
+            errorMessage: t('fullName_maxLength'),
           },
         ])
         .addField('#email', [
           {
             rule: 'required',
-            errorMessage: 'Vui lòng nhập email của bạn!',
+            errorMessage: t('email_required'),
           },
           {
             rule: 'email',
-            errorMessage: 'Email không đúng định dạng!',
+            errorMessage: t('email_invalid'),
           },
         ])
         .onFail(() => {
@@ -70,7 +70,7 @@ export const ProfileForm = () => {
           setIsValid(true);
         });
     }
-  }, [infoUser]);
+  }, [infoUser, t]);
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -114,8 +114,8 @@ export const ProfileForm = () => {
         });
       toast.promise(promise, {
         loading: t('pending-update'),
-        success: () => t('update-successfull'),
-        error: (err) => err.message || `Đã xảy ra lỗi!`,
+        success: (data) => t(`${data.message}`),
+        error: (err) => t(`${err.message}`) || `Đã xảy ra lỗi!`,
       });
     }
   }

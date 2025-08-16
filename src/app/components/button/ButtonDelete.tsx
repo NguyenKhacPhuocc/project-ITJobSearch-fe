@@ -31,7 +31,7 @@ export const ButtonDelete = (props: {
       toast.promise(promise, {
         loading: t('pending-delete'),
         success: t('delete-successfull'),
-        error: (err) => err.message || `Đã xảy ra lỗi!`,
+        error: (err) => t(`${err.message}`) || `Đã xảy ra lỗi!`,
       });
     }
   }

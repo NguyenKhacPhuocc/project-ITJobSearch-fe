@@ -80,17 +80,19 @@ export const Header = () => {
       <header
         className={`bg-[linear-gradient(to_right,_#000000_0%,_#0D1B2A_60%,_#005E92_120%)] py-[10px] h-[65px] flex items-center px-[15px] border-b border-[#656565] fixed w-full top-0 z-[999] transition-transform duration-700 ${hideHeader ? "-translate-y-full" : "translate-y-0"}`}
       >
-        <div className="container mx-auto">
+        <div className="w-full px-[20px] mx-auto">
           {/* Wrap */}
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <div>
-              <Link href="/" className="text-white font-[800] sm:text-[28px] text-[20px] lg:flex-none flex-1 inline">
-                ITJobSearch
-              </Link>
+            <div className="flex items-center justify-center gap-[50px]">
+              <div>
+                <Link href="/" className="text-white font-[800] sm:text-[28px] text-[20px] lg:flex-none flex-1 inline">
+                  ITJobSearch
+                </Link>
+              </div>
+              {/* Menu */}
+              <HeaderMenu showMenu={showMenu} />
             </div>
-            {/* Menu */}
-            <HeaderMenu showMenu={showMenu} />
             {/* Account */}
             <div className="flex justify-center items-center gap-[25px]">
               <HeaderAccount />

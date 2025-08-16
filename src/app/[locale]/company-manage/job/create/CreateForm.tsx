@@ -111,7 +111,7 @@ export const CreateForm = () => {
       toast.promise(promise, {
         loading: t('pending-create'),
         success: t('create-successfull'),
-        error: (err) => err.message || `Đã xảy ra lỗi!`,
+        error: (err) => t(`${err.message}`) || `Đã xảy ra lỗi!`,
       });
     }
   }

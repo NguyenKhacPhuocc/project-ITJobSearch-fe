@@ -41,13 +41,13 @@ export const EditForm = (props: {
       .then(res => res.json())
       .then(data => {
         if (data.code == "error") {
-          toast.error(data.message)
+          toast.error(t(`${data.message}`))
         }
         if (data.code == "success") {
           setJobDetail(data.jobDetail)
         }
       })
-  }, [id])
+  }, [id,t])
 
   
   // Initialize form validation
@@ -143,7 +143,7 @@ export const EditForm = (props: {
       toast.promise(promise, {
         loading: t('pending-update'),
         success: t('update-successfull'),
-        error: (err) => err.message || `Đã xảy ra lỗi!`,
+        error: (err) => t(`${err.message}`) || `Đã xảy ra lỗi!`,
       });
     }
   }
