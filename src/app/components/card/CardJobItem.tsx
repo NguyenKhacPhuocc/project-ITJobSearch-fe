@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { levelList, workingFormList } from "@/config/variable";
 import Link from "next/link"
-import { FaBriefcase, FaLocationDot, FaUserTie } from "react-icons/fa6"
+import { FaBriefcase, FaDev, FaLocationDot, FaUserTie } from "react-icons/fa6"
 
 type Locale = "vi" | "en";
 
@@ -51,6 +51,9 @@ export const CardJobItem = (props: {
         </div>
         <div className="mt-[6px] flex justify-center items-center gap-[8px] font-[400] text-[14px] text-[#121212]">
           <FaUserTie className="text-[16px]" /> {level}
+        </div>
+        <div className="mt-[6px] flex justify-center items-center gap-[8px] font-[400] text-[14px] text-[#121212]">
+          <FaDev className="text-[16px]" /> {item.expertise}
         </div>
         <div className="mt-[6px] flex justify-center items-center gap-[8px] font-[400] text-[14px] text-[#121212]">
           <FaBriefcase className="text-[16px]" /> {workingForm}

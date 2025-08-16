@@ -239,7 +239,8 @@
     "overtime": "Overtime: ",
     "detailed-description": "Detailed Description",
     "pre-jobs": "The company has",
-    "post-jobs": "jobs"
+    "post-jobs": "jobs",
+    "employees": "Employees"
   },
   "Home": {
     "title": "IT Jobs for Quality Developers",

@@ -124,32 +124,32 @@ export default async function JobDetailPage({ params }: {
                     </div>
                   </div>
                   <div className="mt-[20px] flex flex-col gap-[10px] ">
-                    <div className="flex flex-wrap justify-between font-[400] text-[16px]">
-                      <div className="text-[#121212]">
+                    <div className="flex flex-wrap justify-start gap-[10px] font-[400] text-[16px]">
+                      <div className="text-[#555555]">
                         {t('company-model')}
                       </div>
                       <div className="text-[#121212]">
                         {detailedJob.company.companyModel}
                       </div>
                     </div>
-                    <div className="flex flex-wrap justify-between font-[400] text-[16px]">
-                      <div className="text-[#121212]">
+                    <div className="flex flex-wrap justify-start gap-[10px] font-[400] text-[16px]">
+                      <div className="text-[#555555]">
                         {t('company-employees')}
                       </div>
                       <div className="text-[#121212]">
                         {detailedJob.company.companyEmployees}
                       </div>
                     </div>
-                    <div className="flex flex-wrap justify-between font-[400] text-[16px]">
-                      <div className="text-[#121212]">
+                    <div className="flex flex-wrap justify-start gap-[10px] font-[400] text-[16px]">
+                      <div className="text-[#555555]">
                         {t('working-time')}
                       </div>
                       <div className="text-[#121212]">
                         {detailedJob.company.workingTime}
                       </div>
                     </div>
-                    <div className="flex flex-wrap justify-between font-[400] text-[16px]">
-                      <div className="text-[#121212]">
+                    <div className="flex flex-wrap justify-start gap-[10px] font-[400] text-[16px]">
+                      <div className="text-[#555555]">
                         {t('working-over-time')}
                       </div>
                       <div className="text-[#121212]">
