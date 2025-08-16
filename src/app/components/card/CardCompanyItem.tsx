@@ -5,15 +5,15 @@ import Link from "next/link"
 import { FaUserTie } from "react-icons/fa6"
 
 export const CardCompanyItem = (props: {
-  item: any,
-  locale: string,
+  item?: any,
+  locale?: string,
 }) => {
   const t = useTranslations('CardCompanyItem');
   const { item, locale } = props;
   return (
     <>
       <Link
-        href={`/company/detail/${item.slug}`}
+        href={`/company/detail/${item?.slug}`}
         className="border border-[#DEDEDE] rounded-[8px] flex flex-col relative truncate"
         style={{
           background: "linear-gradient(180deg, #F6F6F6 2.38%, #FFFFFF 70.43%)"
@@ -31,20 +31,20 @@ export const CardCompanyItem = (props: {
           }}
         >
           <img
-            src={item.logo}
-            alt={item.companyName}
+            src={item?.logo}
+            alt={item?.companyName}
             className="w-[100%] h-[100%] object-contain"
           />
         </div>
         <h3 className="sm:my-[24px] my-[16px] sm:mx-[16px] mx-[8px] font-[700] sm:text-[18px] text-[14px] text-[#121212] text-center flex-1 whitespace-normal line-clamp-2">
-          {item.companyName}
+          {item?.companyName}
         </h3>
         <div className="bg-[#F7F7F7] flex items-center sm:justify-between justify-center gap-[12px] py-[12px] px-[16px]">
           <div className="font-[400] sm:text-[14px] text-[12px] text-[#414042]">
-            {item?.cityName?.[locale]}
+            {item?.cityName?.[locale || "vi"]}
           </div>
           <div className="inline-flex items-center gap-x-[6px] font-[400] sm:text-[14px] text-[12px] text-[#121212]">
-            <FaUserTie className="text-[16px] text-[#000096]" /> {item.totalJob} {t("job")}
+            <FaUserTie className="text-[16px] text-[#000096]" /> {item?.totalJob} {t("job")}
           </div>
         </div>
       </Link>

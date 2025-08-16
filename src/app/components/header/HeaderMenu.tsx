@@ -85,7 +85,7 @@ export const HeaderMenu = ({ showMenu }: { showMenu: boolean }) => {
     {
       name: t('top-it-companies'),
       link: "/company/list",
-      children: companies.slice(0, 5).map((company: any) => ({
+      children: companies.slice(0, 6).map((company: any) => ({  // hiển thị 5 
         name: company.companyName,
         link: `/company/detail/${company.slug}`
       }))

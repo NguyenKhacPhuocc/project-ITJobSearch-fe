@@ -1,6 +1,6 @@
-// import { CardCompanyItem } from "@/app/components/card/CardCompanyItem"
 import { generateTranslatedMetadata } from "@/app/lib/generateMetadata";
 import { useTranslations } from "next-intl";
+import { ContentPage } from "./ContentPage";
 
 // Hàm này chạy trên server, trước khi render
 export async function generateMetadata({
@@ -9,7 +9,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params; // Await params để lấy giá trị thực
-  return generateTranslatedMetadata(locale, 'CompanyManageCVDetailPage');
+  return generateTranslatedMetadata(locale, 'CompanyListPage');
 }
 
 export default function CompanyListPage() {
@@ -23,19 +23,7 @@ export default function CompanyListPage() {
             {t('top-employers')}
           </h2>
           {/* Wrap */}
-          <div className="grid lg:grid-cols-3 grid-cols-2 sm:gap-[20px] gap-x-[10px] gap-y-[20px]">
-            {/* Item */}
-            {/* <CardCompanyItem /> */}
-          </div>
-
-          <div className="mt-[30px]">
-            <select name="" className="border border-[#DEDEDE] rounded-[8px] py-[12px] px-[18px] font-[400] text-[16px] text-[#414042] outline-none">
-              <option value="">{t('page')} 1</option>
-              <option value="">{t('page')} 2</option>
-              <option value="">{t('page')} 3</option>
-            </select>
-          </div>
-
+          <ContentPage />
         </div>
       </div>
       {/* End Section 2 */}
