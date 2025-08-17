@@ -69,7 +69,12 @@ export const CVList = () => {
   const { data, error, isLoading } = useSWR(
     `${process.env.NEXT_PUBLIC_API_URL}/company/cv/list?page=${page}`, // listKey
     fetcher,    // thực hiện fetch
-    { dedupingInterval: 15000 }
+    {
+      dedupingInterval: 5000,
+      revalidateOnFocus: true,
+      revalidateOnMount: true,
+      revalidateOnReconnect: true
+    }
   );
 
   if (error) return <div>Error loading data</div>;
@@ -153,7 +158,10 @@ export const CVList = () => {
                     <FaCircleCheck className="text-[16px]" /> {status?.label[locale]}
                   </div>
                   <div className="flex flex-wrap items-center justify-center gap-[8px] mt-[12px] mb-[20px] mx-[10px]">
-                    <Link href="#" className="bg-[#0088FF] rounded-[4px] font-[400] text-[14px] text-white inline-block py-[8px] px-[15px]">
+                    <Link
+                      href={`/company-manage/cv/detail/${item.id}?fromPage=${page}`}
+                      className="bg-[#0088FF] rounded-[4px] font-[400] text-[14px] text-white inline-block py-[8px] px-[15px]"
+                    >
                       {t('actions.view')}
                     </Link>
                     <Link href="#" className="bg-[#9FDB7C] rounded-[4px] font-[400] text-[14px] text-black inline-block py-[8px] px-[15px]">

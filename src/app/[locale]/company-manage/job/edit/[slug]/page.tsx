@@ -15,11 +15,11 @@ export async function generateMetadata({
 
 export default async function CompanyManageJobEditPage({ params }: {
   params: {
-    id: string
+    slug: string
   }
 }) {
   const t = await getTranslations('CompanyManageJobEditPage');
-  const { id } = await params;
+  const { slug } = await params;
   return (
     <>
       <div className="py-[60px]">
@@ -36,7 +36,7 @@ export default async function CompanyManageJobEditPage({ params }: {
                 {t('back-to-list')}
               </Link>
             </div>
-            <EditForm id={id} />
+            <EditForm slug={slug} />
           </div>
         </div>
       </div>

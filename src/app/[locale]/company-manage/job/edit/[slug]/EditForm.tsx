@@ -21,9 +21,9 @@ registerPlugin(
 type Locale = "vi" | "en";
 
 export const EditForm = (props: {
-  id: string,
+  slug: string,
 }) => {
-  const { id } = props;
+  const { slug } = props;
   const t = useTranslations('CompanyManageJobEditPage');
   const [images, setImages] = useState<any[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -34,7 +34,7 @@ export const EditForm = (props: {
 
   // get data editing job
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/company/job/edit/${id}`, {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/company/job/edit/${slug}`, {
       method: "GET",
       credentials: "include", // Gửi kèm cookie
     })
@@ -47,7 +47,7 @@ export const EditForm = (props: {
           setJobDetail(data.jobDetail)
         }
       })
-  }, [id,t])
+  }, [slug,t])
 
   
   // Initialize form validation
@@ -125,7 +125,7 @@ export const EditForm = (props: {
 
       setIsSubmitting(true); // 🔄 Bắt đầu loading
 
-      const promise = fetch(`${process.env.NEXT_PUBLIC_API_URL}/company/job/edit/${id}`, {
+      const promise = fetch(`${process.env.NEXT_PUBLIC_API_URL}/company/job/edit/${slug}`, {
         method: "PATCH",
         body: formData,
         credentials: "include", // Gửi kèm cookie

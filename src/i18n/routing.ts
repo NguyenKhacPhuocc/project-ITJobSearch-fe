@@ -42,9 +42,9 @@ export const routing = defineRouting({
       vi: '/quan-ly-cong-ty/cv/danh-sach-cv',
       en: '/company-manage/cv/list'
     },
-    '/company-manage/cv/detail/[slug]': {
-      vi: '/quan-ly-cong-ty/cv/chi-tiet/[slug]',
-      en: '/company-manage/cv/detail/[slug]'
+    '/company-manage/cv/detail/[id]': {
+      vi: '/quan-ly-cong-ty/cv/chi-tiet/[id]',
+      en: '/company-manage/cv/detail/[id]'
     },
 
     '/company-manage/job': {
@@ -59,9 +59,9 @@ export const routing = defineRouting({
       vi: '/quan-ly-cong-ty/viec-lam/danh-sach-viec-lam',
       en: '/company-manage/job/list'
     },
-    '/company-manage/job/edit/[id]': {
-      vi: '/quan-ly-cong-ty/viec-lam/chinh-sua-cong-viec/[id]',
-      en: '/company-manage/job/edit/[id]'
+    '/company-manage/job/edit/[slug]': {
+      vi: '/quan-ly-cong-ty/viec-lam/chinh-sua-cong-viec/[slug]',
+      en: '/company-manage/job/edit/[slug]'
     },
     '/company-manage/profile': {
       vi: '/quan-ly-cong-ty/thong-tin-cong-ty',
