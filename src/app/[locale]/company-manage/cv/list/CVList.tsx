@@ -1,14 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @next/next/no-img-element */
 "use client"
 
-import { cvStatusList, levelList, workingFormList } from "@/config/variable";
-import { useLocale, useTranslations } from "next-intl";
-import Link from "next/link"
+import { useTranslations } from "next-intl";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { FaBriefcase, FaCircleCheck, FaEnvelope, FaEye, FaPhone, FaUserTie } from "react-icons/fa6"
 import useSWR from "swr";
+import { CVItem } from "./CVItem";
 
 const JobCardSkeleton = () => {
   return (
@@ -42,7 +39,7 @@ const JobCardSkeleton = () => {
   );
 };
 
-type Locale = "vi" | "en";
+
 const fetcher = (url: string) => {
   return fetch(url, {
     method: "GET",
@@ -52,7 +49,7 @@ const fetcher = (url: string) => {
 
 export const CVList = () => {
   const t = useTranslations('CompanyManageCVListPage');
-  const locale = useLocale() as Locale;
+
   const router = useRouter();
   const searchParams = useSearchParams();
   const currentPage = parseInt(searchParams.get('page') || '1'); // Mặc định trang 1
@@ -102,79 +99,8 @@ export const CVList = () => {
         ) : cvList.length > 0 ? (
           <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-[20px]">
             {cvList.map((item: any) => {
-              const level = levelList.find(itemLevel => itemLevel.value == item.jobLevel)?.label;
-              const workingForm = workingFormList.find(itemWork => itemWork.value == item.jobWorkingForm)?.label[locale];
-              const status = cvStatusList.find(itemStatus => itemStatus.value == item.status);
               return (
-                <div
-                  key={item.id}
-                  className="border border-[#DEDEDE] rounded-[8px] flex flex-col relative truncate"
-                  style={{
-                    background: "linear-gradient(180deg, #F6F6F6 2.38%, #FFFFFF 70.43%)"
-                  }}
-                >
-                  <img
-                    src="/assets/images/card-bg.svg"
-                    alt=""
-                    className="absolute top-[0px] left-[0px] w-[100%] h-auto"
-                  />
-                  <h3 className="mt-[20px] mx-[16px] font-[700] text-[18px] text-[#121212] text-center flex-1 whitespace-normal line-clamp-2">
-                    {item.jobName}
-                  </h3>
-                  <div className="mt-[12px] text-center font-[400] text-[14px] text-black">
-                    {t('candidate')} <span className="font-[700]">
-                      {item.fullName}
-                    </span>
-                  </div>
-                  <div className="mt-[6px] flex justify-center items-center gap-[8px] font-[400] text-[14px] text-[#121212]">
-                    <FaEnvelope className="" /> {item.email}
-                  </div>
-                  <div className="mt-[6px] flex justify-center items-center gap-[8px] font-[400] text-[14px] text-[#121212]">
-                    <FaPhone className="" /> {item.phone}
-                  </div>
-                  <div className="mt-[12px] text-center font-[600] text-[16px] text-[#0088FF]">
-                    {item.jobSalaryMin.toLocaleString('vi-VN')}$ - {item.jobSalaryMax.toLocaleString('vi-VN')}$
-                  </div>
-                  <div className="mt-[6px] flex justify-center items-center gap-[8px] font-[400] text-[14px] text-[#121212]">
-                    <FaUserTie className="text-[16px]" /> {level}
-                  </div>
-                  <div className="mt-[6px] flex justify-center items-center gap-[8px] font-[400] text-[14px] text-[#121212]">
-                    <FaBriefcase className="text-[16px]" /> {workingForm}
-                  </div>
-                  <div
-                    className={
-                      "mt-[6px] flex justify-center items-center gap-[8px] font-[400] text-[14px] "
-                      + (item.viewed ? "text-[#47BE02]" : "text-[#FF0000]")
-                    }
-                  >
-                    <FaEye className="text-[16px]" />{item.viewed ? t("viewed") : t("not-viewed")}
-                  </div>
-                  <div
-                    className="mt-[6px] flex justify-center items-center gap-[8px] font-[400] text-[14px] text-[#121212]"
-                    style={{
-                      color: status?.color
-                    }}
-                  >
-                    <FaCircleCheck className="text-[16px]" /> {status?.label[locale]}
-                  </div>
-                  <div className="flex flex-wrap items-center justify-center gap-[8px] mt-[12px] mb-[20px] mx-[10px]">
-                    <Link
-                      href={`/company-manage/cv/detail/${item.id}?fromPage=${page}`}
-                      className="bg-[#0088FF] rounded-[4px] font-[400] text-[14px] text-white inline-block py-[8px] px-[15px]"
-                    >
-                      {t('actions.view')}
-                    </Link>
-                    <Link href="#" className="bg-[#9FDB7C] rounded-[4px] font-[400] text-[14px] text-black inline-block py-[8px] px-[15px]">
-                      {t('actions.approve')}
-                    </Link>
-                    <Link href="#" className="bg-[#FF5100] rounded-[4px] font-[400] text-[14px] text-white inline-block py-[8px] px-[15px]">
-                      {t('actions.reject')}
-                    </Link>
-                    <Link href="#" className="bg-[#FF0000] rounded-[4px] font-[400] text-[14px] text-white inline-block py-[8px] px-[15px]">
-                      {t('actions.delete')}
-                    </Link>
-                  </div>
-                </div>
+                <CVItem key={item.id} item={item} />
               )
             })}
           </div>

@@ -1,7 +1,7 @@
 import { generateTranslatedMetadata } from "@/app/lib/generateMetadata";
 import { levelList, workingFormList } from "@/config/variable";
 import { getTranslations } from "next-intl/server";
-import {  headers } from "next/headers";
+import { headers } from "next/headers";
 import Link from "next/link"
 import { notFound } from "next/navigation";
 
@@ -18,17 +18,17 @@ export async function generateMetadata({
 
 type Locale = "vi" | "en";
 export default async function CompanyManageCVDetailPage({ params, searchParams }: {
-  params: {
-    locale: Locale
-    id: string
-  },
-  searchParams?: {
-    fromPage?: string
-  }
+  params: Promise<{
+    locale: Locale;
+    id: string;
+  }>;
+  searchParams: Promise<{
+    fromPage?: string;
+  }>;
 }) {
   const t = await getTranslations('CompanyManageCVDetailPage')
   const { locale, id } = await params;
-  const fromPage = searchParams?.fromPage || '1';
+  const { fromPage = '1' } = searchParams ? await searchParams : {};
   const headerList = await headers();
   const cookie = headerList.get("cookie");
 
