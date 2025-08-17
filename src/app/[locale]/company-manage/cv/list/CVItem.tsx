@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
+import { ButtonDelete } from "@/app/components/button/ButtonDelete";
 import { cvStatusList, levelList, workingFormList } from "@/config/variable";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link"
@@ -96,26 +97,28 @@ export const CVItem = (props: {
       >
         <FaCircleCheck className="text-[16px]" /> {status?.label[locale]}
       </div>
-      <div className="flex flex-wrap items-center justify-center gap-[8px] mt-[12px] mb-[20px] mx-[10px]">
+      <div className="flex flex-wrap items-center justify-center  mt-[12px] mb-[20px] mx-[10px]">
         <Link
           href={`/company-manage/cv/detail/${item.id}?fromPage=${currentPage}`}
-          className="bg-[#0088FF] rounded-[4px] font-[400] text-[14px] text-white inline-block py-[8px] px-[15px]"
+          className="bg-[#0088FF] rounded-[4px] font-[400] text-[14px] text-white inline-block py-[8px] px-[15px] mr-[8px]"
         >
           {t('actions.view')}
         </Link>
         {(status?.value == "initial" || status?.value == "rejected") && (
-          <button onClick={() => handleChangeStatus("approved")} className="bg-[#9FDB7C] rounded-[4px] font-[400] text-[14px] text-black inline-block py-[8px] px-[20px]">
+          <button onClick={() => handleChangeStatus("approved")} className="bg-[#9FDB7C] rounded-[4px] font-[400] text-[14px] text-black inline-block py-[8px] px-[15px] mr-[8px]">
             {t('actions.approve')}
           </button>
         )}
         {(status?.value == "initial" || status?.value == "approved") && (
-          <button onClick={() => handleChangeStatus("rejected")} className="bg-[#FF5100] rounded-[4px] font-[400] text-[14px] text-white inline-block py-[8px] px-[20px]">
+          <button onClick={() => handleChangeStatus("rejected")} className="bg-[#FF5100] rounded-[4px] font-[400] text-[14px] text-white inline-block py-[8px] px-[15px] mr-[8px]">
             {t('actions.reject')}
           </button>
         )}
-        <Link href="#" className="bg-[#FF0000] rounded-[4px] font-[400] text-[14px] text-white inline-block py-[8px] px-[15px]">
-          {t('actions.delete')}
-        </Link>
+        <ButtonDelete
+          api={`${process.env.NEXT_PUBLIC_API_URL}/company/cv/delete/${item.id}`}
+          item={item}
+          listKey={[`${process.env.NEXT_PUBLIC_API_URL}/company/cv/list?page=${currentPage}`]}  // listKey = useSWR([listKey],.....)
+        />
       </div>
     </div>
   )

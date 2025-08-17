@@ -64,7 +64,7 @@ export const CVList = () => {
 
   // fetch data cv-list
   const { data, error, isLoading } = useSWR(
-    `${process.env.NEXT_PUBLIC_API_URL}/company/cv/list?page=${page}`, // listKey
+    [`${process.env.NEXT_PUBLIC_API_URL}/company/cv/list?page=${page}`], // listKey
     fetcher,    // thực hiện fetch
     {
       dedupingInterval: 5000,

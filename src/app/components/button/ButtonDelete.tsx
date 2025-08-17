@@ -14,7 +14,7 @@ export const ButtonDelete = (props: {
   const { mutate } = useSWRConfig();
 
   const handleDelete = () => {
-    const confirm = window.confirm("Bạn có chắc chắn muốn xóa công việc: " + item.title);
+    const confirm = window.confirm("Bạn có chắc chắn muốn xóa: " + item.title + item.fullName + item.email);
     if (confirm) {
       const promise = fetch(api, {
         method: "DELETE",
@@ -40,7 +40,7 @@ export const ButtonDelete = (props: {
     <>
       <Toaster position="top-right" richColors />
       <button
-        className="bg-[#FF0000] rounded-[4px] font-[400] text-[14px] text-white inline-block py-[8px] px-[20px]"
+        className="bg-[#FF0000] rounded-[4px] font-[400] text-[14px] text-white inline-block py-[8px] px-[15px]"
         onClick={handleDelete}
       >
         {t('delete-job')}
