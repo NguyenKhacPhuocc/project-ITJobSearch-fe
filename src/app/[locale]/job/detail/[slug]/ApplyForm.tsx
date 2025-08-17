@@ -104,6 +104,7 @@ export const ApplyForm = (props: {
             return data;
           })
           .finally(() => {
+            event.target.reset();
             setIsSubmitting(false); // ✅ Kết thúc loading
           });
         toast.promise(promise, {
@@ -112,6 +113,9 @@ export const ApplyForm = (props: {
           error: (err) => t(`${err.message}`) || `Đã xảy ra lỗi!`,
         });
       })
+    return () => {
+      validator.destroy(); //  Quan trọng: Hủy validator khi unmount
+    };
   }, [jobId, t]);
 
 
@@ -150,18 +154,20 @@ export const ApplyForm = (props: {
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`w-[100%] h-[48px] rounded-[4px] bg-[#0088FF] font-[700] text-[16px] text-white hover:bg-[#0364b8] ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''} `}
+            className={`relative w-[100%] h-[48px] rounded-[4px] bg-[#0088FF] font-[700] text-[16px] text-white hover:bg-[#0364b8] ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''} `}
           >
-            {isSubmitting ? (
-              <>
-                <div className="loader"></div>
-                {t('form.pending-submit-button')}
-              </>
-            ) : (
-              <>
-                {t('form.submit-button')}
-              </>
-            )}
+            <span className="relative z-10 justify-center flex items-center gap-2">
+              {isSubmitting ? (
+                <>
+                  <div className="loader"></div>
+                  {t('form.pending-submit-button')}
+                </>
+              ) : (
+                <>
+                  {t('form.submit-button')}
+                </>
+              )}
+            </span>
           </button>
         </form>
       </div>

@@ -211,7 +211,10 @@
       "reject": "Reject",
       "delete": "Delete"
     },
-    "page": "Page"
+    "page": "Page",
+    "no-cvs": "No candidates have submitted a CV!",
+    "viewed": "Viewed",
+    "not-viewed": "Not viewed"
   },
   "CompanyManageCVDetailPage": {
     "cv-information": "CV Information",

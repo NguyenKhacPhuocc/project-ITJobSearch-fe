@@ -211,7 +211,10 @@
       "reject": "Từ chối",
       "delete": "Xóa"
     },
-    "page": "Trang"
+    "page": "Trang",
+    "no_cvs": "Chưa có ứng viên gửi CV!",
+    "viewed": "Đã xem",
+    "not-viewed": "Chưa xem"
   },
   "CompanyManageCVDetailPage": {
     "cv-information": "Thông tin CV",
