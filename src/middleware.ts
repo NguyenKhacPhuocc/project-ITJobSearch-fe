@@ -17,7 +17,7 @@ const PROTECTED_ROUTES: ProtectedRoute[] = [
   // Thêm các route khác nếu cần
 ];
 
-export default function middleware(request: NextRequest) {
+export default async function middleware(request: NextRequest) {
   const response = intlMiddleware(request);
   const pathname = request.nextUrl.pathname;
   const locale = pathname.split('/')[1] as 'vi' | 'en' | undefined;
@@ -34,10 +34,22 @@ export default function middleware(request: NextRequest) {
   });
 
   if (isProtectedRoute) {
-    const token = request.cookies.get('token')?.value;
-    if (!token) {
+    // Gọi API check-login giống hook useAuth
+    const authCheck = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/check-login`, {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Cookie': request.cookies.toString() // Forward cookie từ client
+      }
+    });
+
+    const data = await authCheck.json();
+
+    if (data.code !== "success") {
       const redirectLocale = locale || 'vi';
-      return NextResponse.redirect(new URL(`/${redirectLocale}`, request.url));
+      const loginUrl = new URL(`/${redirectLocale}/login`, request.url);
+      loginUrl.searchParams.set('redirect', pathname);
+      return NextResponse.redirect(loginUrl);
     }
   }
 
