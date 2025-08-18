@@ -5,12 +5,14 @@ import { Header } from '../components/header/Header';
 import { Footer } from '../components/footer/Footer';
 import '../globals.css';
 
+type Params = Promise<{ locale: string }>
+
 export default async function LocaleLayout({
   children,
   params
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: Params
 }) {
   const { locale } = await params;
 

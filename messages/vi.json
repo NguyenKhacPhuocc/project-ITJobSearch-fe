@@ -199,7 +199,8 @@
     "working-form-required": "Vui lòng chọn hình thức làm việc!",
     "update-button": "Cập nhật",
     "pending-update": "Đang cập nhật...",
-    "update-successfull": "Cập nhật công việc thành công!"
+    "update-successfull": "Cập nhật công việc thành công!",
+    "id-invalid": "Slug không hợp lệ!"
   },
   "CompanyManageCVListPage": {
     "title": "Quản lý CV",

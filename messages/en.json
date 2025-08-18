@@ -199,7 +199,8 @@
     "working-form-required": "Please select the working form!",
     "update-button": "Update",
     "pending-update": "Updating...",
-    "update-successfull": "Job updated successfully!"
+    "update-successfull": "Job updated successfully!",
+    "id-invalid": "Invalid slug!"
   },
   "CompanyManageCVListPage": {
     "title": "CV Management",

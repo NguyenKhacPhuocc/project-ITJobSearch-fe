@@ -5,11 +5,13 @@ import { CardJobItem } from "@/app/components/card/CardJobItem"
 import { generateTranslatedMetadata } from "@/app/lib/generateMetadata";
 import { getTranslations } from "next-intl/server";
 
+type Params = Promise<{ locale: string, slug: string }>
+
 // Hàm này chạy trên server, trước khi render
 export async function generateMetadata({
   params
 }: {
-  params: Promise<{ locale: string }>
+  params: Params
 }) {
   const { locale } = await params; // Await params để lấy giá trị thực
   return generateTranslatedMetadata(locale, 'CompanyDetailPage');
@@ -30,10 +32,7 @@ async function fetchJobs(slug: string) {
 
 
 export default async function CompanyDetailPage({ params }: {
-  params: {
-    locale: string;  // Thêm locale nếu dùng i18n
-    slug: string;
-  }
+  params: Params
 }) {
   const { locale, slug } = await params;
   const t = await getTranslations('CompanyDetailPage');

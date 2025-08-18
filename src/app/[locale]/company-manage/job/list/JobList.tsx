@@ -60,7 +60,6 @@ const JobCardSkeleton = () => {
 
 type Locale = "vi" | "en";
 const fetcher = (url: string, locale: Locale) => {
-  console.log("🔄 Fetching job list from API...");
   return fetch(url, {
     method: "GET",
     headers: { "Accept-Language": locale },
@@ -182,7 +181,7 @@ export const JobList = () => {
                     ))}
                   </div>
                   <div className="flex items-center justify-center gap-[12px] mb-[20px]">
-                    <Link href={`/company-manage/job/edit/${item.id}`} className="bg-[#FFB200] rounded-[4px] font-[400] text-[14px] text-black inline-block py-[8px] px-[20px]">
+                    <Link href={`/company-manage/job/edit/${item.slug}`} className="bg-[#FFB200] rounded-[4px] font-[400] text-[14px] text-black inline-block py-[8px] px-[20px]">
                       {t('edit-job')}
                     </Link>
                     <ButtonDelete

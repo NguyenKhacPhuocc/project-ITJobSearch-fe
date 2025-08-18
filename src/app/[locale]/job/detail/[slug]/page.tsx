@@ -8,17 +8,16 @@ import { notFound } from "next/navigation";
 import { FaBriefcase, FaLocationDot, FaUserTie } from "react-icons/fa6"
 import { ApplyForm } from "./ApplyForm";
 
+type Params = Promise<{ locale:string, slug: string }>
+
 // Hàm này chạy trên server, trước khi render
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+export async function generateMetadata({ params }: { params: Params }) {
   const { locale } = await params; // Await params để lấy giá trị thực
   return generateTranslatedMetadata(locale, 'JobDetailPage');
 }
 
 export default async function JobDetailPage({ params }: {
-  params: {
-    locale: string;  // Thêm locale nếu dùng i18n
-    slug: string;
-  }
+  params: Params
 }) {
   const t = await getTranslations('JobDetailPage');
   const { locale, slug } = await params;

@@ -3,20 +3,21 @@ import Link from "next/link"
 import { EditForm } from "./EditForm";
 import { getTranslations } from "next-intl/server";
 
+type Params = Promise<{ locale:string, slug: string }>
+
 // Hàm này chạy trên server, trước khi render
 export async function generateMetadata({
   params
 }: {
-  params: Promise<{ locale: string }>
+  params: Params
 }) {
   const { locale } = await params; // Await params để lấy giá trị thực
   return generateTranslatedMetadata(locale, 'CompanyManageJobEditPage');
 }
 
+
 export default async function CompanyManageJobEditPage({ params }: {
-  params: {
-    slug: string
-  }
+  params: Params
 }) {
   const t = await getTranslations('CompanyManageJobEditPage');
   const { slug } = await params;
