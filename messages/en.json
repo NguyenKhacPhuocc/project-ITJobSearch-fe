@@ -43,7 +43,9 @@
     "cv-submitted-management": "Manage Submitted CVs",
     "view": "View",
     "delete": "Delete",
-    "page": "Page"
+    "page": "Page",
+    "no-cvs": "No CVs have been sent yet!",
+    "company": "Company: "
   },
   "SearchPage": {
     "search-results-for": "Search results for",

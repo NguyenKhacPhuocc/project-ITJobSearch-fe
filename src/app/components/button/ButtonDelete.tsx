@@ -14,7 +14,7 @@ export const ButtonDelete = (props: {
   const { mutate } = useSWRConfig();
 
   const handleDelete = () => {
-    const confirm = window.confirm("Bạn có chắc chắn muốn xóa: " + item.title + item.fullName + item.email);
+    const confirm = window.confirm("Bạn có chắc chắn muốn xóa bản ghi: " + (item.title !== undefined ? item.title : "") + (item.jobName !== undefined && item.email !== undefined ? item.jobName + ", " + item.email : ""));
     if (confirm) {
       const promise = fetch(api, {
         method: "DELETE",

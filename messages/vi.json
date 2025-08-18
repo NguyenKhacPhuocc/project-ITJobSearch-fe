@@ -43,7 +43,9 @@
     "cv-submitted-management": "Quản lý CV đã gửi",
     "view": "Xem",
     "delete": "Xóa",
-    "page": "Trang"
+    "page": "Trang",
+    "no-cvs": "Chưa có CV nào được gửi",
+    "company": "Công ty: "
   },
   "SearchPage": {
     "search-results-for": "Kết quả tìm kiếm cho",
@@ -212,7 +214,7 @@
       "delete": "Xóa"
     },
     "page": "Trang",
-    "no_cvs": "Chưa có ứng viên gửi CV!",
+    "no-cvs": "Chưa có ứng viên gửi CV!",
     "viewed": "Đã xem",
     "not-viewed": "Chưa xem"
   },
