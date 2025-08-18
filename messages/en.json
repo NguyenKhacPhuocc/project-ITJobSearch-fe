@@ -275,7 +275,11 @@
     "password_uppercase": "Password must contain at least one uppercase letter!",
     "password_lowercase": "Password must contain at least one lowercase letter!",
     "password_number": "Password must contain at least one number!",
-    "password_special": "Password must contain at least one special character!"
+    "password_special": "Password must contain at least one special character!",
+    "name": "Full Name",
+    "email": "Email",
+    "password": "Password",
+    "register-button": "Register"
   },
   "UserLoginPage": {
     "title": "Log In (Candidate)"

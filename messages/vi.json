@@ -261,7 +261,8 @@
     "reactjs": "ReactJS",
     "javascript": "Javascript",
     "nodejs": "NodeJS",
-    "top-company": "Nhà tuyển dụng hàng đầu"
+    "top-company": "Nhà tuyển dụng hàng đầu",
+    "error": "Lỗi!"
   },
   "UserRegisterPage": {
     "title": "Đăng ký (Ứng viên)",
@@ -275,7 +276,11 @@
     "password_uppercase": "Mật khẩu phải chứa ít nhất một chữ cái in hoa!",
     "password_lowercase": "Mật khẩu phải chứa ít nhất một chữ cái thường!",
     "password_number": "Mật khẩu phải chứa ít nhất một chữ số!",
-    "password_special": "Mật khẩu phải chứa ít nhất một ký tự đặc biệt!"
+    "password_special": "Mật khẩu phải chứa ít nhất một ký tự đặc biệt!",
+    "name": "Họ tên",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "register-button": "Đăng ký"
   },
   "UserLoginPage": {
     "title": "Đăng nhập (Ứng viên)"

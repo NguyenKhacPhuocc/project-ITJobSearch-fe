@@ -5,6 +5,7 @@ import { useCities } from "@/hooks/useCities";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6"
 
 interface MenuItem {
@@ -17,6 +18,7 @@ export const Section1 = () => {
   const locale = useLocale();
   const t = useTranslations('Home');
   const router = useRouter();
+  const [totalJob, setTotalJob] = useState(1);
 
   const menuList: MenuItem[] = [
     { name: "ReactJS", link: "/search?skill=ReactJS" },
@@ -37,13 +39,24 @@ export const Section1 = () => {
     router.push(`/search?city=${city}&keysearch=${keysearch}`);
   }
 
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/job/total-job`, {
+      method: "GET",
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.code == "success") {
+          setTotalJob(data.totalJob)
+        }
+      })
+  }, [])
 
   return (
     <>
       <div className="bg-[linear-gradient(to_right,_#000000_0%,_#0D1B2A_60%,_#005E92_120%)] pt-[100px] py-[50px] mt-[-65px]">
         <div className="container mx-auto px-[16px]">
           <h1 className="text-white font-[700] text-[28px] text-center mb-[30px]">
-            923 {t('title')}
+            {totalJob} {t('title')}
           </h1>
           <form onSubmit={handleSearch} className="flex flex-wrap gap-x-[15px] gap-y-[12px] mb-[30px]">
             <select
