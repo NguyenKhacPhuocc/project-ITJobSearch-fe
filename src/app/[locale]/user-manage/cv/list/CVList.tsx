@@ -4,11 +4,12 @@
 
 import { cvStatusList, levelList, workingFormList } from "@/config/variable";
 import { useLocale, useTranslations } from "next-intl";
-import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { FaBriefcase, FaCircleCheck, FaDev, FaUserTie } from "react-icons/fa6"
 import useSWR from "swr";
+import PopupCV from "./CVPopup";
+import { ButtonDelete } from "@/app/components/button/ButtonDelete";
 
 const JobCardSkeleton = () => {
   return (
@@ -55,6 +56,8 @@ export const CVList = () => {
   const searchParams = useSearchParams();
   const currentPage = parseInt(searchParams.get('page') || '1'); // Mặc định trang 1
   const [page, setPage] = useState(currentPage);
+  const [selectedCV, setSelectedCV] = useState<any | null>(null);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   // Fetch total pages once when component mounts
   const { data: totalPageData } = useSWR(
@@ -88,6 +91,11 @@ export const CVList = () => {
     router.push(`?page=${value}`);
   }
 
+  const handleViewCV = (cv: any) => {
+    setSelectedCV(cv);
+    setIsPopupOpen(true);
+  };
+
   return (
     <>
       <div className="h-[300px]">
@@ -100,8 +108,8 @@ export const CVList = () => {
         ) : cvList.length > 0 ? (
           <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-[20px]">
             {cvList.map((item: any) => {
-              const level = levelList.find(itemLevel => itemLevel.value == item.jobLevel)?.label;
-              const workingForm = workingFormList.find(itemWork => itemWork.value == item.jobWorkingForm)?.label[locale];
+              item.level = levelList.find(itemLevel => itemLevel.value == item.jobLevel)?.label;
+              item.workingForm = workingFormList.find(itemWork => itemWork.value == item.jobWorkingForm)?.label[locale];
               const status = cvStatusList.find(itemStatus => itemStatus.value == item.status);
               return (
                 <div
@@ -129,10 +137,10 @@ export const CVList = () => {
                     <FaDev className="text-[16px]" /> {item.expertise}
                   </div>
                   <div className="mt-[6px] flex justify-center items-center gap-[8px] font-[400] text-[14px] text-[#121212]">
-                    <FaUserTie className="text-[16px]" /> {level}
+                    <FaUserTie className="text-[16px]" /> {item.level}
                   </div>
                   <div className="mt-[6px] flex justify-center items-center gap-[8px] font-[400] text-[14px] text-[#121212]">
-                    <FaBriefcase className="text-[16px]" /> {workingForm}
+                    <FaBriefcase className="text-[16px]" /> {item.workingForm}
                   </div>
                   <div
                     className="mt-[6px] flex justify-center items-center gap-[8px] font-[400] text-[14px] text-[#121212]"
@@ -143,12 +151,23 @@ export const CVList = () => {
                     <FaCircleCheck className="text-[16px]" /> {status?.label[locale]}
                   </div>
                   <div className="flex flex-wrap items-center justify-center gap-[8px] mt-[12px] mb-[20px]">
-                    <Link href="#" className="bg-[#0088FF] rounded-[4px] font-[400] text-[14px] text-white inline-block py-[8px] px-[20px]">
-                      {t('view')}
-                    </Link>
-                    <Link href="#" className="bg-[#FF0000] rounded-[4px] font-[400] text-[14px] text-white inline-block py-[8px] px-[20px]">
-                      {t('delete')}
-                    </Link>
+                    <button
+                      onClick={() => handleViewCV(item)}
+                      className="bg-[#0088FF] rounded-[4px] font-[400] text-[14px] text-white inline-block py-[8px] px-[20px]"
+                    >
+                      {t("view")}
+                    </button>
+                    {/* Popup */}
+                    <PopupCV
+                      isOpen={isPopupOpen}
+                      onClose={() => setIsPopupOpen(false)}
+                      item={selectedCV}
+                    />
+                    <ButtonDelete
+                      api={`${process.env.NEXT_PUBLIC_API_URL}/user/cv/delete/${item.id}`}
+                      item={item}
+                      listKey={[`${process.env.NEXT_PUBLIC_API_URL}/user/cv/list?page=${currentPage}`]}  // listKey = useSWR([listKey],.....)
+                    />
                   </div>
                 </div>
               )
