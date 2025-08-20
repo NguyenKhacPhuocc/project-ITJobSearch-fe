@@ -1,33 +1,30 @@
-/* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use client";
-import { CardJobItem } from "@/app/components/card/CardJobItem"
+"use client"
+import { CardJobItem } from "@/app/components/card/CardJobItem";
 import { JobCardSkeleton } from "@/app/components/card/JobCardSkeleton";
-import { levelList, workingFormList } from "@/config/variable";
-import { useLocale, useTranslations } from "next-intl";
-import Link from "next/link";
+import { levelList, skills, workingFormList } from "@/config/variable"
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { FaLocationDot } from "react-icons/fa6";
 import useSWR from "swr";
-
+import { useTranslations } from "next-intl";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-export const SearchContent = () => {
-  const t = useTranslations('SearchPage');
+type JobDetailClientProps = {
+  slug: string;
+  locale: string;
+};
+export const ContentPage = ({ slug, locale }: JobDetailClientProps) => {
   const searchParams = useSearchParams();
-  const city = searchParams.get("city") || "";
-  const keysearch = searchParams.get("keysearch") || "";
+  const router = useRouter();
   const level = searchParams.get("level") || "";
   const workingForm = searchParams.get("workingForm") || "";
   const currentPage = parseInt(searchParams.get('page') || '1'); // Mặc định trang 1
   const [page, setPage] = useState(currentPage);
-  const locale = useLocale();
-  const router = useRouter();
+  const t = useTranslations('JobBySkillPage');
 
   const { data, isLoading } = useSWR(
-    `${process.env.NEXT_PUBLIC_API_URL}/search?city=${city}&keysearch=${keysearch}&level=${level}&workingForm=${workingForm}&page=${page}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/job/job-by-skill/${slug}?level=${level}&workingForm=${workingForm}&page=${page}`,
     fetcher,
     {
       keepPreviousData: true,     // Giữ data cũ khi đổi key
@@ -37,7 +34,7 @@ export const SearchContent = () => {
 
   // lấy tổng số trang
   const { data: totalPageData } = useSWR(
-    `${process.env.NEXT_PUBLIC_API_URL}/search/total-pages?city=${city}&keysearch=${keysearch}&level=${level}&workingForm=${workingForm}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/job/job-by-skill/total-pages/${slug}?level=${level}&workingForm=${workingForm}`,
     fetcher,
     {
       keepPreviousData: true,     // Giữ data cũ khi đổi key
@@ -47,7 +44,6 @@ export const SearchContent = () => {
   );
 
   const jobList = data?.code === "success" ? data.jobs : [];
-  const companyInfo = data?.code === "success" ? data.companyInfo : [];
   const totalPage = totalPageData?.code === "success" ? totalPageData.totalPage : 0;
   const totalRecord = totalPageData?.code === "success" ? totalPageData.totalRecord : 0;
 
@@ -87,45 +83,17 @@ export const SearchContent = () => {
     router.push(`?${params.toString()}`)
   }
 
+  const skill = skills.find((c) => c.slug === slug);
+  const skillName = skill?.name ?? slug.replace(/-/g, " ");
+
   return (
     <>
       <div className="container mx-auto px-[16px]">
-        {/* Thông tin công ty */}
-        {companyInfo && companyInfo.companyName && (
-          <div className="border border-[#DEDEDE] rounded-[8px] px-[20px] py-[10px] mb-[20px]">
-            <div className="flex flex-wrap items-center gap-[16px] ">
-              <div className="w-[100px] border rounded-[4px] overflow-hidden shadow-lg">
-                <img
-                  src={companyInfo.logo}
-                  alt={companyInfo.companyName}
-                  className="w-[100%] aspect-square object-cover rounded-[4px]"
-                />
-              </div>
-              <div className="sm:flex-1">
-                <div className="flex justify-between items-center mb-[10px]">
-                  <h1 className="font-[700] text-[28px] text-[#121212] ">
-                    {companyInfo.companyName}
-                  </h1>
-                  <Link href={`/company/detail/${companyInfo.slug}`} className="bg-[#005E92] rounded-[4px] font-[400] text-[14px] text-white inline-block py-[8px] px-[20px] hover:cursor-pointer transition-all duration-200 ease-[cubic-bezier(0.2,0.8,0.5,1.5)] hover:scale-105 active:scale-95 group-hover:animate-bounce-out">
-                    {t('view-detail')}
-                  </Link>
-                </div>
-                <div className="flex items-center gap-[8px] font-[400] text-[14px] text-[#121212]">
-                  <FaLocationDot className="text-[16px]" /> {companyInfo.address}
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-        {/* Hết Thông tin công ty */}
-
+        {/* title */}
         <h2 className="font-[700] text-[28px] text-[#121212] mb-[10px] flex items-center">
-          <div className="bg-[#F0F6FF] text-[#0088FF] flex justify-center items-center h-[40px] w-[80px] mr-[10px] rounded-[8px] border border-[#D6E6FF]">
-            {totalRecord ? totalRecord : 0}
-          </div>
-          {t('search-results-for')} <span className="text-[#0088FF] ml-[10px]">{[ city, keysearch].filter(Boolean).join(', ')}</span>
+          {totalRecord ?? 0} {t('job_in')} {skillName}
         </h2>
-
+        {/* filter */}
         <div
           className="bg-white rounded-[8px] py-[10px] px-[20px] mb-[30px] flex flex-wrap gap-[12px]"
           style={{
@@ -133,22 +101,23 @@ export const SearchContent = () => {
           }}
         >
           <select name="" className="border border-[#DEDEDE] rounded-[20px] h-[36px] px-[18px] font-[400] text-[16px] text-[#414042]" onChange={handleFilterLevel} defaultValue={level}>
-            <option value="">{t('level.level')}</option>
+            <option value="">{t('level')}</option>
             {levelList.map((level, index) => (
               <option key={index} value={level.value}>{level.label}</option>
             ))}
           </select>
           <select name="" className="border border-[#DEDEDE] rounded-[20px] h-[36px] px-[18px] font-[400] text-[16px] text-[#414042]" onChange={handleFilterWorkingForm} defaultValue={workingForm}>
-            <option value="">{t('work-type.work-type')}</option>
+            <option value="">{t('working_form')}</option>
             {workingFormList.map((workingForm, index) => (
               <option key={index} value={workingForm.value}>{workingForm.label?.[locale as 'vi' | 'en']}</option>
             ))}
           </select>
         </div>
 
+        {/* main content */}
         {isLoading ? (
           // Trường hợp 1: Đang loading
-          <div className="h-[500px]">
+          <div className="h-auto">
             <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-[20px]">
               {Array.from({ length: 3 }).map((_, idx) => (
                 <JobCardSkeleton key={idx} />
@@ -180,11 +149,17 @@ export const SearchContent = () => {
                 d="M15.75 9V5.25m0 0A2.25 2.25 0 0013.5 3h-3A2.25 2.25 0 008.25 5.25v3A2.25 2.25 0 0010.5 10.5h3A2.25 2.25 0 0015.75 8.25V5.25zm-7.5 9.75v3A2.25 2.25 0 0010.5 21h3a2.25 2.25 0 002.25-2.25v-3A2.25 2.25 0 0013.5 13.5h-3a2.25 2.25 0 00-2.25 2.25z"
               />
             </svg>
-            <div className="text-xl font-semibold text-gray-700 mb-2">{t('no-job')}</div>
-            <div className="text-gray-500">{t('try-another-search')}</div>
+            <div className="text-xl font-semibold text-gray-700 mb-2">
+              {t('no-job')}
+            </div>
+            <div className="text-gray-500">
+              {t('try-another-search')}
+            </div>
           </div>
         )}
         <hr className="mt-[30px]" />
+
+        {/* pagination */}
         {totalPage > 0 && (
           <div className="mt-[20px]">
             <select
@@ -201,7 +176,7 @@ export const SearchContent = () => {
             </select>
           </div>
         )}
-      </div >
+      </div>
     </>
   )
 }

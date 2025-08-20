@@ -9,7 +9,14 @@ import { HeaderAccount } from "./HeaderAccount"
 import { useParams, useSearchParams } from 'next/navigation';
 import { useTransition } from 'react';
 import { usePathname, useRouter } from '@/i18n/navigation';
+import { expertises } from "@/config/variable";
 
+type Locale = "vi" | "en";
+
+function translateExpertiseSlug(currentSlug: string, from: Locale, to: Locale) {
+  const exp = expertises.find(e => e.slug[from] === currentSlug);
+  return exp ? exp.slug[to] : currentSlug;
+}
 
 export const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -50,11 +57,17 @@ export const Header = () => {
 
 
   const handleLocaleChange = (nextLocale: string) => {
-    // const nextLocale = event.target.value as Locale;
+    const newParams = { ...params };
+
+    // Nếu có slug thì translate nó
+    if (params?.slug) {
+      const slug = params.slug as string;
+      newParams.slug = translateExpertiseSlug(slug, currentLocale as Locale, nextLocale as Locale);
+    }
     startTransition(() => {
       router.replace(
         // @ts-expect-error -- ignore TS here because we control routes
-        { pathname, params, query: Object.fromEntries(searchParams) },
+        { pathname, params: newParams, query: Object.fromEntries(searchParams) },
         { locale: nextLocale }
       );
     });

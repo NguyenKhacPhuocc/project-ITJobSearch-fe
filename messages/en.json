@@ -357,6 +357,33 @@
   "CardCompanyItem": {
     "job": "Jobs"
   },
+  "JobBySkillPage": {
+    "title": "Jobs By Skill",
+    "job_in": "IT jobs",
+    "level": "Level",
+    "working_form": "Working form",
+    "no-job": "No results found!",
+    "try-another-search": "Try another search",
+    "page": "Page"
+  },
+  "JobByExpertisePage": {
+    "title": "Jobs By Expertise",
+    "job_in": "IT jobs",
+    "level": "Level",
+    "working_form": "Working form",
+    "no-job": "No results found!",
+    "try-another-search": "Try another search",
+    "page": "Page"
+  },
+  "JobByCityPage": {
+    "title": "Jobs By City",
+    "job_in": "IT jobs in",
+    "level": "Level",
+    "working_form": "Working form",
+    "no-job": "No results found!",
+    "try-another-search": "Try another search",
+    "page": "Page"
+  },
   "Metadata": {
     "HomePage": {
       "title": "ITJobSearch",
@@ -425,6 +452,18 @@
     "CompanyLoginPage": {
       "title": "Log In (Employer)",
       "description": "Login page for employers..."
+    },
+    "JobBySkillPage": {
+      "title": "Jobs By Skill",
+      "description": "Jobs By Skill"
+    },
+    "JobByExpertisePage": {
+      "title": "Jobs By Expertise",
+      "description": "Jobs By Expertise"
+    },
+    "JobByCityPage": {
+      "title": "Jobs By City",
+      "description": "Jobs By City"
     }
   }
 }

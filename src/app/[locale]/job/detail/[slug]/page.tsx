@@ -8,7 +8,7 @@ import { notFound } from "next/navigation";
 import { FaBriefcase, FaLocationDot, FaUserTie } from "react-icons/fa6"
 import { ApplyForm } from "./ApplyForm";
 
-type Params = Promise<{ locale:string, slug: string }>
+type Params = Promise<{ locale: string, slug: string }>
 
 // Hàm này chạy trên server, trước khi render
 export async function generateMetadata({ params }: { params: Params }) {
@@ -93,7 +93,10 @@ export default async function JobDetailPage({ params }: {
                 {/* Mô tả chi tiết */}
                 <div className="border border-[#DEDEDE] rounded-[8px] p-[20px] mt-[20px]">
                   <div className="font-[700] text-[20px] text-black mb-[20px]">{t('detail-description')}</div>
-                  <div dangerouslySetInnerHTML={{ __html: detailedJob.description }} />
+                  <div
+                    className="lg:text-[15px] text-[10px] font-[350]"
+                    dangerouslySetInnerHTML={{ __html: detailedJob?.description ?? "" }}
+                  />
                 </div>
                 {/* Hết Mô tả chi tiết */}
 

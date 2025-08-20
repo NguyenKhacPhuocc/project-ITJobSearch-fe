@@ -23,7 +23,7 @@ export const useAuth = () => {
   const lastPathname = useRef(pathname);
 
   const { data, error } = useSWR(
-    `${process.env.NEXT_PUBLIC_API_URL}/auth/check-login`,
+    `${process.env.NEXT_PUBLIC_API_URL}/auth/verify`,
     fetcher,
     {
       revalidateOnFocus: false,
@@ -39,7 +39,7 @@ export const useAuth = () => {
     // Chỉ revalidate khi pathname THỰC SỰ thay đổi
     if (pathname !== lastPathname.current) {
       lastPathname.current = pathname;
-      mutate(`${process.env.NEXT_PUBLIC_API_URL}/auth/check-login`);
+      mutate(`${process.env.NEXT_PUBLIC_API_URL}/auth/verify`);
     }
   }, [pathname]);
   const isLogin = data?.code === "success";

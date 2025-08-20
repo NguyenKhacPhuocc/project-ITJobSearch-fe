@@ -76,6 +76,30 @@ export const routing = defineRouting({
       vi: '/viec-lam/chi-tiet/[slug]',
       en: '/job/detail/[slug]'
     },
+    '/job/job-by-skill': {
+      vi: '/viec-lam/viec-lam-theo-ky-nang',
+      en: '/job/job-by-skill'
+    },
+    '/job/job-by-expertise': {
+      vi: '/viec-lam/viec-lam-theo-chuyen-mon',
+      en: '/job/job-by-expertise'
+    },
+    '/job/job-by-city': {
+      vi: '/viec-lam/viec-lam-theo-thanh-pho',
+      en: '/job/job-by-city'
+    },
+    '/job/job-by-skill/[slug]': {
+      vi: '/viec-lam/viec-lam-theo-ky-nang/[slug]',
+      en: '/job/job-by-skill/[slug]'
+    },
+    '/job/job-by-expertise/[slug]': {
+      vi: '/viec-lam/viec-lam-theo-chuyen-mon/[slug]',
+      en: '/job/job-by-expertise/[slug]'
+    },
+    '/job/job-by-city/[slug]': {
+      vi: '/viec-lam/viec-lam-theo-thanh-pho/[slug]',
+      en: '/job/job-by-city/[slug]'
+    },
 
     '/search': {
       vi: '/tim-kiem',

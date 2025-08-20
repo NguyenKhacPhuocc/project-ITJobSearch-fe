@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
+import { expertises, skills } from "@/config/variable";
 import { useAuth } from "@/hooks/useAuth";
 import { useCities } from "@/hooks/useCities";
 import { useCompanies } from "@/hooks/useCompanies";
@@ -30,54 +31,26 @@ export const HeaderMenu = ({ showMenu }: { showMenu: boolean }) => {
       children: [
         {
           name: t('it-jobs-by-skill'),
-          link: "#", // xem tất cả
-          children: [
-            { name: "ReactJS", link: "/search?skill=ReactJS" },
-            { name: "NodeJS", link: "/search?skill=NodeJS" },
-            { name: "Python", link: "/search?skill=Python" },
-            { name: "Java", link: "/search?skill=Java" },
-            { name: "DevOps", link: "/search?skill=DevOps" },
-            { name: "PHP", link: "/search?skill=PHP" },
-            { name: "JavaScript", link: "/search?skill=JavaScript" },
-            { name: "HTML5", link: "/search?skill=HTML5" },
-            { name: "Angular", link: "/search?skill=Angular" },
-            { name: "VueJS", link: "/search?skill=VueJS" },
-            { name: "C#", link: "/search?skill=CSharp" },
-            { name: "C++", link: "/search?skill=Cpp" },
-            { name: "Ruby", link: "/search?skill=Ruby" },
-            { name: "Go", link: "/search?skill=Go" },
-            { name: "Kotlin", link: "/search?skill=Kotlin" },
-            { name: "Swift", link: "/search?skill=Swift" },
-            { name: "TypeScript", link: "/search?skill=TypeScript" },
-            { name: "Rust", link: "/search?skill=Rust" },
-          ],
+          link: "/job/job-by-skill", // xem tất cả
+          children: skills.map((skill: any) => ({
+            name: skill.name,
+            link: `/job/job-by-skill/${(skill.slug)}`
+          }))
         },
         {
           name: t('it-jobs-by-expertise'),
-          link: "#", // xem tất cả
-          children: [
-            { name: t('expertise.backend'), link: "/search?expertise=Backend" },
-            { name: t('expertise.fullstack'), link: "/search?expertise=Fullstack" },
-            { name: t('expertise.frontend'), link: "/search?expertise=Frontend" },
-            { name: t('expertise.mobile'), link: "/search?expertise=Mobile" },
-            { name: t('expertise.autotesting'), link: "/search?expertise=AutoTesting" },
-            { name: t('expertise.devops'), link: "/search?expertise=DevOps" },
-            { name: t('expertise.businessanalysis'), link: "/search?expertise=BusinessAnalysis" },
-            { name: t('expertise.ai'), link: "/search?expertise=AI" },
-            { name: t('expertise.management'), link: "/search?expertise=Management" },
-            { name: t('expertise.testcoordinator'), link: "/search?expertise=TestCoordinator" },
-            { name: t('expertise.systemadmin'), link: "/search?expertise=SystemAdmin" },
-            { name: t('expertise.dataengineer'), link: "/search?expertise=DataEngineer" },
-            { name: t('expertise.dataanalysis'), link: "/search?expertise=DataAnalysis" },
-            { name: t('expertise.softwareengineer'), link: "/search?expertise=SoftwareEngineer" }
-          ],
+          link: "/job/job-by-expertise", // xem tất cả
+          children: expertises.map((expertise: any) => ({
+            name: expertise.name[locale],
+            link: `/job/job-by-expertise/${(expertise.slug[locale])}`
+          }))
         },
         {
           name: t('it-jobs-by-city'),
-          link: "#", // xem tất cả
+          link: "/job/job-by-city", // xem tất cả
           children: cities.map((city: any) => ({
             name: city.name[locale], // Lấy tên thành phố theo ngôn ngữ hiện tại
-            link: `/search?city=${encodeURIComponent(city.name[locale])}` // Sử dụng tên tiếng Anh cho URL
+            link: `/job/job-by-city/${(city.slug)}`
           }))
         },
       ],
@@ -85,7 +58,7 @@ export const HeaderMenu = ({ showMenu }: { showMenu: boolean }) => {
     {
       name: t('top-it-companies'),
       link: "/company/list",
-      children: companies.slice(0, 6).map((company: any) => ({  // hiển thị 5 
+      children: companies.slice(0, 5).map((company: any) => ({  // hiển thị 5 
         name: company.companyName,
         link: `/company/detail/${company.slug}`
       }))

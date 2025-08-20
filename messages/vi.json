@@ -358,6 +358,33 @@
   "CardCompanyItem": {
     "job": "Việc làm"
   },
+  "JobBySkillPage": {
+    "title": "Tìm việc làm IT theo kỹ năng",
+    "job_in": "Việc làm",
+    "level": "Cấp bậc",
+    "working_form": "Hình thức làm việc",
+    "no-job": "Không có kết quả tìm kiếm!",
+    "try-another-search": "Hãy thử tìm kiếm khác",
+    "page": "Trang"
+  },
+  "JobByExpertisePage": {
+    "title": "Tìm việc làm IT theo chuyên môn",
+    "job_in": "Việc làm",
+    "level": "Cấp bậc",
+    "working_form": "Hình thức làm việc",
+    "no-job": "Không có kết quả tìm kiếm!",
+    "try-another-search": "Hãy thử tìm kiếm khác",
+    "page": "Trang"
+  },
+  "JobByCityPage": {
+    "title": "Tìm việc làm IT theo thành phố",
+    "job_in": "Việc làm ở",
+    "level": "Cấp bậc",
+    "working_form": "Hình thức làm việc",
+    "no-job": "Không có kết quả tìm kiếm!",
+    "try-another-search": "Hãy thử tìm kiếm khác",
+    "page": "Trang"
+  },
   "Metadata": {
     "HomePage": {
       "title": "ITJobSearch",
@@ -426,6 +453,18 @@
     "CompanyLoginPage": {
       "title": "Đăng nhập (Nhà tuyển dụng)",
       "description": "Mô tả trang đăng nhập (Nhà tuyển dụng)..."
+    },
+    "JobBySkillPage": {
+      "title": "Tìm việc làm IT theo kỹ năng",
+      "description": "Tìm việc làm IT theo kỹ năng"
+    },
+    "JobByExpertisePage": {
+      "title": "Tìm việc làm IT theo chuyên môn",
+      "description": "Tìm việc làm IT theo kỹ năng"
+    },
+    "JobByCityPage": {
+      "title": "Tìm việc làm IT theo thành phố",
+      "description": "Tìm việc làm IT theo kỹ năng"
     }
   }
 }

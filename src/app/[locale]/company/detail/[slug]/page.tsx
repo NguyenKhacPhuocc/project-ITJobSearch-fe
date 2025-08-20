@@ -106,7 +106,10 @@ export default async function CompanyDetailPage({ params }: {
           {/* Mô tả chi tiết */}
           <div className="border border-[#DEDEDE] rounded-[8px] p-[20px] mt-[20px]">
             <div className="font-[700] text-[20px] text-black mb-[20px]">{t('detailed-description')}</div>
-            <div className="lg:text-[15px] text-[10px] font-[350]" dangerouslySetInnerHTML={{ __html: company.description }} />
+            <div
+              className="lg:text-[15px] text-[10px] font-[350]"
+              dangerouslySetInnerHTML={{ __html: company?.description ?? "" }}
+            />
           </div>
           {/* Hết Mô tả chi tiết */}
 
