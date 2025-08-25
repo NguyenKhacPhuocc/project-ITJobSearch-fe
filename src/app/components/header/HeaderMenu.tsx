@@ -13,6 +13,7 @@ interface MenuItem {
   name: string;
   link: string;
   isLogin?: boolean;
+  role?: string;
   children?: MenuItem[];
 }
 
@@ -67,9 +68,20 @@ export const HeaderMenu = ({ showMenu }: { showMenu: boolean }) => {
       name: t('employers'),
       link: "#",
       isLogin: false,
+      role: "employers",
       children: [
         { name: t('login'), link: "/company/login" },
         { name: t('register'), link: "/company/register" },
+      ],
+    },
+    {
+      name: t('candidates'),
+      link: "#",
+      isLogin: false,
+      role: "candidate",
+      children: [
+        { name: t('login'), link: "/user/login" },
+        { name: t('register'), link: "/user/register" },
       ],
     },
   ];
@@ -87,7 +99,7 @@ export const HeaderMenu = ({ showMenu }: { showMenu: boolean }) => {
         {menuList.map((menu, index) => (
           <li
             key={index}
-            className={"inline-flex lg:w-auto w-full lg:justify-start justify-between p-[10px] items-center gap-x-[8px] relative group/sub-1 flex-wrap  " + (menu.isLogin !== undefined && menu.isLogin !== isLogin ? "hidden" : "")}
+            className={"inline-flex lg:w-auto w-full lg:justify-start justify-between p-[10px] items-center gap-x-[8px] relative group/sub-1 flex-wrap  " + (menu.isLogin !== undefined && menu.isLogin !== isLogin ? " hidden " : " ") + (menu.role === "candidate" ? " sm:hidden block " : " ")}
           >
             <Link
               href={menu.link}

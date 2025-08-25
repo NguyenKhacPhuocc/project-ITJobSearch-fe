@@ -94,7 +94,7 @@ export default async function JobDetailPage({ params }: {
                 <div className="border border-[#DEDEDE] rounded-[8px] p-[20px] mt-[20px]">
                   <div className="font-[700] text-[20px] text-black mb-[20px]">{t('detail-description')}</div>
                   <div
-                    className="lg:text-[15px] text-[10px] font-[350]"
+                    className="lg:text-[18px] md:text-[16px] text-[14px] font-[350]"
                     dangerouslySetInnerHTML={{ __html: detailedJob?.description ?? "" }}
                   />
                 </div>

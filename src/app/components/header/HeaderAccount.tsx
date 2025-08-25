@@ -37,7 +37,7 @@ export const HeaderAccount = () => {
             <>
               {/* Đã đăng nhập dành cho ứng viên */}
               <Link href="/user-manage/profile" className="flex items-center gap-[8px]">
-                <div className="w-[42px] h-[42px] relative rounded-full overflow-hidden group">
+                <div className="w-[42px] h-[42px] relative rounded-full overflow-hidden group bg-white">
                   <img
                     src={infoUser.avatar}
                     alt={infoUser.fullName}
@@ -71,7 +71,7 @@ export const HeaderAccount = () => {
             <>
               {/* Đã đăng nhập dành cho công ty */}
               <Link href="/company-manage/profile" className="group flex items-center gap-[8px]">
-                <div className="w-[42px] h-[42px] relative rounded-full overflow-hidden  bg-black">
+                <div className="w-[42px] h-[42px] relative rounded-full overflow-hidden  bg-white">
                   <img
                     src={infoCompany.logo}
                     alt={infoCompany.companyName}
@@ -108,7 +108,7 @@ export const HeaderAccount = () => {
             </>
           ) : null
         ) : (
-          <>
+          <div className="sm:block hidden">
             {/* Chưa đăng nhập */}
             <Link href="/user/login" className="">
               {t('login')}
@@ -117,7 +117,7 @@ export const HeaderAccount = () => {
             <Link href="/user/register" className="">
               {t('register')}
             </Link>
-          </>
+          </div>
         )}
       </div>
     </>

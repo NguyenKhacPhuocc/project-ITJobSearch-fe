@@ -20,7 +20,7 @@ export const Section2 = () => {
   const t = useTranslations('Home');
 
   const { data, isLoading } = useSWR(
-    `${process.env.NEXT_PUBLIC_API_URL}/company/list?limitItems=9`,
+    `${process.env.NEXT_PUBLIC_API_URL}/company/list?limitItems=6`,
     fetcher
   )
 

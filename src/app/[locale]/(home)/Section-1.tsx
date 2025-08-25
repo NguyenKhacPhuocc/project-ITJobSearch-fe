@@ -5,20 +5,22 @@ import { useCities } from "@/hooks/useCities";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6"
+import useSWR from "swr";
 
 interface MenuItem {
   name: string;
   link: string;
 }
 
+const fetcher = (url: string) => fetch(url).then(res => res.json())
+
 export const Section1 = () => {
   const { cities, loading, error } = useCities();
   const locale = useLocale();
   const t = useTranslations('Home');
   const router = useRouter();
-  const [totalJob, setTotalJob] = useState(1);
 
   const menuList: MenuItem[] = [
     { name: "ReactJS", link: "/search?skill=ReactJS" },
@@ -39,17 +41,12 @@ export const Section1 = () => {
     router.push(`/search?city=${city}&keysearch=${keysearch}`);
   }
 
-  useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/job/total-job`, {
-      method: "GET",
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.code == "success") {
-          setTotalJob(data.totalJob)
-        }
-      })
-  }, [])
+  const { data } = useSWR(
+    `${process.env.NEXT_PUBLIC_API_URL}/job/total-job`,
+    fetcher
+  )
+
+  const totalJob = data?.code == "success" ? data.totalJob : "";
 
   return (
     <>
@@ -59,21 +56,23 @@ export const Section1 = () => {
             {totalJob} {t('title')}
           </h1>
           <form onSubmit={handleSearch} className="flex flex-wrap gap-x-[15px] gap-y-[12px] mb-[30px]">
-            <select
-              name="city"
-              id="city"
-              disabled={loading ? true : error ? true : false}
-              aria-busy={loading} // tăng accessibility
-              className="bg-white md:w-[200px] w-[100%] h-[56px] rounded-[4px] px-[20px] font-[500] text-[15px] text-[#121212]"
-            >
-              <option value="">{t('all-cities')}</option>
-              {!loading && !error && cities.map((city: any) => (
-                <option key={city._id} value={city.name[locale]}>
-                  {locale === "vi" ? city.name.vi : city.name.en}
-                </option>
-              ))}
-            </select>
-            <input type="text" name="keysearch" id="keysearch" placeholder={t('search-placeholder')} className="md:flex-1 flex-none w-[100%] bg-white h-[56px] rounded-[4px] px-[20px] font-[500] text-[16px]" />
+            <div className="flex gap-x-[15px] gap-y-[12px] flex-1">
+              <select
+                name="city"
+                id="city"
+                disabled={loading ? true : error ? true : false}
+                aria-busy={loading} // tăng accessibility
+                className="bg-white md:w-[200px] w-[35%] h-[56px] rounded-[4px] px-[20px] font-[500] text-[15px] text-[#121212]"
+              >
+                <option value="">{t('all-cities')}</option>
+                {!loading && !error && cities.map((city: any) => (
+                  <option key={city._id} value={city.name[locale]}>
+                    {locale === "vi" ? city.name.vi : city.name.en}
+                  </option>
+                ))}
+              </select>
+              <input type="text" name="keysearch" id="keysearch" placeholder={t('search-placeholder')} className="md:flex-1 flex-none w-[65%] bg-white h-[56px] rounded-[4px] px-[20px] font-[500] text-[16px]" />
+            </div>
             <button
               className="relative overflow-hidden w-full md:w-[240px] h-[56px] rounded-[8px] font-semibold text-[16px] text-white inline-flex items-center justify-center shadow-md hover:shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-[1.03] group"
             >
@@ -89,9 +88,9 @@ export const Section1 = () => {
             <div className="text-[#DEDEDE] font-[500] text-[16px]">
               {t('trending-searches')}
             </div>
-            <div className="flex flex-wrap gap-[10px]">
+            <div className="flex flex-wrap gap-[10px] sm:line-clamp-1 line-clamp-2">
               {menuList.map((item, index) => (
-                <Link key={index} href={item.link} className="border border-[#414042] bg-[#121212] hover:bg-[#414042] rounded-[20px] inline-block text-[#DEDEDE] hover:text-white font-[500] text-[16px] py-[8px] px-[22px] transition-all duration-200 ease-in-out">
+                <Link key={index} href={item.link} className="border border-[#414042] bg-[#121212] hover:bg-[#414042] rounded-[20px] inline-block text-[#DEDEDE] hover:text-white font-[500] text-[16px] py-[8px] px-[22px] transition-all duration-200 ease-in-out ">
                   {item.name}
                 </Link>
               ))}
