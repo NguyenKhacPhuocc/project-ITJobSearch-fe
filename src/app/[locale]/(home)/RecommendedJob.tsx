@@ -24,8 +24,8 @@ export const RecommendedJob = () => {
   const t = useTranslations('Home');
   const { infoUser } = useAuth();
   const { data, error, isLoading } = useSWR(
-    infoUser ? [`${process.env.NEXT_PUBLIC_API_URL}/ai/recommend-jobs`, infoUser.id, locale] : null,
-    ([url, userId, locale]) => fetcher(url, { arg: { userId } }),
+    infoUser ? [`${process.env.NEXT_PUBLIC_API_URL}/ai/recommend-jobs`, infoUser.id] : null,
+    ([url, userId]) => fetcher(url, { arg: { userId } }),
     {
       revalidateOnFocus: false, // Không revalidate khi focus lại
       revalidateIfStale: false, // Không revalidate nếu dữ liệu hết hạn
