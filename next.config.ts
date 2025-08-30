@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['next-intl', 'react-icons', 'react-country-flag', 'framer-motion'], // Thêm các thư viện cần tối ưu
   },
-  reactStrictMode: true,
+  reactStrictMode: false,
 };
 
 const withNextIntl = createNextIntlPlugin();

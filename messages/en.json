@@ -261,7 +261,11 @@
     "reactjs": "ReactJS",
     "javascript": "Javascript",
     "nodejs": "NodeJS",
-    "top-company": "Top Employers"
+    "top-company": "Top Employers",
+    "recommended-job": "Recommended jobs you might be interested in!",
+    "no-recommended-job": "No suitable job recommendations yet",
+    "login-to-recommend": "Login to your account to see jobs that suit you!!!",
+    "start-search-job": "Start searching to improve suitable job recommendations."
   },
   "UserRegisterPage": {
     "title": "Register (Candidate)",

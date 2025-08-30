@@ -262,7 +262,11 @@
     "javascript": "Javascript",
     "nodejs": "NodeJS",
     "top-company": "Nhà tuyển dụng hàng đầu",
-    "error": "Lỗi!"
+    "recommended-job": "Đề xuất các công việc có thể bạn quan tâm!",
+    "error": "Lỗi!",
+    "no-recommended-job": "Chưa có đề xuất công việc phù hợp",
+    "login-to-recommend": "Đăng nhập tài khoản để xem các công việc phù hợp với bạn!!!",
+    "start-search-job": "Bắt đầu tìm kiếm để cải thiện đề xuất công việc phù hợp."
   },
   "UserRegisterPage": {
     "title": "Đăng ký (Ứng viên)",

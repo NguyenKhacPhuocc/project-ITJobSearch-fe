@@ -7,7 +7,7 @@ import { levelList, workingFormList } from "@/config/variable";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import useSWR from "swr";
 
@@ -87,6 +87,13 @@ export const SearchContent = () => {
     router.push(`?${params.toString()}`)
   }
 
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/search?keysearch=${keysearch}`, {
+      method: "POST",
+      credentials: "include", // cookie sẽ được gửi kèm
+    }).catch(console.error);
+  }, [keysearch]);
+
   return (
     <>
       <div className="container mx-auto px-[16px]">
@@ -123,7 +130,7 @@ export const SearchContent = () => {
           <div className="bg-[#F0F6FF] text-[#0088FF] flex justify-center items-center h-[40px] w-[80px] mr-[10px] rounded-[8px] border border-[#D6E6FF]">
             {totalRecord ? totalRecord : 0}
           </div>
-          {t('search-results-for')} <span className="text-[#0088FF] ml-[10px]">{[ city, keysearch].filter(Boolean).join(', ')}</span>
+          {t('search-results-for')} <span className="text-[#0088FF] ml-[10px]">{[city, keysearch].filter(Boolean).join(', ')}</span>
         </h2>
 
         <div

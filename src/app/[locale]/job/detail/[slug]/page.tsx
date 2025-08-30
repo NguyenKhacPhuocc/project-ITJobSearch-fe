@@ -7,6 +7,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation";
 import { FaBriefcase, FaLocationDot, FaUserTie } from "react-icons/fa6"
 import { ApplyForm } from "./ApplyForm";
+import JobClickTracker from "./JobClickTracker";
 
 type Params = Promise<{ locale: string, slug: string }>
 
@@ -167,6 +168,10 @@ export default async function JobDetailPage({ params }: {
         </div>
       )}
       {/* Hết Chi tiết công việc */}
+
+
+      {/* client component: chỉ khi user đã login mới gửi click */}
+      <JobClickTracker slug={slug} />
     </>
   )
 }

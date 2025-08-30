@@ -1,3 +1,4 @@
+import { RecommendedJob } from "./RecommendedJob";
 import { Section1 } from "./Section-1";
 import { Section2 } from "./Section-2";
 
@@ -8,6 +9,8 @@ export default function Home() {
       {/* Section 1 */}
       <Section1 />
       {/* End Section 1 */}
+
+      <RecommendedJob key={111} />
 
       {/* Section 2 */}
       <Section2 />
