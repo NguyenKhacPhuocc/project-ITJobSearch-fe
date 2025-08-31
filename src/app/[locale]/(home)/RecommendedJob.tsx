@@ -6,7 +6,6 @@ import { CardJobItem } from "@/app/components/card/CardJobItem";
 import { JobCardSkeleton } from "@/app/components/card/JobCardSkeleton";
 import { useAuth } from "@/hooks/useAuth";
 import { useLocale, useTranslations } from 'next-intl';
-import { useEffect } from "react";
 import useSWR from "swr";
 
 const fetcher = async (url: string, { arg }: { arg: any }) => {
@@ -29,14 +28,13 @@ export const RecommendedJob = () => {
     {
       revalidateOnFocus: false, // Không revalidate khi focus lại
       revalidateIfStale: false, // Không revalidate nếu dữ liệu hết hạn
+      refreshInterval: 300000
     }
   );
 
-  useEffect(() => {
-    // Không cần trigger, SWR sẽ tự động fetch khi key thay đổi
-  }, [infoUser]);
-
   const recommendedJobList = data?.code === "success" ? data.recommendedJobList : [];
+  const recommendedJobListId = recommendedJobList.filter((item: any) => item.id) // Lọc các đối tượng có id
+  console.log(recommendedJobListId)
 
   return (
     <>
@@ -54,11 +52,11 @@ export const RecommendedJob = () => {
                 ))}
               </div>
             </div>
-          ) : recommendedJobList.length > 0 ? (
+          ) : recommendedJobListId.length > 0 ? (
             // Trường hợp 2: Có job sau khi load xong
             <div className="h-auto">
               <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-[20px]">
-                {recommendedJobList.map((item: any) => (
+                {recommendedJobListId.map((item: any) => (
                   <CardJobItem key={item.id} item={item} locale={locale} />
                 ))}
               </div>

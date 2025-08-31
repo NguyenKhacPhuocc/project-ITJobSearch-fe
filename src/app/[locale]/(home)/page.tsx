@@ -10,7 +10,7 @@ export default function Home() {
       <Section1 />
       {/* End Section 1 */}
 
-      <RecommendedJob key={111} />
+      <RecommendedJob />
 
       {/* Section 2 */}
       <Section2 />
