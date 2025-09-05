@@ -8,16 +8,16 @@ Frontend cho dự án **IT Job Search**, xây dựng bằng [Next.js](https://ne
 ---
 
 ## Mục lục
-- [Giới thiệu](#-giới-thiệu)
-- [Tính năng](#-tính-năng)
-- [Yêu cầu hệ thống](#-yêu-cầu-hệ-thống)
-- [Cài đặt](#-cài-đặt)
-- [Biến môi trường](#-biến-môi-trường)
-- [Cách sử dụng](#-cách-sử-dụng)
-- [Cấu trúc thư mục dự án](#-cấu-trúc-thư=mục-dự-án)
-- [Công nghệ sử dụng](#-công-nghệ-sử-dụng)
-- [Deploy on Vercel](#-deploy-on-vercel)
-- [Tác giả](#-tác-giả)
+- [Giới thiệu](#giới-thiệu)
+- [Tính năng](#tính-năng)
+- [Yêu cầu hệ thống](#yêu-cầu-hệ-thống)
+- [Cài đặt](#cài-đặt)
+- [Biến môi trường](#biến-môi-trường)
+- [Cách sử dụng](#cách-sử-dụng)
+- [Cấu trúc thư mục dự án](#cấu-trúc-thư-mục-dự-án)
+- [Công nghệ sử dụng](#công-nghệ-sử-dụng)
+- [Deploy on Vercel](#deploy-on-vercel)
+- [Tác giả](#tác-giả)
 
 ---
 
@@ -50,14 +50,14 @@ Frontend cho dự án **IT Job Search**, xây dựng bằng [Next.js](https://ne
 
 ---
 
-## 💻 Yêu cầu hệ thống
+## Yêu cầu hệ thống
 - Node --version: **v22.11.0**
 - npm / yarn 
 - Backend API (chạy từ folder backend: [project-ITJobSearch-be](https://github.com/NguyenKhacPhuocc/project-ITJobSearch-be))
 
 ---
 
-## ⚙️ Cài đặt
+## Cài đặt
 Clone dự án và cài đặt dependencies:
 
 ```bash
@@ -94,7 +94,7 @@ http://localhost:3000
 
 ## Cấu trúc thư mục dự án
 ```bash
-G:.
+project-ITJobSearch-fe/
 │   .env.local
 │   .gitignore
 │   eslint.config.mjs
