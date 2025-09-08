@@ -38,41 +38,39 @@ export const RecommendedJob = () => {
 
   return (
     <>
-      {infoUser && (
-        <section className="pt-[60px]">
-          <div className="container mx-auto px-[16px]">
-            <h2 className="font-[700] sm:text-[28px] text-[24px] text-[#121212] text-center mb-[30px]">
-              {t('recommended-job')}
-            </h2>
-            {isLoading ? (
-              // Trường hợp 1: Đang loading
-              <div className="h-auto">
-                <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-[20px]">
-                  {Array.from({ length: 3 }).map((_, idx) => (
-                    <JobCardSkeleton key={idx} />
-                  ))}
-                </div>
+      <section className="pt-[60px]">
+        <div className="container mx-auto px-[16px]">
+          <h2 className="font-[700] sm:text-[28px] text-[24px] text-[#121212] text-center mb-[30px]">
+            {t('recommended-job')}
+          </h2>
+          {isLoading ? (
+            // Trường hợp 1: Đang loading
+            <div className="h-auto">
+              <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-[20px]">
+                {Array.from({ length: 3 }).map((_, idx) => (
+                  <JobCardSkeleton key={idx} />
+                ))}
               </div>
-            ) : recommendedJobListId.length > 0 ? (
-              // Trường hợp 2: Có job sau khi load xong
-              <div className="h-auto">
-                <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-[20px]">
-                  {recommendedJobListId.map((item: any) => (
-                    <CardJobItem key={item.id} item={item} locale={locale} />
-                  ))}
-                </div>
+            </div>
+          ) : recommendedJobListId.length > 0 ? (
+            // Trường hợp 2: Có job sau khi load xong
+            <div className="h-auto">
+              <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-[20px]">
+                {recommendedJobListId.map((item: any) => (
+                  <CardJobItem key={item.id} item={item} locale={locale} />
+                ))}
               </div>
-            ) : (
-              // Trường hợp 3: Không có job sau khi load xong
-              <div className="flex flex-col items-center justify-center ">
-                <div className="text-xl font-semibold text-blue-400">
-                  {t('login-to-recommend')}
-                </div>
+            </div>
+          ) : (
+            // Trường hợp 3: Không có job sau khi load xong
+            <div className="flex flex-col items-center justify-center ">
+              <div className="text-xl font-semibold text-blue-400">
+                {t('login-to-recommend')}
               </div>
-            )}
-          </div>
-        </section>
-      )}
+            </div>
+          )}
+        </div>
+      </section>
     </>
   );
 };
