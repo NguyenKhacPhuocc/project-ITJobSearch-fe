@@ -43,7 +43,7 @@ export const RecommendedJob = () => {
           <h2 className="font-[700] sm:text-[28px] text-[24px] text-[#121212] text-center mb-[30px]">
             {t('recommended-job')}
           </h2>
-          {isLoading ? (
+          {isLoading && infoUser ? (
             // Trường hợp 1: Đang loading
             <div className="h-auto">
               <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-[20px]">
